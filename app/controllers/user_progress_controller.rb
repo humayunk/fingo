@@ -1,2 +1,0 @@
-class UserProgressController < ApplicationController
-end

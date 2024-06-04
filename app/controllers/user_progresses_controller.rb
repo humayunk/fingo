@@ -1,0 +1,2 @@
+class UserProgressesController < ApplicationController
+end
