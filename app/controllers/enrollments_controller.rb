@@ -1,0 +1,2 @@
+class EnrollmentsController < ApplicationController
+end
