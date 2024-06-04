@@ -4,7 +4,7 @@ class Step < ApplicationRecord
 
   # Validations
   validates :content, presence: true, length: { minimum: 5 }
-  validates :is_question, intrusions: { in: [true, false] }
+  validates :is_question, inclusion: { in: [true, false] }
   validates :lesson_id, presence: true, numericality: { only_integer: true }
   validates :order, presence: true, numericality: { only_integer: true }
 end
