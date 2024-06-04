@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_202941) do
+
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_211348) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +58,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_202941) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lesson_id", null: false
+    t.index ["lesson_id"], name: "index_steps_on_lesson_id"
   end
 
   create_table "user_progresses", force: :cascade do |t|
@@ -91,6 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_202941) do
   add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "users"
   add_foreign_key "lessons", "courses"
+  add_foreign_key "steps", "lessons"
   add_foreign_key "user_progresses", "lessons"
   add_foreign_key "user_progresses", "users"
 end
