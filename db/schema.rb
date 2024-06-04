@@ -10,30 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_153152) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_152720) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "lessons", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_152424) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "courses", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-
-
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_151959) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_161919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,10 +21,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_151959) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "enrollments", force: :cascade do |t|
     t.date "enrollment_date"
     t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.text "content"
+    t.boolean "is_question"
+    t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
