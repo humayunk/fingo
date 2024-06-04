@@ -10,6 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_153152) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_04_152720) do
   # These are extensions that must be enabled in order to support this database
@@ -36,6 +40,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_151959) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.boolean "is_correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
+  create_table "enrollments", force: :cascade do |t|
+    t.date "enrollment_date"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
