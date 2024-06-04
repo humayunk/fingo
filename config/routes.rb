@@ -9,4 +9,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "home", to: "enrollments#index"
+
+  resources :courses, param: :title, only: [:index, :show] do
+    resources :enrollments, only: [:create]
+  end
+
+  resources :lessons, param: :title, only: [:show] do
+    resources :user_progress, only: [:create]
+  end
+
+  resources :user_progress, only: [:update]
 end
