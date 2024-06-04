@@ -1,6 +1,6 @@
 class Lesson < ApplicationRecord
   has_many :steps
-  belong_to :user_progress
+  belongs_to :user_progress
 
   # Validations
   validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
