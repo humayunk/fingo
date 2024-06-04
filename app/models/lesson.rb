@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
-  has_many :steps, dependent: :destroy
+  has_many :steps
+  has_many :user_progresses
 
   # Validations
   validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
