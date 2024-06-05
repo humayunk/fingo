@@ -7,4 +7,10 @@ class Course < ApplicationRecord
   def to_param
     title
   end
+
+  # for use on home/dashboard page for recommended courses
+  # in dashboard controller Course.user_not_enrolled(current_user).take(3) (for 3 recommended courses)
+  scope :user_not_enrolled, lambda { |user|
+    where.not(id: Course.joins(:enrollments).where(enrollments: { user_id: user.id }).pluck(:id))
+  }
 end
