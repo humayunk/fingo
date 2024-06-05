@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   end
 
   resources :lessons, param: :title, only: [:show] do
-    resources :user_progress, only: [:create]
+    resources :user_progresses, only: [:create]
   end
 
-  resources :user_progress, only: [:update]
+  resources :user_progresses, only: [:update]
 end
