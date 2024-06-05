@@ -65,6 +65,10 @@
         <div class="button">
           <%= link_to 'Continue', lesson_path(@lesson.title, step: next_step_number), class: "btn btn-primary" %>
         </div>
+      <% elsif next_step_number >= @lesson.steps.count %>
+        <div class="button">
+          <%= link_to 'Finish lesson', course_path(@lesson.course.title), class: "btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   </div>
