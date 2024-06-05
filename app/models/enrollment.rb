@@ -3,7 +3,7 @@ class Enrollment < ApplicationRecord
   belongs_to :course
 
   validates :user_id, :course_id, presence: true
-  validates :status, inclusion: { in: [true, false] }
+  validates :completed, inclusion: { in: [true, false] }
 
   validate :enrollment_date_is_valid_datetime
 

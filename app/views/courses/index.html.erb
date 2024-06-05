@@ -1,5 +1,37 @@
-<% @courses.each do |course|%>
-  <div class="card_course">
-    <%= link_to course.title, course_path(course.title) %>
+<div class="container">
+
+<div class="mt-4">
+  <h1>In Progress</h1>
+</div>
+
+<div class="card-product">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-product-infos">
+    <h2> <%= current_user.active_course.title %></h2>
+    <p> <%= current_user.active_course.description %></p>
   </div>
-<% end %>
+</div>
+
+
+
+<div class="mt-5">
+  <h1>All Courses</h1>
+</div>
+
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-12 mb-4">
+      <div class="card-product">
+        <%= link_to course_path(course.title), class: "d-flex align-items-center text-decoration-none text-dark" do %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" class="card-img-custom" alt="<%= course.title %>">
+          <div class="card-product-infos">
+            <h2><%= course.title %></h2>
+            <p><%= course.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+</div>

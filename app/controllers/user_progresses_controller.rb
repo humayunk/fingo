@@ -45,5 +45,4 @@ class UserProgressesController < ApplicationController
   def set_user_progress
     @user_progress = UserProgress.find(params[:id])
   end
-
 end

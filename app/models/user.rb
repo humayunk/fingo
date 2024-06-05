@@ -12,4 +12,9 @@ class User < ApplicationRecord
 
   has_many :user_progresses
   has_many :enrollments
+  has_one :active_enrollment, -> { where completed: false}, class_name: 'Enrollment', foreign_key: :user_id
+  has_one :active_course, through: :active_enrollment, class_name: "Course", source: :course
+
+
+  # if in future, can enroll in multiple courses can change to has_many: active_enrollments
 end
