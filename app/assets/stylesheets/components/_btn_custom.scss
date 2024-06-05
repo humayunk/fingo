@@ -1,0 +1,15 @@
+.btn-custom-primary {
+  background-color: $yellow;
+  border: 5px solid #000;
+  border-radius: .5rem;
+  padding: 10px 40px;
+  margin: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
+}
+
+.btn-custom-primary:hover {
+  box-shadow: 4px 4px 0px black;
+}
