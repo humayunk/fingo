@@ -7,7 +7,7 @@ class EnrollmentsController < ApplicationController
     @enrollment.course = @course
     @enrollment.user = current_user
     @enrollment.enrollment_date = Time.current
-    @enrollment.status = "enrolled"
+    @enrollment.status = true
 
     if @enrollment.save
       redirect_to @course, notice: 'Successfully enrolled in the course.'
