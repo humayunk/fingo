@@ -1,3 +1,15 @@
 <h2 class="card-title"><%= @lesson.title %></h2>
 
-<%= @step.content %>
+<div class="card-step">
+  <%= @step.content %>
+</div>
+
+<div class="card-answers">
+  <% if @step.is_question %>
+    <% @step.answers.each do |answer| %>
+      <div class="card-answer">
+        <%= answer.content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
