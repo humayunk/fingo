@@ -15,17 +15,17 @@ class UserProgressesController < ApplicationController
   end
 
   def update
-    if @user_progress.current_step >= @user_progress.lesson.steps.count
+    if @user_progress.current_step > @user_progress.lesson.steps.count
       @user_progress.update(completed: true)
     else
-      @user_progress.increment(:current_step)
+      @user_progress.current_step = params[:step]
     end
 
-    @user_progress.increment(:score)
+    # @user_progress.increment(:score)
     @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after updating user_progress?
-
+    redirect_to lesson_path(@user_progress.lesson, step: params[:step])
     # TODO: more logic required for validating answers later on in project.
     # if step is just content, move to next step. If it is a question, will have to validate answer
     # before moving to next step
