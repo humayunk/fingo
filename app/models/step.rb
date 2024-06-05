@@ -7,4 +7,8 @@ class Step < ApplicationRecord
   validates :is_question, inclusion: { in: [true, false] }
   validates :lesson_id, presence: true, numericality: { only_integer: true }
   validates :order, presence: true, numericality: { only_integer: true }
+
+  def to_param
+    order
+  end
 end
