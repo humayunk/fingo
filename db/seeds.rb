@@ -81,10 +81,10 @@ answers = Answer.create!([
 
 # Create Enrollments with boolean status
 enrollments = Enrollment.create!([
-  { user: users[0], course: courses[0], status: true, enrollment_date: DateTime.now },
-  { user: users[1], course: courses[1], status: true, enrollment_date: DateTime.now },
-  { user: users[0], course: courses[2], status: false, enrollment_date: DateTime.now },
-  { user: users[1], course: courses[2], status: false, enrollment_date: DateTime.now }
+  { user: users[0], course: courses[0], completed: true, enrollment_date: DateTime.now },
+  { user: users[1], course: courses[1], completed: true, enrollment_date: DateTime.now },
+  { user: users[0], course: courses[2], completed: false, enrollment_date: DateTime.now },
+  { user: users[1], course: courses[2], completed: false, enrollment_date: DateTime.now }
 ])
 
 # Create User Progresses
