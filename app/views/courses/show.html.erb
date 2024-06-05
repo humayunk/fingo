@@ -1,0 +1,5 @@
+<div class="card_lesson">
+  <% @course.lessons.each do |lesson| %>
+    <%= link_to lesson.title, lesson_path(lesson, step: 1) %>
+  <% end %>
+</div>
