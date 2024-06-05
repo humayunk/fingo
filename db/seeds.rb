@@ -1,20 +1,16 @@
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 
-# Clear existing data
+# db/seeds.rb
+
+# Clear existing data in the correct order to avoid foreign key violations
+UserProgress.destroy_all
 Answer.destroy_all
 Step.destroy_all
 Lesson.destroy_all
 Enrollment.destroy_all
 Course.destroy_all
-UserProgress.destroy_all
 User.destroy_all
 
 # Create Users
@@ -83,12 +79,12 @@ answers = Answer.create!([
   }
 ])
 
-# Create Enrollments
+# Create Enrollments with boolean status
 enrollments = Enrollment.create!([
-  { user: users[0], course: courses[0], status: 'enrolled', enrollment_date: DateTime.now },
-  { user: users[1], course: courses[1], status: 'enrolled', enrollment_date: DateTime.now },
-  { user: users[0], course: courses[2], status: 'enrolled', enrollment_date: DateTime.now },
-  { user: users[1], course: courses[2], status: 'enrolled', enrollment_date: DateTime.now }
+  { user: users[0], course: courses[0], status: true, enrollment_date: DateTime.now },
+  { user: users[1], course: courses[1], status: true, enrollment_date: DateTime.now },
+  { user: users[0], course: courses[2], status: false, enrollment_date: DateTime.now },
+  { user: users[1], course: courses[2], status: false, enrollment_date: DateTime.now }
 ])
 
 # Create User Progresses

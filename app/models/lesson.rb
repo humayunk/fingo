@@ -1,6 +1,5 @@
 class Lesson < ApplicationRecord
   has_many :steps
-  belongs_to :user_progress
   belongs_to :course
 
   # Validations
