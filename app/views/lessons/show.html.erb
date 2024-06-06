@@ -40,11 +40,18 @@
   <!-- Lesson Title and Content Row -->
   <div class="row mt-3">
     <div class="col-12">
-      <h2 class="card-title text-center"><%= @lesson.title %></h2>
 
-      <div class="card-step">
-        <%= @step.content %>
-      </div>
+      <% if @step.is_question %>
+        <h2 class="card-title text-center"><%= @step.content %></h2>
+      <% else %>
+        <h2 class="card-title text-center"><%= @step.title %></h2>
+      <% end %>
+
+      <% if @step.is_question == false %>
+        <div class="card-step">
+          <%= @step.content %>
+        </div>
+      <% end %>
 
       <div class="card-answers">
         <% if @step.is_question %>
