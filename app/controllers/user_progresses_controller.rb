@@ -5,7 +5,7 @@ class UserProgressesController < ApplicationController
 
   def create
     @user_progress = UserProgress.new
-    @lesson = @user_progress.lesson
+    @user_progress.lesson = @lesson
     @user_progress.completed = false
     @user_progress.score = 0
     @user_progress.current_step = 1
@@ -14,7 +14,7 @@ class UserProgressesController < ApplicationController
 
     # juliette added this
     if @user_progress.save
-      add_coins(@current_user, 10)
+      add_coins(10)
       redirect_to lesson_path(@lesson.title, step: 1)
     else
       redirect_to course_path(@lesson.course.title), alert: "Could not start lesson."
@@ -40,7 +40,7 @@ class UserProgressesController < ApplicationController
     # before moving to next step
 
     if @user_progress.save
-      add_coins(@current_user, 50)
+      add_coins(50)
       redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
     else
       redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."

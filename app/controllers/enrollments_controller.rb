@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_course
+  before_action :set_enrollment, only: [:complete_course]
 
   # POST /courses/:course_title/enrollments
   def create
@@ -16,10 +17,33 @@ class EnrollmentsController < ApplicationController
     end
   end
 
+  def complete_course
+    @enrollment.completed = true
+    if @enrollment.save
+      add_coins(100)
+      redirect_to courses_path, notice: 'Course was successfully completed!'
+    else
+      redirect_to @course, alert: "Course not completed!"
+    end
+  end
+
   private
 
   def set_course
     @course = Course.find_by(title: params[:course_title])
     return redirect_to courses_path, alert: 'Course not found.' unless @course
+  end
+
+  def set_enrollment
+    @enrollment = Enrollment.find(params[:id])
+  end
+
+  def add_coins(coins)
+    @current_user.coins += coins
+    @current_user.save
+  end
+
+  def set_current_user
+    @current_user = @enrollment.user
   end
 end
