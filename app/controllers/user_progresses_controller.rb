@@ -12,6 +12,13 @@ class UserProgressesController < ApplicationController
     @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after creating user_progress?
+
+    # juliette added this
+    if @user_progress.save
+      redirect_to lesson_path(@lesson.title, step: 1)
+    else
+      redirect_to course_path(@lesson.course.title), alert: "Could not start lesson."
+    end
   end
 
   def update
@@ -22,13 +29,27 @@ class UserProgressesController < ApplicationController
     end
 
     # @user_progress.increment(:score)
-    @user_progress.save
+    # @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after updating user_progress?
-    redirect_to lesson_path(@user_progress.lesson, step: params[:step])
+
+    # redirect_to lesson_path(@user_progress.lesson, step: params[:step])
+
     # TODO: more logic required for validating answers later on in project.
     # if step is just content, move to next step. If it is a question, will have to validate answer
     # before moving to next step
+
+    if @user_progress.save
+      redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
+    else
+      redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
+    end
+  end
+
+  def save_progress_and_exit
+    step_number = params[:step]
+    session[:last_step] = step_number
+    redirect_to course_path(params[:course_title])
   end
 
   private
