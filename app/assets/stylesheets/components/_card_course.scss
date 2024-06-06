@@ -1,0 +1,23 @@
+.card-course {
+  border: 5px solid #000;
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 4px 4px 0px black;
+  border-radius: .5rem;
+  padding: 16px;
+}
+
+.card-course:hover {
+  box-shadow: 8px 8px 0px $black;
+}
+
+.card-course img {
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-course p {
+  font-size: 20px;
+}
