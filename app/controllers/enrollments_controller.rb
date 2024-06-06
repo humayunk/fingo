@@ -17,16 +17,6 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  def complete_course
-    @enrollment.completed = true
-    if @enrollment.save
-      add_coins(100)
-      redirect_to courses_path, notice: 'Course was successfully completed!'
-    else
-      redirect_to @course, alert: "Course not completed!"
-    end
-  end
-
   private
 
   def set_course

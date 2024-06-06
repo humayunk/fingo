@@ -10,8 +10,6 @@ class UserProgressesController < ApplicationController
     @user_progress.score = 0
     @user_progress.current_step = 1
 
-    # TODO: CODE redirect. Where do we want to redirect after creating user_progress?
-
     # juliette added this
     if @user_progress.save
       add_coins(10)
@@ -22,14 +20,27 @@ class UserProgressesController < ApplicationController
   end
 
   def update
-    if @user_progress.current_step > @user_progress.lesson.steps.count
+    @enrollment = Enrollment.where(course: @user_progress.lesson.course, user: current_user)
+    @lesson_list = @user_progress.lesson.course.lessons
+    @user_progress_list = UserProgress.where(lesson: @lesson_list.pluck(:id), user: current_user)
+    @user_progress.current_step = params[:step]
+    if @user_progress.current_step == @user_progress.lesson.steps.count
+      add_coins(50)
       @user_progress.update(completed: true)
+      if @lesson_list.count == @user_progress_list.count
+        @enrollment.update(completed: true)
+        add_coins(100)
+        redirect_to courses_path, notice: 'Course was successfully completed!'
+      else
+        redirect_to course_path(@enrollment.course)
+      end
     else
-      @user_progress.current_step = params[:step]
+      if @user_progress.save
+        redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
+      else
+        redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
+      end
     end
-
-    # @user_progress.increment(:score)
-    # @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after updating user_progress?
 
@@ -38,13 +49,6 @@ class UserProgressesController < ApplicationController
     # TODO: more logic required for validating answers later on in project.
     # if step is just content, move to next step. If it is a question, will have to validate answer
     # before moving to next step
-
-    if @user_progress.save
-      add_coins(50)
-      redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
-    else
-      redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
-    end
   end
 
   private
