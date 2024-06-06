@@ -57,7 +57,7 @@
         <% if @step.is_question %>
           <div class="list-group mt-3" data-controller="answer">
             <% @step.answers.each do |answer| %>
-              <a href="#" class="list-group-item list-group-item-action" data-answer-target="answer" data-correct="<%= answer.is_correct %>">
+              <a href="#" class="list-group-item list-group-item-action" data-answer-target="answer" data-action="click->answer#checkAnswer" data-correct="<%= answer.is_correct %>">
                 <%= answer.content %>
               </a>
             <% end %>

@@ -4,9 +4,6 @@ export default class extends Controller {
   static targets = ["answer"]
 
   connect() {
-    this.answerTargets.forEach(target => {
-      target.addEventListener("click", this.checkAnswer.bind(this))
-    })
   }
 
   checkAnswer(event) {
