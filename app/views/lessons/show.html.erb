@@ -55,13 +55,17 @@
 
       <div class="card-answers">
         <% if @step.is_question %>
-          <% @step.answers.each do |answer| %>
-            <div class="card-answer">
-              <%= answer.content %>
-            </div>
-          <% end %>
+          <div class="list-group mt-3" data-controller="answer">
+            <% @step.answers.each do |answer| %>
+              <a href="#" class="list-group-item list-group-item-action" data-answer-target="answer" data-correct="<%= answer.is_correct %>">
+                <%= answer.content %>
+              </a>
+            <% end %>
+          </div>
         <% end %>
       </div>
+
+
     </div>
   </div>
 
