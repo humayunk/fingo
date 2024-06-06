@@ -9,10 +9,12 @@
       <div class="h4 text-primary">35</div> %>
     <%# </div> %>
     <div class="mt-4">
-      <div class="btn btn-light btn-outline-dark">
-        <%= link_to course_path(@lesson.course.title) do %>
-              Back to course
-            <% end %>
+      <div class="col-11 d-flex justify-content-end">
+        <div class="btn btn-light btn-outline-dark">
+          <%= link_to course_path(@lesson.course.title) do %>
+                Back to course
+              <% end %>
+        </div>
       </div>
     </div>
   </div>
