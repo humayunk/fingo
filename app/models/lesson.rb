@@ -1,7 +1,13 @@
 class Lesson < ApplicationRecord
   has_many :steps
   belongs_to :course
-  has_many :user_progresses
+  has_many :user_progresses do
+    def active_for(user)
+      where(user_id: user.id).where(completed: false).first
+    end
+  end
+
+  # has_one :active_user_progress_for, ->(user) { where(user_id: user.id).where(completed: false) }, class_name: "UserProgress", foreign_key: :lesson_id
 
   # Validations
   validates :title, presence: true, uniqueness: true, length: { minimum: 5 }

@@ -12,7 +12,7 @@
 
     <% if prev_step_number > 0 %>
       <div class="col-1 d-flex justify-content-end">
-        <%= link_to lesson_path(@lesson.title, step: prev_step_number), class: "btn btn-link p-0" do %>
+        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
           <i class="fas fa-arrow-left fa-2x"></i>
         <% end %>
       </div>
@@ -29,7 +29,7 @@
 
     <% if next_step_number <= @lesson.steps.count %>
       <div class="col-1 d-flex justify-content-end">
-        <%= link_to lesson_path(@lesson.title, step: next_step_number), class: "btn btn-link p-0" do %>
+        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn btn-link p-0" do %>
           <i class="fas fa-arrow-right fa-2x"></i>
         <% end %>
       </div>
@@ -40,11 +40,18 @@
   <!-- Lesson Title and Content Row -->
   <div class="row mt-3">
     <div class="col-12">
-      <h2 class="card-title text-center"><%= @lesson.title %></h2>
 
-      <div class="card-step">
-        <%= @step.content %>
-      </div>
+      <% if @step.is_question %>
+        <h2 class="card-title text-center"><%= @step.content %></h2>
+      <% else %>
+        <h2 class="card-title text-center"><%= @step.title %></h2>
+      <% end %>
+
+      <% if @step.is_question == false %>
+        <div class="card-step">
+          <%= @step.content %>
+        </div>
+      <% end %>
 
       <div class="card-answers">
         <% if @step.is_question %>
@@ -63,7 +70,9 @@
     <div class="col-12 d-flex justify-content-end">
       <% if next_step_number <= @lesson.steps.count %>
         <div class="button">
-          <%= link_to 'Continue', lesson_path(@lesson.title, step: next_step_number), class: "btn btn-primary" %>
+          <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn btn-primary" do %>
+            Continue
+          <% end %>
         </div>
       <% elsif next_step_number >= @lesson.steps.count %>
         <div class="button">
