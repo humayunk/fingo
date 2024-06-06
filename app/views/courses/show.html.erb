@@ -23,12 +23,21 @@
       <h3>Lessons</h3>
       <div class="list-group">
         <% @course.lessons.each_with_index do |lesson, index| %>
-          <a href="<%= lesson_path(lesson) %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            <span>
-              <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
-            </span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+          <% if lesson.user_progresses.active_for(current_user) %>
+            <%= button_to lesson_path(lesson), method: :get, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+              <span>
+                <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
+              </span>
+              <i class="fas fa-arrow-right"></i>
+            <% end %>
+          <% else %>
+            <%= button_to lesson_user_progresses_path(lesson), method: :post, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+              <span>
+                <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
+              </span>
+              <i class="fas fa-arrow-right"></i>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

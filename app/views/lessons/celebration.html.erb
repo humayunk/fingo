@@ -1,0 +1,10 @@
+<div data-controller="celebration">
+  <h1>Congratulations!</h1>
+  <p>You've completed the lesson <%= @lesson.title %>!</p>
+</div>
+
+<div class="button">
+  <%= link_to course_path(@lesson.course.title) do %>
+        Back to course
+      <% end %>
+</div>

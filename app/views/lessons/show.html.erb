@@ -12,7 +12,7 @@
 
     <% if prev_step_number > 0 %>
       <div class="col-1 d-flex justify-content-end">
-        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
+        <%= button_to user_progress_path(@user_progress, step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
           <i class="fas fa-arrow-left fa-2x"></i>
         <% end %>
       </div>
@@ -80,7 +80,9 @@
         </div>
       <% elsif next_step_number >= @lesson.steps.count %>
         <div class="button">
-          <%= link_to 'Finish lesson', course_path(@lesson.course.title), class: "btn btn-primary" %>
+          <%= button_to complete_user_progress_path(@user_progress), method: :patch, class: "btn btn-primary" do %>
+            Finish lesson
+          <% end %>
         </div>
       <% end %>
     </div>

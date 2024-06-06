@@ -17,8 +17,15 @@ Rails.application.routes.draw do
   end
 
   resources :lessons, param: :title, only: [:show] do
+    member do
+      get 'celebration'
+    end
     resources :user_progresses, only: [:create]
   end
 
-  resources :user_progresses, only: [:update]
+  resources :user_progresses, only: [:update] do
+    member do
+      patch 'complete'
+    end
+  end
 end
