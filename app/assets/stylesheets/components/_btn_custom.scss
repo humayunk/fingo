@@ -12,9 +12,7 @@
 }
 
 .btn-custom-primary:hover {
-  background-color: $black;
-  color: white;
-  box-shadow: 8px 8px 0px $yellow;
+  box-shadow: 8px 8px 0px $black;
 }
 
 .btn-custom-secondary {
@@ -31,7 +29,6 @@
 }
 
 .btn-custom-secondary:hover {
-  background-color: $yellow;
   box-shadow: 8px 8px 0px black;
 }
 
