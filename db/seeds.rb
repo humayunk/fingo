@@ -1,7 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-
 # db/seeds.rb
 
 # Clear existing data in the correct order to avoid foreign key violations
@@ -15,8 +11,8 @@ User.destroy_all
 
 # Create Users
 users = User.create!([
-  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", xp: 100, streak: 5 },
-  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", xp: 150, streak: 7 }
+  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 5 },
+  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 7 }
 ])
 
 # Create Courses
