@@ -1,20 +1,20 @@
 class UserProgressesController < ApplicationController
   before_action :set_lesson, only: [:create]
   before_action :set_user_progress, only: [:update]
+  before_action :set_current_user, only: [:create]
 
   def create
     @user_progress = UserProgress.new
-    @user_progress.user = current_user
-    @user_progress.lesson = @lesson
+    @lesson = @user_progress.lesson
     @user_progress.completed = false
     @user_progress.score = 0
     @user_progress.current_step = 1
-    # @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after creating user_progress?
 
     # juliette added this
     if @user_progress.save
+      add_coins(@current_user, 10)
       redirect_to lesson_path(@lesson.title, step: 1)
     else
       redirect_to course_path(@lesson.course.title), alert: "Could not start lesson."
@@ -40,6 +40,7 @@ class UserProgressesController < ApplicationController
     # before moving to next step
 
     if @user_progress.save
+      add_coins(@current_user, 50)
       redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
     else
       redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
@@ -59,5 +60,14 @@ class UserProgressesController < ApplicationController
 
   def set_user_progress
     @user_progress = UserProgress.find(params[:id])
+  end
+
+  def add_coins(coins)
+    @current_user.coins += coins
+    @current_user.save
+  end
+
+  def set_current_user
+    @current_user = @user_progress.user
   end
 end

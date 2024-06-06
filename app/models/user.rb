@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :nickname, presence: true, uniqueness: true, length: { minimum: 3 }
-  validates :xp, presence: true, numericality: { only_integer: true }
+  validates :coins, presence: true, numericality: { only_integer: true }
   validates :streak, presence: true, numericality: { only_integer: true }
 
   has_many :user_progresses
