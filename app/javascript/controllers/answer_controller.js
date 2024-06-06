@@ -10,15 +10,16 @@ export default class extends Controller {
   }
 
   checkAnswer(event) {
+    event.preventDefault();
     const answer = event.currentTarget
     const isCorrect = answer.dataset.correct === "true"
 
     if (isCorrect) {
-      answer.style.backgroundColor = "green"
-      alert("Correct!")
+      answer.classList.add("list-group-item-success")
+      // alert("Correct!")
     } else {
-      answer.style.backgroundColor = "red"
-      alert("Incorrect.")
+      answer.classList.add("list-group-item-danger")
+      // alert("Incorrect.")
     }
   }
 }
