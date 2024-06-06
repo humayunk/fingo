@@ -1,0 +1,21 @@
+<h1>Dashboard!</h1>
+
+<h2>Hi <%= current_user.first_name %>, you're on a <%= current_user.streak %>-day streak!👍</h2>
+
+
+<% if current_user.active_course %>
+  <h3>Pick up where you left off</h3>
+  <%= current_user.active_course.title %>
+<% else %>
+  <h3>You're not yet enrolled in any courses! Get started now!</h3>
+<% end %>
+
+
+<h3>Recommended for you:</h3>
+<% @recommended_courses = Course.user_not_enrolled(current_user).take(3) %>
+<% @recommended_courses.each do |course| %>
+  <div class="course">
+    <h2><%= course.title %></h2>
+    <p><%= course.description %></p>
+  </div>
+<% end %>
