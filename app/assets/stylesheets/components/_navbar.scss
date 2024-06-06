@@ -1,12 +1,75 @@
+/* Styling for the navigation bar */
 .navbar-lewagon {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   background: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light drop shadow */
+  z-index: 1000; /* Ensures it stays above other content */
 }
 
 .navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-brand h2 {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link-custom {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Inconsolata";
+  color: black;
+  margin: 0 10px;
+}
+
+.nav-link-custom.active {
+  border-bottom: 2px solid blue; /* Add bottom border to indicate active state */
+}
+/* Styling for the navigation icons */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-icons i {
+  font-size: 1.5em;
+  color: black; /* Ensures icons are black */
+}
+
+// .avatar {
+//   margin-left: 15px;
+//   display: flex;
+//   align-items: center;
+// }
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.navbar-toggler {
+  border: none; /* Removes border from the button */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  /* Custom SVG for the hamburger icon to ensure it's black */
 }

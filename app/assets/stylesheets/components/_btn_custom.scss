@@ -8,8 +8,35 @@
   font-size: 24px;
   font-weight: bold;
   font-family: "inconsolata";
+  box-shadow: 4px 4px 0px black;
 }
 
 .btn-custom-primary:hover {
+  box-shadow: 8px 8px 0px $black;
+}
+
+.btn-custom-secondary {
+  background-color: $white;
+  border: 5px solid #000;
+  border-radius: .5rem;
+  padding: 5px 40px;
+  margin: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
   box-shadow: 4px 4px 0px black;
+}
+
+.btn-custom-secondary:hover {
+  box-shadow: 8px 8px 0px black;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: $black;
+}
+
+.btn-link:hover {
+  color: $black;
 }
