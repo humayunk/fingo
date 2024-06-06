@@ -21,6 +21,4 @@ Rails.application.routes.draw do
   end
 
   resources :user_progresses, only: [:update]
-
-  post 'save_progress_and_exit', to: 'user_progresses#save_progress_and_exit'
 end

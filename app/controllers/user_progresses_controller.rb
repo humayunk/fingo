@@ -9,7 +9,7 @@ class UserProgressesController < ApplicationController
     @user_progress.completed = false
     @user_progress.score = 0
     @user_progress.current_step = 1
-    @user_progress.save
+    # @user_progress.save
 
     # TODO: CODE redirect. Where do we want to redirect after creating user_progress?
 
@@ -44,12 +44,6 @@ class UserProgressesController < ApplicationController
     else
       redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
     end
-  end
-
-  def save_progress_and_exit
-    step_number = params[:step]
-    session[:last_step] = step_number
-    redirect_to course_path(params[:course_title])
   end
 
   private

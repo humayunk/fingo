@@ -2,7 +2,7 @@
   <!-- Navigation and Exit Button Row -->
   <div class="row align-items-center mt-3">
     <div class="col-1 d-flex justify-content-start">
-      <%= button_to save_progress_and_exit_path(step: @step.order, course_title: @lesson.course.title), method: :post, class: "btn btn-link p-0" do %>
+      <%= link_to course_path(@lesson.course.title), class: "btn btn-link p-0" do %>
         <i class="fas fa-times fa-2x"></i>
       <% end %>
     </div>
