@@ -19,7 +19,9 @@ export default class extends Controller {
       // alert("Correct!")
     } else {
       answer.classList.add("list-group-item-danger")
-      // alert("Incorrect.")
+      const correctAnswer = this.answerTargets.find(target => target.dataset.correct === "true")
+      const correctAnswerContent = correctAnswer ? correctAnswer.innerText : "No correct answer found."
+      alert(`Wrong sorry! \nThe correct answer is: \n${correctAnswerContent}`)
     }
   }
 }
