@@ -5,7 +5,20 @@
 
 <% if current_user.active_course %>
   <h3>Pick up where you left off</h3>
-  <%= current_user.active_course.title %>
+    <div class="col-md-4 mb-4">
+      <div class="card-course  h-100">
+          <%= link_to course_path(current_user.active_course.title), class: "d-flex flex-column text-decoration-none text-dark" do %>
+          <div style="margin-bottom: 2rem;">
+            <%= image_tag 'collage-2.jpg', alt: '', class: "custom-image" %>
+          </div>
+          <div>
+            <h3><%= current_user.active_course.title %></h3>
+            <p><%= current_user.active_course.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
 <% else %>
   <h3>You're not yet enrolled in any courses! Get started now!</h3>
 <% end %>
@@ -14,8 +27,17 @@
 <h3>Recommended for you:</h3>
 <% @recommended_courses = Course.user_not_enrolled(current_user).take(3) %>
 <% @recommended_courses.each do |course| %>
-  <div class="course">
-    <h2><%= course.title %></h2>
-    <p><%= course.description %></p>
-  </div>
+  <div class="col-md-4 mb-4">
+      <div class="card-course  h-100">
+          <%= link_to course_path(course.title), class: "d-flex flex-column text-decoration-none text-dark" do %>
+          <div style="margin-bottom: 2rem;">
+            <%= image_tag 'collage-2.jpg', alt: '', class: "custom-image" %>
+          </div>
+          <div>
+            <h3><%= course.title %></h3>
+            <p><%= course.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
 <% end %>
