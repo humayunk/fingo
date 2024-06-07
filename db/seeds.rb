@@ -11,8 +11,8 @@ User.destroy_all
 
 # Create Users
 users = User.create!([
-  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 5 },
-  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 7 },
+  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 0  },
+  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 0 }
   { first_name: "Fred", last_name: "Smith", nickname: "fredsmith", email: "fred@example.com", password: "password", coins: 0, streak: 0 }
 ])
 
@@ -196,7 +196,7 @@ enrollments = Enrollment.create!([
 
 # Create User Progresses
 user_progresses = UserProgress.create!([
-  { user: users[0], lesson: lessons[0], completed: false, score: 50, current_step: 1 },
+  { user: users[1], lesson: lessons[0], completed: true, score: 50, current_step: 1, completed_date: Date.today - 1 },
   { user: users[1], lesson: lessons[1], completed: false, score: 75, current_step: 2 },
   { user: users[0], lesson: lessons[2], completed: false, score: 50, current_step: 1 },
   { user: users[1], lesson: lessons[3], completed: false, score: 75, current_step: 2 },
