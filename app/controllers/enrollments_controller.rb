@@ -27,13 +27,4 @@ class EnrollmentsController < ApplicationController
   def set_enrollment
     @enrollment = Enrollment.find(params[:id])
   end
-
-  def add_coins(coins)
-    @current_user.coins += coins
-    @current_user.save
-  end
-
-  def set_current_user
-    @current_user = @enrollment.user
-  end
 end
