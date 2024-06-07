@@ -22,7 +22,7 @@ class UserProgressesController < ApplicationController
 
     if @user_progress.current_step == @user_progress.lesson.steps.count
       add_coins(50)
-      @user_progress.update(completed: true)
+      @user_progress.update(completed: true, completed_date: Date.today)
       if @lesson_list.count == @user_progress_list.count
         @enrollment.update(completed: true)
         add_coins(100)
@@ -42,7 +42,8 @@ class UserProgressesController < ApplicationController
   private
 
   def update_streak
-    current_user.streak += 1 if UserProgress.where(user: current_user, )
+    current_user.streak = 0 if UserProgress.where(user: current_user, completed_date: Date.today - 1).empty?
+    current_user.streak += 1 if UserProgress.where(user: current_user, completed_date: Date.today).length == 1
   end
 
   def set_lesson
