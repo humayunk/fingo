@@ -1,5 +1,9 @@
 <div class="container">
-<% if current_user.active_course %>
+
+<% if user_signed_in? %>
+  <% if current_user.active_course %>
+
+
     <div class="my-5">
         <h2>Recommended for you</h2>
     </div>
@@ -26,7 +30,7 @@
     </div>
  <% end %>
     <hr>
-
+  <% end %>
     <div class="my-5">
         <h2>Browse All Courses</h2>
     </div>
