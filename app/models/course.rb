@@ -3,6 +3,7 @@ class Course < ApplicationRecord
   has_many :lessons
   validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 5 }
+  validates :image_name, presence: true
 
   def to_param
     title

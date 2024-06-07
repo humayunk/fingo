@@ -17,9 +17,9 @@ users = User.create!([
 
 # Create Courses
 courses = Course.create!([
-  { title: "Personal Finance 101", description: "Learn the basics of personal finance." },
-  { title: "Advanced Investing", description: "Take your investing skills to the next level." },
-  { title: "Stock 101", description: "Begin with stocks" }
+  { title: "Personal Finance 101", description: "Learn the basics of personal finance.", image_name: "personal_finance_101.jpg" },
+  { title: "Advanced Investing", description: "Take your investing skills to the next level.", image_name: "advanced_investing.jpg" },
+  { title: "Stock 101", description: "Begin with stocks", image_name: "stock_101.jpg" }
 ])
 
 # Create Lessons

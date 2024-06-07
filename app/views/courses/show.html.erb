@@ -5,7 +5,7 @@
       <div class="card-course-show h-100">
         <div class="card-body">
           <div class="custom-image">
-              <%= image_tag 'collage-1.jpg', alt: '', class: "custom-image" %>
+              <%= image_tag @course.image_name, alt: '', class: "custom-image" %>
           </div>
           <h2 class="card-title"><%= @course.title %></h2>
           <p class="card-text"><%= @course.description %></p>
