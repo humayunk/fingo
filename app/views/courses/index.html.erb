@@ -1,4 +1,5 @@
 <div class="container">
+<% if current_user.active_course %>
     <div class="my-5">
         <h2>Recommended for you</h2>
     </div>
@@ -10,8 +11,10 @@
             </div>
 
             <div class="mx-3">
+
                 <h2><%= current_user.active_course.title %></h2>
                 <p><%= current_user.active_course.description %></p>
+
             </div>
         </div>
 
@@ -21,7 +24,7 @@
             </button>
         </div>
     </div>
-
+ <% end %>
     <hr>
 
     <div class="my-5">

@@ -21,16 +21,33 @@
 
      <div class="col-md-8">
       <div class="list-group">
-        <% @course.lessons.each_with_index do |lesson, index| %>
-          <% if lesson.user_progresses.active_for(current_user) %>
-            <%= button_to lesson_path(lesson), method: :get, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
-              <span>
-                <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
-              </span>
-              <i class="fas fa-arrow-right"></i>
+        <% @course.lessons.order(order_rank: :asc).each_with_index do |lesson, index| %>
+          <% if @enrollment %>
+            <% if lesson.user_progresses.active_for(current_user) %>
+              <%= button_to lesson_path(lesson), method: :get, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+                <span>
+                  <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
+                </span>
+                <i class="fas fa-arrow-right"></i>
+              <% end %>
+            <% elsif lesson.order_rank <= @enrollment.active_lesson %>
+              <%= button_to lesson_user_progresses_path(lesson), method: :post, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center " do %>
+                <span>
+                  <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
+                </span>
+                <i class="fas fa-arrow-right"></i>
+              <% end %>
+            <% else %>
+               <%= button_to root_path, method: :get, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled" do %>
+                  <span>
+                   <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
+                  </span>
+                  <i class="fas fa-arrow-right"></i>
+                <% end %>
             <% end %>
+
           <% else %>
-            <%= button_to lesson_user_progresses_path(lesson), method: :post, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+            <%= button_to root_path, method: :get, class:"list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled" do %>
               <span>
                 <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
               </span>
@@ -41,7 +58,8 @@
       </div>
     </div>
 
-
-
+  <% unless @enrollment %>
+  <%= button_to "Start Now", course_enrollments_path(@course), method: :post, class: "btn-custom-secondary" %>
+  <% end %>
   </div>
 </div>
