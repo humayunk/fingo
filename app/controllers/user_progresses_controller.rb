@@ -33,6 +33,7 @@ class UserProgressesController < ApplicationController
   def complete
     if @user_progress.current_step == @user_progress.lesson.steps.count
       @user_progress.update(completed: true)
+      @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."

@@ -1,6 +1,8 @@
 class UserProgress < ApplicationRecord
   belongs_to :user
   belongs_to :lesson
+  has_one :course, through: :lesson
+  has_one :enrollment, through: :course
 
   scope :active_for, ->(user) { find_by(user: user, active: true) }
 
