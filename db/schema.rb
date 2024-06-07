@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_153726) do
     t.bigint "user_id", null: false
     t.bigint "course_id", null: false
     t.boolean "completed", default: false, null: false
+    t.integer "active_lesson", default: 1, null: false
     t.index ["course_id"], name: "index_enrollments_on_course_id"
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
@@ -75,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_153726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id", null: false
+    t.integer "order_rank"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 

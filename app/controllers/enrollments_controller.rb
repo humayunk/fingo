@@ -1,6 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_course
-  before_action :set_enrollment, only: [:complete_course]
+  # before_action :set_enrollment, only: [:complete_course]
 
   # POST /courses/:course_title/enrollments
   def create
@@ -8,7 +8,9 @@ class EnrollmentsController < ApplicationController
     @enrollment.course = @course
     @enrollment.user = current_user
     @enrollment.enrollment_date = Time.current
-    @enrollment.status = true
+    # @enrollment.status = true # look into this, doesn't make sense
+    @enrollment.active_lesson = 1 #active lesson should be the first one
+
 
     if @enrollment.save
       redirect_to @course, notice: 'Successfully enrolled in the course.'
