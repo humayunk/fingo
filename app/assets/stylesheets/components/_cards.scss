@@ -1,7 +1,8 @@
+// all courses page
+
 .card-course {
   border: 5px solid #000;
   overflow: hidden;
-  height: 120px;
   background: white;
   box-shadow: 4px 4px 0px black;
   border-radius: .5rem;
@@ -20,4 +21,13 @@
 
 .card-course p {
   font-size: 20px;
+}
+
+// course show page
+
+.card-course-show {
+  overflow: hidden;
+  background: white;
+  border-radius: .5rem;
+  padding: 16px;
 }
