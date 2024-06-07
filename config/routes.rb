@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   end
 
   resources :user_progresses, only: [:update]
+  get 'dashboard', to: 'pages#dashboard'
 end
