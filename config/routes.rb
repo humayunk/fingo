@@ -10,15 +10,22 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "home", to: "enrollments#index"
+  get "/dashboard", to: "pages#dashboard"
 
   resources :courses, param: :title, only: [:index, :show] do
     resources :enrollments, only: [:create]
   end
 
   resources :lessons, param: :title, only: [:show] do
+    member do
+      get 'celebration'
+    end
     resources :user_progresses, only: [:create]
   end
 
-  resources :user_progresses, only: [:update]
+  resources :user_progresses, only: [:update] do
+    member do
+      patch 'complete'
+    end
+  end
 end

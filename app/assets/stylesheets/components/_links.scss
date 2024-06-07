@@ -1,0 +1,13 @@
+.btn-link {
+  text-decoration: none;
+  color: $black;
+}
+
+.btn-link:hover {
+  color: $black;
+}
+
+.disabled {
+  color: #798A96; /* Replace with your desired color */
+  pointer-events: none; /* Ensures the element is not interactive */
+}

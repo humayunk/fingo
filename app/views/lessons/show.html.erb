@@ -12,7 +12,7 @@
 
     <% if prev_step_number > 0 %>
       <div class="col-1 d-flex justify-content-end">
-        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
+        <%= button_to user_progress_path(@user_progress, step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
           <i class="fas fa-arrow-left fa-2x"></i>
         <% end %>
       </div>
@@ -38,45 +38,51 @@
     <% end %>
   </div>
   <!-- Lesson Title and Content Row -->
-  <div class="row mt-3">
-    <div class="col-12">
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-7">
 
       <% if @step.is_question %>
-        <h2 class="card-title text-center"><%= @step.content %></h2>
+        <h2 class="card-title text-center justify-content-center mt-5"><%= @step.content %></h2>
       <% else %>
-        <h2 class="card-title text-center"><%= @step.title %></h2>
+        <h2 class="card-title text-center justify-content-center mt-5"><%= @step.title %></h2>
       <% end %>
 
       <% if @step.is_question == false %>
-        <div class="card-step">
+        <div class="card-step text-justify mt-5">
           <%= @step.content %>
         </div>
       <% end %>
 
       <div class="card-answers">
         <% if @step.is_question %>
-          <% @step.answers.each do |answer| %>
-            <div class="card-answer">
-              <%= answer.content %>
-            </div>
-          <% end %>
+          <div class="list-group mt-5" data-controller="answer">
+            <% @step.answers.each do |answer| %>
+              <a href="#" class="list-group-item list-group-item-action my-2 border" data-answer-target="answer" data-action="click->answer#checkAnswer" data-correct="<%= answer.is_correct %>">
+                💁 <%= answer.content %>
+              </a>
+            <% end %>
+          </div>
         <% end %>
       </div>
+
+
     </div>
   </div>
 
   <!-- Continue Button Row -->
-  <div class="row mt-3">
-    <div class="col-12 d-flex justify-content-end">
+  <div class="row mt-5">
+    <div class="col-11 d-flex justify-content-end">
       <% if next_step_number <= @lesson.steps.count %>
         <div class="button">
-          <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn btn-primary" do %>
+          <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, style: "box-shadow: 1px 2px 3px #000000", class: "btn btn-light btn-outline-dark" do %>
             Continue
           <% end %>
         </div>
       <% elsif next_step_number >= @lesson.steps.count %>
         <div class="button">
-          <%= link_to 'Finish lesson', course_path(@lesson.course.title), class: "btn btn-primary" %>
+          <%= button_to complete_user_progress_path(@user_progress), method: :patch, style: "box-shadow: 1px 2px 3px #000000", class: "btn btn-light btn-outline-dark" do %>
+            Finish lesson
+          <% end %>
         </div>
       <% end %>
     </div>
