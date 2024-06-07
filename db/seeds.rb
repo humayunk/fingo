@@ -12,7 +12,7 @@ User.destroy_all
 # Create Users
 users = User.create!([
   { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 0  },
-  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 0 }
+  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 0 },
   { first_name: "Fred", last_name: "Smith", nickname: "fredsmith", email: "fred@example.com", password: "password", coins: 0, streak: 0 }
 ])
 
