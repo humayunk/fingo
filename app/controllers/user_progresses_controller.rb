@@ -17,16 +17,6 @@ class UserProgressesController < ApplicationController
   def update
     @user_progress.current_step = params[:step]
 
-    if @user_progress.current_step == @user_progress.lesson.steps.count
-      add_coins(50)
-      @user_progress.update(completed: true, completed_date: Date.today)
-      if @lesson_list.count == @user_progress_list.count
-        @enrollment.update(completed: true)
-        add_coins(100)
-        redirect_to courses_path, notice: 'Course was successfully completed!'
-      else
-        redirect_to lesson_path(@user_progress.lesson), notice: 'Lesson was successfully completed!'
-      end
     if @user_progress.save
       redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
     else
