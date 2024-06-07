@@ -1,17 +1,12 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-12 mb-4">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="<%= courses_path %>">Courses</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><%= @course.title %></li>
-        </ol>
-      </nav>
-    </div>
 
     <div class="col-md-4">
-      <div class="card">
+      <div class="card-course-show h-100">
         <div class="card-body">
+          <div class="custom-image">
+              <%= image_tag 'collage-1.jpg', alt: '', class: "custom-image" %>
+          </div>
           <h2 class="card-title"><%= @course.title %></h2>
           <p class="card-text"><%= @course.description %></p>
           <p class="card-text"><i class="fas fa-book"></i> <%= pluralize(@course.lessons.count, 'Lesson') %></p>
@@ -19,18 +14,40 @@
       </div>
     </div>
 
-    <div class="col-md-8">
-      <h3>Lessons</h3>
-      <div class="list-group">
-        <% @course.lessons.each_with_index do |lesson, index| %>
-          <a href="<%= lesson_path(lesson) %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-            <span>
-              <%= sprintf('%02d', index + 1) %>  <%= lesson.title %>
-            </span>
-            <i class="fas fa-arrow-right"></i>
-          </a>
+ <div class="col-md-8">
+  <div class="title-border-bottom">
+    <h3>Lessons</h3>
+  </div>
+
+  <div class="list-group list-group-flush">
+    <% current_index = @course.lessons.index { |lesson| !lesson.user_progresses.active_for(current_user) } || @course.lessons.size %>
+    <% @course.lessons.each_with_index do |lesson, index| %>
+      <% if lesson.user_progresses.active_for(current_user) %>
+        <%= button_to lesson_path(lesson), method: :get, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+          <span>
+            <h2><%= sprintf('%02d', index + 1) %> <%= lesson.title %></h2>
+          </span>
+          <h3>✅</h3>
         <% end %>
-      </div>
-    </div>
+      <% elsif index == current_index %>
+        <%= button_to lesson_user_progresses_path(lesson), method: :post, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+          <span>
+            <h2><%= sprintf('%02d', index + 1) %> <%= lesson.title %></h2>
+          </span>
+          <h3>➡️</h3>
+        <% end %>
+      <% else %>
+        <%= button_to '#', class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled" do %>
+          <span>
+            <h2><%= sprintf('%02d', index + 1) %> <%= lesson.title %></h2>
+          </span>
+          <h3>🔒</h3>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
   </div>
 </div>
