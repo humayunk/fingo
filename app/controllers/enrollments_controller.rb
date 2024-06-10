@@ -11,9 +11,15 @@ class EnrollmentsController < ApplicationController
     # @enrollment.status = true # look into this, doesn't make sense
     @enrollment.active_lesson = 1 #active lesson should be the first one
 
-
     if @enrollment.save
-      redirect_to @course, notice: 'Successfully enrolled in the course.'
+      first_lesson = @enrollment.course.lessons.order(order_rank: :asc).first
+      current_user.user_progresses.create(
+        lesson: first_lesson,
+        score: 0,
+        current_step: 1,
+        completed: false
+      )
+      redirect_to first_lesson, notice: 'Successfully enrolled in the course and redirected to the first lesson.'
     else
       redirect_to @course, alert: 'Enrollment failed.'
     end
