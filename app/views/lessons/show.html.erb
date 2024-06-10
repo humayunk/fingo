@@ -40,39 +40,41 @@
 
   <!-- Lesson Title and Content Row -->
   <div class="row mt-3 d-flex justify-content-center">
-    <div class="col-7">
-
-      <% if @step.is_question %>
-        <h2 class="card-title text-center justify-content-center mt-5"><%= @step.content %></h2>
-      <% else %>
-        <h2 class="card-title text-center justify-content-center mt-5"><%= @step.title %></h2>
-      <% end %>
-
-      <% if @step.is_question == false %>
-        <div class="card-step text-justify mt-5">
-          <%= @step.content %>
-          <div class="text-center mt-5">
-            <%= image_tag @step.image_name %>
-          </div>
-        </div>
-      <% end %>
-
-      <div class="card-answers">
-        <% if @step.is_question %>
-          <div class="list-group mt-5">
-            <% @step.answers.each do |answer| %>
-              <a href="#" class="list-group-item list-group-item-action my-2 border" data-answer-target="answer" data-action="click->answer#checkAnswer" data-correct="<%= answer.is_correct %>">
-                💁 <%= answer.content %>
-              </a>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+  <div class="col-12 text-center">
+    <% if @step.is_question %>
+      <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+    <% else %>
+      <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
+    <% end %>
   </div>
 
+  <div class="col-8 d-flex justify-content-center">
+    <% if @step.is_question == false %>
+      <div class="card-step text-justify mt-5">
+      <h4> <%= @step.content %> </h4>
+        <div class="text-center mt-5">
+          <%= image_tag @step.image_name %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-12">
+    <% if @step.is_question %>
+      <div class="card-answers list-group mt-5 d-flex justify-content-center">
+        <% @step.answers.each do |answer| %>
+          <a href="#" class="list-group-item list-group-item-action my-2 border" data-answer-target="answer" data-action="click->answer#checkAnswer" data-correct="<%= answer.is_correct %>">
+            💁 <%= answer.content %>
+          </a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <!-- Bottom Row with Feedback Message and Continue Button -->
-  <div class="row mt-5 fixed-bottom w-100 bg-white py-5" style="border-top: 1px solid black; padding-top: 10px;">
+  <div class="row mt-5 fixed-bottom w-100 bg-white py-5 feedback-border">
     <div class="col-8 d-flex align-items-center">
       <!-- Feedback message -->
       <% if @step.is_question %>
@@ -93,11 +95,12 @@
     </div>
     <div class="col-4 d-flex justify-content-end">
       <% if next_step_number <= @lesson.steps.count %>
-        <div class="button">
-          <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn btn-light btn-outline-dark" do %>
-            Continue
-          <% end %>
-        </div>
+       <div>
+        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
+        Continue
+        <% end %>
+      </div>
+
       <% else %>
         <div class="button">
           <%= button_to complete_user_progress_path(@user_progress), method: :patch, class: "btn btn-light btn-outline-dark" do %>
