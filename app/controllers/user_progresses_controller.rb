@@ -32,11 +32,12 @@ class UserProgressesController < ApplicationController
   end
 
   def complete
-    current_user.streak += 1
-    current_user.save
     if @user_progress.current_step == @user_progress.lesson.steps.count
+      current_user.streak += 1
+      current_user.save
       @user_progress.update(completed: true)
       @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
+      current_user.update_streak!
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
