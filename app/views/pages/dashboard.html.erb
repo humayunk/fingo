@@ -26,10 +26,10 @@
             <div class="card-course h-100 d-flex flex-column align-items-center justify-content-center text-center">
               <div>
                 <h3>Leaderboard</h3>
-                <p>1. <%= current_user.first_name %>  <%= current_user.coins %> coins 🪙</p>
-                <p>2. Juliette  140 coins 🪙</p>
-                <p>3. Vaeda  100 coins 🪙</p>
-                <p>4. Jeff  100 coins 🪙</p>
+                <% @users = User.all %>
+                <% @users.each_with_index do |user, index| %>
+                  <p><%= index + 1 %>. <%= user.first_name %> <%= user.coins %> coins 🪙</p>
+                <% end %>
               </div>
             </div>
           </div>
