@@ -11,30 +11,31 @@ User.destroy_all
 
 # Create Users
 users = User.create!([
-  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 5 },
-  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 7 }
+  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 0  },
+  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 0 },
+  { first_name: "Fred", last_name: "Smith", nickname: "fredsmith", email: "fred@example.com", password: "password", coins: 0, streak: 0 }
 ])
 
 # Create Courses
 courses = Course.create!([
-  { title: "Personal Finance 101", description: "Learn the basics of personal finance." },
-  { title: "Advanced Investing", description: "Take your investing skills to the next level." },
-  { title: "Stock 101", description: "Begin with stocks" }
+  { title: "Personal Finance 101", description: "Learn the basics of personal finance.", image_name: "personal_finance_101.jpg" },
+  { title: "Advanced Investing", description: "Take your investing skills to the next level.", image_name: "advanced_investing.jpg" },
+  { title: "Stock 101", description: "Begin with stocks", image_name: "stock_101.jpg" }
 ])
 
 # Create Lessons
 lessons = Lesson.create!([
-  { title: "Introduction to Personal Finance", content: "This is an introduction.", course: courses[0] },
-  { title: "Budgeting Basics", content: "Learn how to create a budget.", course: courses[0] },
-  { title: "Saving Strategies", content: "Discover effective saving strategies.", course: courses[0] },
+  { title: "Introduction to Personal Finance", content: "This is an introduction.", course: courses[0], order_rank: 1 },
+  { title: "Budgeting Basics", content: "Learn how to create a budget.", course: courses[0], order_rank: 2 },
+  { title: "Saving Strategies", content: "Discover effective saving strategies.", course: courses[0], order_rank: 3 },
 
-  { title: "Stock Market Basics", content: "Learn the basics of the stock market.", course: courses[1] },
-  { title: "Advanced Stock Analysis", content: "Dive deep into stock analysis techniques.", course: courses[1] },
-  { title: "Investment Strategies", content: "Explore different investment strategies.", course: courses[1] },
+  { title: "Stock Market Basics", content: "Learn the basics of the stock market.", course: courses[1], order_rank: 1 },
+  { title: "Advanced Stock Analysis", content: "Dive deep into stock analysis techniques.", course: courses[1], order_rank: 2 },
+  { title: "Investment Strategies", content: "Explore different investment strategies.", course: courses[1], order_rank: 3 },
 
-  { title: "What is a stock?", content: "Introduction to Stocks", course: courses[2] },
-  { title: "Types of Stocks", content: "Learn about different types of stocks.", course: courses[2] },
-  { title: "Stock Market Mechanics", content: "Understand how the stock market works.", course: courses[2] }
+  { title: "What is a stock?", content: "Introduction to Stocks", course: courses[2], order_rank: 1 },
+  { title: "Types of Stocks", content: "Learn about different types of stocks.", course: courses[2], order_rank: 2 },
+  { title: "Stock Market Mechanics", content: "Understand how the stock market works.", course: courses[2], order_rank: 3 }
 ])
 
 # Create Steps for Personal Finance 101
@@ -195,7 +196,7 @@ enrollments = Enrollment.create!([
 
 # Create User Progresses
 user_progresses = UserProgress.create!([
-  { user: users[0], lesson: lessons[0], completed: false, score: 50, current_step: 1 },
+  { user: users[1], lesson: lessons[0], completed: true, score: 50, current_step: 1, completed_date: Date.today - 1 },
   { user: users[1], lesson: lessons[1], completed: false, score: 75, current_step: 2 },
   { user: users[0], lesson: lessons[2], completed: false, score: 50, current_step: 1 },
   { user: users[1], lesson: lessons[3], completed: false, score: 75, current_step: 2 },

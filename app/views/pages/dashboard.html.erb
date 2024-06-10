@@ -3,9 +3,6 @@
       <h1>Dashboard</h1>
   </div>
 
-
-
-
   <% if current_user.active_course %>
 
     <div class="mb-4"><h2>Hi <%= current_user.first_name %>, you're on a <%= current_user.streak %>-day streak!👍</h2></div>
@@ -15,7 +12,7 @@
             <div class="card-course h-100 d-flex flex-column align-items-center justify-content-center text-center">
               <%= link_to course_path(current_user.active_course.title), class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
                 <div class="mb-4">
-                  <%= image_tag 'collage-2.jpg', alt: '', class: "custom-image" %>
+                  <%= image_tag current_user.active_course.image_name, alt: '', class: "custom-image" %>
                 </div>
                 <div>
                   <h3><%= current_user.active_course.title %></h3>
@@ -52,7 +49,7 @@
         <div class="card-course  h-100">
             <%= link_to course_path(course.title), class: "d-flex flex-column text-decoration-none text-dark" do %>
             <div style="margin-bottom: 2rem;">
-              <%= image_tag 'collage-2.jpg', alt: '', class: "custom-image" %>
+              <%= image_tag course.image_name, alt: '', class: "custom-image" %>
             </div>
             <div>
               <h3><%= course.title %></h3>

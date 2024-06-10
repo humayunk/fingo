@@ -15,4 +15,8 @@ class LessonsController < ApplicationController
   def set_lesson
     @lesson = Lesson.find_by(title: params[:title])
   end
+
+  def set_ordered_lessons
+    @ordered_lessons = @lesson.course.lessons.order(:order_rank)
+  end
 end

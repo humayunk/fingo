@@ -18,6 +18,7 @@ class UserProgressesController < ApplicationController
     @user_progress.current_step = params[:step]
 
     if @user_progress.save
+      # Hey team, just testing the streak here, should be update when lesson is marked as completed
       redirect_to lesson_path(@user_progress.lesson.title, step: params[:step])
     else
       redirect_to lesson_path(@user_progress.lesson.title), alert: "Could not update progress."
@@ -31,8 +32,11 @@ class UserProgressesController < ApplicationController
   end
 
   def complete
+    current_user.streak += 1
+    current_user.save
     if @user_progress.current_step == @user_progress.lesson.steps.count
       @user_progress.update(completed: true)
+      @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
@@ -40,6 +44,11 @@ class UserProgressesController < ApplicationController
   end
 
   private
+
+  def update_streak
+    current_user.streak = 0 if UserProgress.where(user: current_user, completed_date: Date.today - 1).empty?
+    current_user.streak += 1 if UserProgress.where(user: current_user, completed_date: Date.today).length == 1
+  end
 
   def set_lesson
     @lesson = Lesson.find_by!(title: params[:lesson_title])

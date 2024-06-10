@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :user_progresses, only: [:create]
   end
 
+  get 'dashboard', to: 'pages#dashboard'
   resources :user_progresses, only: [:update] do
     member do
       patch 'complete'
