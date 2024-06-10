@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :celebration]
   def show
-    @user_progress = @lesson.user_progresses.active_for(current_user)
+    @user_progress = @lesson.user_progresses.for(current_user)
 
     step_number = @user_progress.current_step || 1
     @step = @lesson.steps.find_by(order: step_number) || @lesson.steps.first

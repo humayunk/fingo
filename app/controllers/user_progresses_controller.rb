@@ -35,8 +35,10 @@ class UserProgressesController < ApplicationController
     current_user.streak += 1
     current_user.save
     if @user_progress.current_step == @user_progress.lesson.steps.count
-      @user_progress.update(completed: true)
-      @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
+      unless @user_progress.completed
+        @user_progress.update(completed: true, current_step: 1)
+        @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
+      end
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
