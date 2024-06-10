@@ -1,3 +1,8 @@
+button {
+  padding: 0;
+}
+
+
 .btn-custom-primary {
   background-color: $yellow;
   border: 5px solid #000;
@@ -35,7 +40,40 @@
 // Button for lessons
 
 .btn-custom-lesson {
+  background-color: $yellow;
+  border: 5px solid #000;
+  border-radius: .5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 4px 4px 0px black;
+}
+
+.btn-custom-lesson:hover {
+  box-shadow: 8px 8px 0px black;
+}
+
+.btn-custom-lesson-disabled {
   background-color: $white;
+  border: 5px solid #E1DFDF;
+  border-radius: .5rem;
+  padding: 10px 40px;
+  margin: 5px;
+  color: #E1DFDF;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 4px 4px 0px #E1DFDF;
+}
+.btn-custom-lesson-disabled:hover {
+  box-shadow: 8px 8px 0px #E1DFDF;
+}
+
+.btn-custom-lesson-active {
+  background-color: $yellow;
   border: 5px solid #000;
   border-radius: .5rem;
   padding: 10px 40px;
@@ -47,6 +85,40 @@
   box-shadow: 4px 4px 0px black;
 }
 
-.btn-custom-lesson:hover {
+.btn-custom-lesson-active:hover {
+  box-shadow: 8px 8px 0px black;
+}
+
+.btn-custom-lesson-success {
+  background-color: $green;
+  border: 5px solid #000;
+  border-radius: .5rem;
+  padding: 10px 40px;
+  margin: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 4px 4px 0px black;
+}
+
+.btn-custom-lesson-success:hover {
+  box-shadow: 8px 8px 0px black;
+}
+
+.btn-custom-lesson-error {
+  background-color: $red;
+  border: 5px solid #000;
+  border-radius: .5rem;
+  padding: 10px 40px;
+  margin: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 4px 4px 0px black;
+}
+
+.btn-custom-lesson-success:hover {
   box-shadow: 8px 8px 0px black;
 }

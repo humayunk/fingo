@@ -3,3 +3,50 @@
   padding-top: 10px;
   height: 200px;
 }
+
+.answer-disabled {
+  border: 5px solid #F0F0F0 !important;
+  border-radius: .5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px #F0F0F0;
+  margin-bottom: 1rem;
+}
+
+.answer-disabled:hover {
+  box-shadow: 8px 8px 0px #F0F0F0;
+}
+
+.answer-active {
+  border: 5px solid $blue !important;
+  border-radius: .5rem;
+  background-color: $light-blue;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px $blue;
+  margin-bottom: 1rem;
+}
+
+.answer-success {
+  border: 5px solid $light-green !important;
+  background-color: $lightest-green;
+  border-radius: .5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px $light-green;
+  margin-bottom: 1rem;
+}
+
+.answer-error {
+  border: 5px solid $red !important;
+  background-color: $light-red;
+  border-radius: .5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px $red;
+  margin-bottom: 1rem;
+}
