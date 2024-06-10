@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one :active_course, through: :active_enrollment, class_name: "Course", source: :course
 
   def update_streak!
-    if user_progresses.select('null').where(completed: true).where(completed_date: Date.today).group(:completed_date).having('count(completed_date) = 1').any?
+    if user_progresses.where(completed: true, completed_date: Date.today).length == 1
       increment!(:streak)
     end
   end

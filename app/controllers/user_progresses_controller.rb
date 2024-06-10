@@ -33,9 +33,7 @@ class UserProgressesController < ApplicationController
 
   def complete
     if @user_progress.current_step == @user_progress.lesson.steps.count
-      current_user.streak += 1
-      current_user.save
-      @user_progress.update(completed: true)
+      @user_progress.update(completed: true, completed_date: Date.today)
       @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
       current_user.update_streak!
       redirect_to celebration_lesson_path(@user_progress.lesson)
@@ -45,11 +43,6 @@ class UserProgressesController < ApplicationController
   end
 
   private
-
-  def update_streak
-    current_user.streak = 0 if UserProgress.where(user: current_user, completed_date: Date.today - 1).empty?
-    current_user.streak += 1 if UserProgress.where(user: current_user, completed_date: Date.today).length == 1
-  end
 
   def set_lesson
     @lesson = Lesson.find_by!(title: params[:lesson_title])
