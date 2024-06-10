@@ -26,10 +26,18 @@
             <div class="card-course h-100 d-flex flex-column align-items-center justify-content-center text-center">
               <div>
                 <h3>Leaderboard</h3>
-                <p>1. <%= current_user.first_name %>  <%= current_user.coins %> coins 🪙</p>
-                <p>2. Juliette  140 coins 🪙</p>
-                <p>3. Vaeda  100 coins 🪙</p>
-                <p>4. Jeff  100 coins 🪙</p>
+                <% @top_five.each_with_index do |user, index| %>
+                  <%# below class_names is for conditional styling of the current user (if user is in top 5) %>
+                  <%# Can add multiple classes e.g. class_names("bg-dark", {"text-warning": user == current_user })  %>
+                  <p class="<%= class_names({"text-warning": user == current_user}) %>" > <%= index + 1 %>. <%= user.first_name %> <%= user.coins %> coins 🪙</p>
+                <% end %>
+                <% if !@current_user_in_top_five %>
+                  <p>...</p>
+                  <%# for demo purposes, if want to have ~6000 users for rank, make conditional e.g.  %>
+                  <%# if current_user.first_name == "Ryan" && current_user.last_name == "Ryan's last name" ie. the demo user  %>
+                  <%# display e.g. 6003 for rank! So Ryan can be super competitive  %>
+                  <p> <%= current_user.current_rank %>. <%= current_user.first_name %> <%= current_user.coins %> coins 🪙</p>
+                <% end %>
               </div>
             </div>
           </div>
