@@ -22,6 +22,7 @@ export default class extends Controller {
 
     if (isCorrect) {
       answer.classList.add("answer-success")
+      // feedbackContainer.classList.add("feedback-success")
       // alert("Correct!")
       this.correctTarget.classList.toggle("d-none")
     } else {
@@ -39,6 +40,9 @@ export default class extends Controller {
     event.preventDefault();
     const answer = event.currentTarget
     const isCorrect = answer.dataset.correct === "true"
+    this.answerTargets.forEach(element => {
+      element.classList.remove("answer-active");
+    });
     answer.classList.add("answer-active")
     this.answerCheck = isCorrect
     this.answerCheckDiv = answer;

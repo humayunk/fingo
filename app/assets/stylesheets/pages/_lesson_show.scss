@@ -4,6 +4,10 @@
   height: 200px;
 }
 
+.feedback-success {
+  background-color: $light-green;
+}
+
 .answer-disabled {
   border: 5px solid #F0F0F0 !important;
   border-radius: .5rem;
@@ -49,4 +53,8 @@
   color: black;
   box-shadow: 4px 4px 0px $red;
   margin-bottom: 1rem;
+}
+
+.image-feedback {
+  height: 100px;
 }
