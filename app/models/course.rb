@@ -1,5 +1,9 @@
 class Course < ApplicationRecord
-  has_many :enrollments
+  has_many :enrollments do
+    def active_for(user)
+      find_by(user_id: user.id) #if user has enrolled, this will return enrollment
+    end
+  end
   has_many :lessons
   validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 5 }

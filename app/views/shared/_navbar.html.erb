@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Dashboard", "#", class: "nav-link-custom", style: "margin-left: 3rem;"%>
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", style: "margin-left: 3rem;"%>
           </li>
           <li class="nav-item">
             <%= link_to "Courses", courses_path, class: "nav-link-custom" %>
@@ -23,7 +23,7 @@
       <% if user_signed_in? %>
         <div class="nav-icons ms-auto">
           <div class="d-flex align-items-baseline">
-            <div class="mx-2"><h3>0</h3></div>
+            <div class="mx-2"><h3><%= current_user.streak %></h3></div>
             <div class="me-3"><i class="fas fa-bolt"></i></div>
           </div>
           <div class="dropdown">
