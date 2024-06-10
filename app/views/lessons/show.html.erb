@@ -51,6 +51,9 @@
       <% if @step.is_question == false %>
         <div class="card-step text-justify mt-5">
           <%= @step.content %>
+          <div class="text-center mt-5">
+            <%= image_tag @step.image_name %>
+          </div>
         </div>
       <% end %>
 

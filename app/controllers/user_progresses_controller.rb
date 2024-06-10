@@ -8,6 +8,7 @@ class UserProgressesController < ApplicationController
     # TODO: CODE redirect. Where do we want to redirect after creating user_progress?
     # juliette added this
     if @user_progress.save
+      add_coins(10)
       redirect_to lesson_path(@lesson.title)
     else
       redirect_to course_path(@lesson.course.title), alert: "Could not start lesson."
@@ -38,12 +39,17 @@ class UserProgressesController < ApplicationController
       unless @user_progress.completed
         @user_progress.update(completed: true, current_step: 1)
         @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
+        add_coins(50)
+        if course_completed?(@user_progress.lesson.course, current_user)
+          add_coins(100)
+        end
       end
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
     end
   end
+
 
   private
 
@@ -64,4 +70,15 @@ class UserProgressesController < ApplicationController
   def set_user_progress
     @user_progress = UserProgress.find(params[:id])
   end
+
+  def add_coins(amount)
+    @current_user.increment!(:coins, amount)
+  end
+
+  def course_completed?(course, user)
+    course.lessons.all? do |lesson|
+      UserProgress.where(user: user, lesson: lesson, completed: true).exists?
+    end
+  end
+
 end
