@@ -82,12 +82,16 @@
           <%# content will be added here using answer_controller %>
           <div class="d-none d-flex align-items-center mx-5" data-answer-target="correct">
             <%=image_tag "answer_correct.png", alt:"Success", style:"height: 40px; margin-right: 10px;"%>
-            <h3>Keep it up, you've got this!.</h3>
+            <h3>That's what I'm talking about. <br/> You've got this!</h3>
           </div>
 
           <div class="d-none d-flex align-items-center mx-5" data-answer-target="incorrect">
-            <%=image_tag "answer-incorrect.png", alt:"Facepalm", class: "image-feedback" %>
-            <h3>Eeek. Correct answer was "<span data-answer-target="correctAnswer"> <%= @step.answers.where(is_correct: true).first.content %></span>".</h3>
+            <div class="mx-2">
+               <%=image_tag "answer-incorrect.png", alt:"Facepalm", class: "image-feedback" %>
+            </div>
+            <div>
+               <h3>C'mon fam.<br/> The right answer is "<span data-answer-target="correctAnswer"><%= @step.answers.where(is_correct: true).first.content %></span>".</h3>
+            </div>
           </div>
         </div>
       <% end %>
