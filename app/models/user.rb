@@ -24,6 +24,13 @@ class User < ApplicationRecord
     recent_progress = user_progresses.order(updated_at: :desc).first.course
   end
 
-
+  def current_rank
+    User
+      .with(user_with_ranks: User.select("*, ROW_NUMBER() OVER(ORDER BY coins DESC) AS rank"))
+      .from("user_with_ranks AS users")
+      .where(id:)
+      .pluck(:rank)
+      .first
+  end
   # if in future, can enroll in multiple courses can change to has_many: active_enrollments
 end

@@ -4,7 +4,7 @@ class UserProgress < ApplicationRecord
   has_one :course, through: :lesson
   has_one :enrollment, through: :course
 
-  scope :active_for, ->(user) { find_by(user: user, active: true) }
+  scope :for, ->(user) { find_by(user: user, active: true) }
 
   validates :user_id, presence: true, numericality: { only_integer: true }
   validates :lesson_id, presence: true, numericality: { only_integer: true }

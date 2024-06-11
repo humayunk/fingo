@@ -2,8 +2,8 @@ class Lesson < ApplicationRecord
   has_many :steps
   belongs_to :course
   has_many :user_progresses do
-    def active_for(user)
-      where(user_id: user.id).where(completed: false).first
+    def for(user)
+      find_by(user_id: user.id)
     end
   end
 

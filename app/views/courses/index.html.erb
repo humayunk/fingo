@@ -37,8 +37,8 @@
             <div class="col-md-4 mb-4">
                 <div class="card-course h-100">
                     <%= link_to course_path(course.title), class: "d-flex flex-column text-decoration-none text-dark" do %>
-                        <div>
-                            <%= image_tag course.image_name, alt: '', class: "custom-image" %>
+                        <div class="card-image-container">
+                            <%= image_tag course.image_name, alt: '', class: "card-image" %>
                         </div>
                         <div>
                             <h3><%= course.title %></h3>

@@ -36,11 +36,13 @@ class UserProgressesController < ApplicationController
     current_user.streak += 1
     current_user.save
     if @user_progress.current_step == @user_progress.lesson.steps.count
-      add_coins(50)
-      @user_progress.update(completed: true)
-      @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
-      if course_completed?(@user_progress.lesson.course, current_user)
-        add_coins(100)
+      unless @user_progress.completed
+        @user_progress.update(completed: true, current_step: 1)
+        @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
+        add_coins(50)
+        if course_completed?(@user_progress.lesson.course, current_user)
+          add_coins(100)
+        end
       end
       redirect_to celebration_lesson_path(@user_progress.lesson)
     else
