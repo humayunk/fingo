@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :in_progress_courses, through: :in_progress_enrollments, class_name: "Course", source: :course
   has_many :completed_courses, through: :completed_enrollments, class_name: "Course", source: :course
 
+  def most_recently_accessed_course
+    recent_progress = user_progresses.order(updated_at: :desc).first.course
+  end
 
 
   # if in future, can enroll in multiple courses can change to has_many: active_enrollments

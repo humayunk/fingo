@@ -8,21 +8,20 @@
 
       <h3>Pick up where you left off</h3>
       <div class="row">
-        <% current_user.in_progress_courses.each do |course| %>
-          <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-4">
             <div class="card-course h-100 d-flex flex-column align-items-center justify-content-center text-center">
-              <%= link_to course_path(course.title), class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
+              <%= link_to course_path(current_user.most_recently_accessed_course.title), class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
                 <div class="mb-4">
-                  <%= image_tag course.image_name, alt: '', class: "custom-image" %>
+                  <%= image_tag current_user.most_recently_accessed_course.image_name, alt: '', class: "custom-image" %>
                 </div>
                 <div>
-                  <h3><%= course.title %></h3>
-                  <p><%= course.description %></p>
+                  <h3><%= current_user.most_recently_accessed_course.title %></h3>
+                  <p><%= current_user.most_recently_accessed_course.description %></p>
                 </div>
               <% end %>
             </div>
-          </div>
-          <% end %>
+        </div>
+
 
           <div class="col-md-6 mb-4">
             <div class="card-course h-100 d-flex flex-column align-items-center justify-content-center text-center">
