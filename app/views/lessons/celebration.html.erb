@@ -11,7 +11,16 @@
           </div>
           <div class="card-celebration-body">
             <div class="celebration-icon"><h3>⚡️</h3></div>
-            <div class="celebration-value"><h3><%= current_user.streak %></h3></div>
+            <div class="celebration-value">
+              <% if params[:updated_streak] %>
+                <h3
+                  data-controller="streak"
+                  data-streak-start-value="<%= current_user.streak - 1  %>"><%= current_user.streak - 1 %>
+                </h3>
+              <% else %>
+                <h3><%= current_user.streak %></h3>
+              <% end %>
+            </div>
           </div>
         </div>
 

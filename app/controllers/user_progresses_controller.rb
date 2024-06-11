@@ -37,7 +37,7 @@ class UserProgressesController < ApplicationController
       unless @user_progress.completed
         @user_progress.update(completed: true, current_step: 1, completed_date: Date.today)
         @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
-        current_user.update_streak!
+        @updated_streak = current_user.update_streak!
         add_coins(50)
         @previous_coin_amt = current_user.coins - 60
         if course_completed?(@user_progress.lesson.course, current_user)
@@ -45,7 +45,7 @@ class UserProgressesController < ApplicationController
           @previous_coin_amt = current_user.coins - 160
         end
       end
-      redirect_to celebration_lesson_path(@user_progress.lesson, previous_coin_amt: @previous_coin_amt)
+      redirect_to celebration_lesson_path(@user_progress.lesson, previous_coin_amt: @previous_coin_amt, updated_streak: @updated_streak)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
     end
