@@ -19,7 +19,9 @@ class User < ApplicationRecord
   def update_streak!
     if user_progresses.where(completed: true, completed_date: Date.today).length == 1
       increment!(:streak)
+      return true
     end
+    return false
   end
 
   def current_rank
