@@ -29,7 +29,7 @@
 
     <% if next_step_number <= @lesson.steps.count %>
       <div class="col-1 d-flex justify-content-end">
-        <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn btn-link p-0" do %>
+        <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn btn-link p-0" do %>
           <i class="fas fa-arrow-right fa-2x"></i>
         <% end %>
       </div>
@@ -99,6 +99,7 @@
 
     <div class="col-4 d-flex justify-content-end">
       <% if next_step_number <= @lesson.steps.count %>
+
         <% if !@step.is_question %>
          <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
            Continue
@@ -118,6 +119,7 @@
            </div>
           <%# end %>
         <% end %>
+
       <% else %>
         <div class="button">
           <%= button_to complete_user_progress_path(@user_progress), method: :patch, class: "btn-custom-lesson" do %>
