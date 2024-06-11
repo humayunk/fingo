@@ -15,10 +15,20 @@ class User < ApplicationRecord
   has_one :active_enrollment, -> { where completed: false}, class_name: 'Enrollment', foreign_key: :user_id
   has_one :active_course, through: :active_enrollment, class_name: "Course", source: :course
 
+
   def update_streak!
     if user_progresses.where(completed: true, completed_date: Date.today).length == 1
       increment!(:streak)
     end
+  end
+
+  def current_rank
+    User
+      .with(user_with_ranks: User.select("*, ROW_NUMBER() OVER(ORDER BY coins DESC) AS rank"))
+      .from("user_with_ranks AS users")
+      .where(id:)
+      .pluck(:rank)
+      .first
   end
   # if in future, can enroll in multiple courses can change to has_many: active_enrollments
 end

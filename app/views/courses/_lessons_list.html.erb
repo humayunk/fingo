@@ -1,0 +1,7 @@
+<div class="list-group">
+  <% @course.lessons.order(order_rank: :asc).each_with_index do |lesson, index| %>
+    <div class="card-lesson">
+      <%= lesson_button(lesson, index, @enrollment) %>
+    </div>
+  <% end %>
+</div>
