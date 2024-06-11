@@ -11,9 +11,18 @@ class User < ApplicationRecord
   # validates :streak, presence: true, numericality: { only_integer: true }
 
   has_many :user_progresses
+
   has_many :enrollments
-  has_one :active_enrollment, -> { where completed: false}, class_name: 'Enrollment', foreign_key: :user_id
-  has_one :active_course, through: :active_enrollment, class_name: "Course", source: :course
+  has_many :in_progress_enrollments, -> { where completed: false }, class_name: 'Enrollment', foreign_key: :user_id
+  has_many :completed_enrollments, -> { where completed: true }, class_name: 'Enrollment', foreign_key: :user_id
+
+  has_many :courses, through: :enrollments
+  has_many :in_progress_courses, through: :in_progress_enrollments, class_name: "Course", source: :course
+  has_many :completed_courses, through: :completed_enrollments, class_name: "Course", source: :course
+
+  def most_recently_accessed_course
+    user_progresses.order(updated_at: :desc).first.course
+  end
 
 
   def update_streak!
