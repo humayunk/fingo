@@ -2,18 +2,11 @@
   border: none !important;
 }
 
-.position-relative {
-  position: relative;
-
+.title-border-bottom {
+  border-bottom: 5px solid #000;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
-
-
-.progress-image-container {
-  width: 100%;
-  max-width: 300px;
-  height: 150px; /* Set the fixed height you want */
-  overflow: hidden;
-  margin-bottom: 0.5rem; /* Adjust this as needed */
 
 .title-lesson {
   font-size: 24px;
@@ -32,9 +25,23 @@
   color: black;
   box-shadow: 4px 4px 0px $blue;
   margin-bottom: 1rem;
+  animation: pulsate 2s infinite;
 }
 
-  
+@keyframes pulsate {
+  0% {
+    border-width: 5px;
+  }
+  50% {
+    border-width: 8px;
+  }
+  100% {
+    border-width: 5px;
+  }
+}
+
+
+
 .lesson-active:hover {
   background-color: $light-blue;
 }
