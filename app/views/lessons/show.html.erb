@@ -101,7 +101,7 @@
       <% if next_step_number <= @lesson.steps.count %>
 
         <% if !@step.is_question %>
-         <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
+         <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
            Continue
          <% end %>
 
@@ -113,7 +113,7 @@
           </button>
 
           <div  data-answer-target="buttonContinue" class="d-none">
-            <%= button_to user_progress_path(@lesson.user_progresses.active_for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
+            <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
               Continue
             <% end %>
            </div>
