@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 
 export default class extends Controller {
-  static targets = ["answer", "correct", "incorrect", "buttonCheck", "buttonContinue"]
+  static targets = ["answer", "blank", "correct", "incorrect", "buttonCheck", "buttonContinue"]
 
   connect() {
     this.answerCheck = "";
@@ -18,6 +18,14 @@ export default class extends Controller {
 
     this.answerTargets.forEach(element => {
       element.style.pointerEvents = 'none';
+    });
+
+    this.blankTargets.forEach(blank => {
+      const correctContent = blank.dataset.correct;
+      const userContent = blank.innerText.trim();
+      if (correctContent !== userContent) {
+        isCorrect = false;
+      }
     });
 
     if (isCorrect) {
@@ -49,5 +57,19 @@ export default class extends Controller {
     this.buttonCheckTarget.disabled = false;
     this.buttonCheckTarget.classList.remove("btn-custom-lesson-disabled");
     this.buttonCheckTarget.classList.add("btn-custom-lesson-active");
+  }
+
+  drag(event) {
+    event.dataTransfer.setData("text", event.target.dataset.content);
+  }
+
+  allowDrop(event) {
+    event.preventDefault();
+  }
+
+  drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    event.target.innerText = data;
   }
 }
