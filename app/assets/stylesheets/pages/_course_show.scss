@@ -7,23 +7,6 @@
 
 }
 
-.heading-with-underline {
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-  background: white;
-}
-
-.underline-heading {
-  position: absolute;
-  left: 0;
-  top: 50%; /* Adjust as necessary to move the underline up */
-  transform: translateY(-50%); /* Center the underline vertically */
-  border-bottom: 25px solid #f8d7da; /* Your desired color */
-  width: 100%;
-  z-index: 0;
-}
-
 
 .progress-image-container {
   width: 100%;
@@ -31,15 +14,37 @@
   height: 150px; /* Set the fixed height you want */
   overflow: hidden;
   margin-bottom: 0.5rem; /* Adjust this as needed */
-  border-radius: .5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.title-lesson {
+  font-size: 24px;
 }
 
-.progress-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* This will make the image cover the container */
-  display: block;
+.emoji-lesson {
+  font-size: 32px;
+}
+
+.lesson-active {
+  border: 5px solid $blue !important;
+  border-radius: .5rem;
+  background-color: $white;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px $blue;
+  margin-bottom: 1rem;
+}
+
+  
+.lesson-active:hover {
+  background-color: $light-blue;
+}
+
+.lesson-disabled {
+  border: 5px solid #F0F0F0 !important;
+  border-radius: .5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px #F0F0F0;
+  margin-bottom: 1rem;
 }
