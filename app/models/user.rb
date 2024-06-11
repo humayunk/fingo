@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :completed_courses, through: :completed_enrollments, class_name: "Course", source: :course
 
   def most_recently_accessed_course
-    recent_progress = user_progresses.order(updated_at: :desc).first.course
+    user_progresses.order(updated_at: :desc).first.course
   end
 
   def current_rank
