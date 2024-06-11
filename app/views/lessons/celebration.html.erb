@@ -8,6 +8,19 @@
       <%# <div>Total XP</div>
       <div class="h4 text-primary">35</div> %>
     <%# </div> %>
+
+    <!-- New boxes for coins and streak -->
+    <div class="d-flex justify-content-center mt-4">
+        <div class="box text-center me-4">
+            <div class="box-title">Coins</div>
+            <div class="box-value"><%= current_user.coins %> 🪙</div>
+        </div>
+        <div class="box text-center">
+            <div class="box-title">Streak</div>
+            <div class="box-value"><%= current_user.streak %> 🔥</div>
+        </div>
+    </div>
+
     <div class="mt-4">
       <div class="col-11 d-flex justify-content-end">
         <div class="btn btn-light btn-outline-dark">
