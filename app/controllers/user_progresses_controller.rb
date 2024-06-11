@@ -40,11 +40,13 @@ class UserProgressesController < ApplicationController
         @user_progress.update(completed: true, current_step: 1)
         @user_progress.course.enrollments.active_for(current_user).increment!(:active_lesson)
         add_coins(50)
+        @previous_coin_amt = current_user.coins - 60
         if course_completed?(@user_progress.lesson.course, current_user)
           add_coins(100)
+          @previous_coin_amt = current_user.coins - 160
         end
       end
-      redirect_to celebration_lesson_path(@user_progress.lesson)
+      redirect_to celebration_lesson_path(@user_progress.lesson, previous_coin_amt: @previous_coin_amt)
     else
       redirect_to lesson_path(@user_progress.lesson.title), notice: "Please complete the steps."
     end
