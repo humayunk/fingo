@@ -33,7 +33,7 @@
     <%# </div> %>
     <div class="mt-4">
       <div class="d-flex justify-content-center">
-          <%= button_to course_path(@lesson.course.title), class: "btn-custom-primary" do %>
+          <%= button_to course_path(@lesson.course.title), method: :get, class: "btn-custom-primary" do %>
               Back to course
           <% end %>
       </div>
