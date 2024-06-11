@@ -15,18 +15,18 @@ export default class extends Controller {
     const end_value = this.endValue
     const timer = setInterval(function() {
         current += increment;
-        if (current != end_value) {
-          obj.innerHTML = `➕${current}`;
-          // "+" can be styled appropriately.
-        } else {
-          obj.innerHTML = current;
-          clearInterval(timer);
-        }
-        // TO remove the "+" sign as the coins increment, use below code instead
-        // obj.innerHTML = current;
-        // if (current == end_value) {
-        //     clearInterval(timer);
+        // TO add the "+" sign as the coins increment, use below code instead
+        // if (current != end_value) {
+        //   obj.innerHTML = `+${current}`;
+        //   // "+" can be styled appropriately.
+        // } else {
+        //   obj.innerHTML = current;
+        //   clearInterval(timer);
         // }
+        obj.innerHTML = current;
+        if (current == end_value) {
+            clearInterval(timer);
+        }
     }, stepTime);
   }
 }
