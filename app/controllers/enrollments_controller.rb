@@ -19,6 +19,7 @@ class EnrollmentsController < ApplicationController
         current_step: 1,
         completed: false
       )
+      add_coins(10)
       redirect_to first_lesson, notice: 'Successfully enrolled in the course and redirected to the first lesson.'
     else
       redirect_to @course, alert: 'Enrollment failed.'
@@ -36,9 +37,8 @@ class EnrollmentsController < ApplicationController
     @enrollment = Enrollment.find(params[:id])
   end
 
-  def add_coins(coins)
-    @current_user.coins += coins
-    @current_user.save
+  def add_coins(amount)
+    @current_user.increment!(:coins, amount)
   end
 
   def set_current_user
