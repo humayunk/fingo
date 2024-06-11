@@ -41,3 +41,42 @@
   border-radius: .5rem;
   padding: 16px;
 }
+
+// celebration page card
+
+.card-celebration {
+  width: 150px;
+  border: 5px solid $black;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  margin: 1rem;
+}
+
+.card-celebration-header {
+  background-color:$black;
+  color: white;
+  padding: 10px;
+  // border-bottom: 2px solid #F4C542;
+}
+
+.card-celebration-body {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.celebration-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.celebration-value {
+  font-size: 24px;
+  color: $black;
+  font-weight: bold;
+}
