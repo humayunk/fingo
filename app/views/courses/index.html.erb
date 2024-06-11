@@ -1,6 +1,6 @@
 <div class="container">
   <% if user_signed_in? %>
-    <% if current_user.active_course %>
+    <%# if current_user.active_course %>
       <div>
         <h3 class="my-5">Recommended for you</h3>
       </div>
@@ -9,17 +9,17 @@
         <%= link_to course_path("Personal Finance 101"), class: "d-flex text-decoration-none text-dark w-100" do %>
           <div class="d-flex align-items-center w-100">
             <div class="progress-image-container">
-              <%= image_tag current_user.active_course.image_name, alt: '', class: "progress-image" %>
+              <%= image_tag "personal_finance_101.jpg", alt: '', class: "progress-image" %>
             </div>
             <div class="mx-3 flex-grow-1">
-              <h4><%= current_user.active_course.title %></h4>
-              <p><%= current_user.active_course.description %></p>
+              <h4>Personal Finance 101</h4>
+              <p>Learn the basics of personal finance</p>
             </div>
           </div>
         <% end %>
       </div>
       <hr>
-    <% end %>
+    <%# end %>
   <% end %>
 
   <div class="my-5">
