@@ -77,7 +77,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_185940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id", null: false
-    t.string "image_name"
     t.integer "order_rank"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
