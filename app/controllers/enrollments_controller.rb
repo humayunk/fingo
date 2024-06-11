@@ -6,7 +6,6 @@ class EnrollmentsController < ApplicationController
     @enrollment = Enrollment.new(user: current_user, course: @course, enrollment_date: Time.current, completed: false, active_lesson: 1)
 
     if @enrollment.save
-      raise
       first_lesson = @enrollment.course.lessons.order(order_rank: :asc).first
       current_user.user_progresses.create(
         lesson: first_lesson,
