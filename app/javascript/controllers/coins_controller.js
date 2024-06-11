@@ -8,7 +8,6 @@ export default class extends Controller {
     if (this.startValue === this.endValue) return;
     const range = this.endValue - this.startValue;
     let current = this.startValue;
-    console.log(this.startValue, this.endValue);
     const increment = this.endValue > this.startValue? 1 : -1;
     const stepTime = Math.abs(Math.floor(2000 / range));
     // Decrease the number after Math.floor to speed up the counter
