@@ -1,20 +1,45 @@
 <div class="container text-center my-5" data-controller="celebration">
-    <h1 class="mb-4">Congratulations!</h1>
-    <p>You've completed the lesson <%= @lesson.title %></p>
+
     <img src="https://i.giphy.com/IwAZ6dvvvaTtdI8SD5.webp" alt="Celebration GIF" class="img-fluid mb-4">
-    <p class="h4 font-weight-bold mb-2">Damn! Solid job.</p>
-    <p class="text-muted mb-4">Time to dance.</p>
+    <h2 class="mb-4">Damn! Solid job.</h2>
+    <h4>You've completed the lesson <strong><%= @lesson.title %></strong>! Time to dance.</h4>
+      <div class="d-flex justify-content-center">
+
+        <div class="card-celebration">
+          <div class="card-celebration-header">
+            <h5> Streak</h5>
+          </div>
+          <div class="card-celebration-body">
+            <div class="celebration-icon"><h3>⚡️</h3></div>
+            <div class="celebration-value"><h3><%= current_user.streak %></h3></div>
+          </div>
+        </div>
+
+        <div class="card-celebration">
+          <div class="card-celebration-header">
+            <h5>Coins</h5>
+          </div>
+          <div class="card-celebration-body">
+            <div class="celebration-icon"><h3>💵</h3></div>
+            <div class="celebration-value"><h3><%= current_user.streak %></h3></div>
+          </div>
+        </div>
+
+      </div>
+
     <%# <div class="border border-dark d-inline-block p-3 mb-4">
       <%# <div>Total XP</div>
       <div class="h4 text-primary">35</div> %>
     <%# </div> %>
     <div class="mt-4">
-      <div class="col-11 d-flex justify-content-end">
-        <div class="btn btn-light btn-outline-dark">
-          <%= link_to course_path(@lesson.course.title) do %>
-                Back to course
-              <% end %>
-        </div>
+      <div class="d-flex justify-content-center">
+          <%= button_to course_path(@lesson.course.title), class: "btn-custom-primary" do %>
+              Back to course
+          <% end %>
       </div>
+
+      </div>
+      </div>
+
     </div>
   </div>
