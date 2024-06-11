@@ -4,12 +4,14 @@ class EnrollmentsController < ApplicationController
 
   # POST /courses/:course_title/enrollments
   def create
-    @enrollment = Enrollment.new
+    @enrollment = Enrollment.new()
     @enrollment.course = @course
     @enrollment.user = current_user
     @enrollment.enrollment_date = Time.current
     # @enrollment.status = true # look into this, doesn't make sense
     @enrollment.active_lesson = 1 #active lesson should be the first one
+
+    @user_progress = UserProgress.new(user: current_user, lesson: @lesson, completed: false, score: 0, current_step: 1)
 
     if @enrollment.save
       first_lesson = @enrollment.course.lessons.order(order_rank: :asc).first
