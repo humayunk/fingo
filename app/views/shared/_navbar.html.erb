@@ -22,6 +22,17 @@
 
       <% if user_signed_in? %>
         <div class="nav-icons ms-auto">
+          <div class="dropdown">
+            <a href="#" id="coinsDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-coins"> <%= current_user.coins %></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="coinsDropdown">
+              <h5>Coins</h5>
+              <p>You have <%= current_user.coins %> coins</p>
+              <hr>
+              <%= link_to "Fingo Store", courses_path, class: "btn btn-primary" %>
+            </div>
+          </div>
           <div class="d-flex align-items-baseline">
             <div class="mx-2"><h3><%= current_user.streak %></h3></div>
             <div class="me-3"><i class="fas fa-bolt"></i></div>
