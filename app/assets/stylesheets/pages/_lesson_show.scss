@@ -8,6 +8,11 @@
   background-color: $light-green;
 }
 
+.card-answers {
+  margin: 0; /* Reduce top margin to bring options closer to the question */
+  padding: 0;
+}
+
 .answer-disabled {
   border: 5px solid #F0F0F0 !important;
   border-radius: .5rem;
