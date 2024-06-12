@@ -1,11 +1,22 @@
-.progress-bar.bg-success {
-  background-color: #28a745; /* green for completed steps */
+// .progress-bar.bg-info {
+//   background-color: #17a2b8; /* blue for current step */
+// }
+
+// .progress-bar.bg-light {
+//   background-color: #f8f9fa; /* light for upcoming steps */
+// }
+
+.progress-segment {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  height: 10px;
+  position: relative;
 }
 
-.progress-bar.bg-info {
-  background-color: #17a2b8; /* blue for current step */
+.progress-segment.bg-primary {
+  background-color: #17a2b8;
 }
 
-.progress-bar.bg-light {
-  background-color: #f8f9fa; /* light for upcoming steps */
+.invisible-text {
+  color: transparent; /* Make text invisible */
 }
