@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body <body class="<%= 'custom-background' if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>">
 
   <% unless controller_name == 'lessons' && (action_name == 'show' || action_name == 'celebration') %>
     <%= render "shared/navbar" %>
