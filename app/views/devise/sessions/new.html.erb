@@ -2,8 +2,8 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card">
-        <div class="card-header text-center">Log in</div>
+      <div class="card-form">
+        <div class="card-header text-center"><h3>Log in</h3></div>
         <div class="card-body">
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
             <div class="form-group">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="form-group text-center">
-              <%= f.button :submit, "Log in", class: 'btn btn-primary' %>
+              <%= f.button :submit, "Log in", class: 'btn-custom-secondary' %>
             </div>
           <% end %>
 
