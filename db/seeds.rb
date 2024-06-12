@@ -12,10 +12,10 @@ User.destroy_all
 # Create Users
 users = User.create!([
   { first_name: "Ryan", last_name: "Smith", nickname: "ryansmith", email: "ryan@example.com", password: "password", coins: 0, streak: 0 },
-  { first_name: "Lola", last_name: "Smith", nickname: "lolasmith", email: "lola@example.com", password: "password", coins: 500, streak: 5 },
-  { first_name: "Simone", last_name: "Smith", nickname: "simonesmith", email: "simone@example.com", password: "password", coins: 350, streak: 2 },
-  { first_name: "Clark", last_name: "Smith", nickname: "clarksmith", email: "clark@example.com", password: "password", coins: 750, streak: 4 },
-  { first_name: "Youssef", last_name: "Smith", nickname: "youssefsmith", email: "youssef@example.com", password: "password", coins: 1000, streak: 20 }
+  { first_name: "Humayun", last_name: "Smith", nickname: "humayunsmith", email: "humayun@example.com", password: "password", coins: 500, streak: 5 },
+  { first_name: "Vaeda", last_name: "Smith", nickname: "vaedasmith", email: "vaeda@example.com", password: "password", coins: 350, streak: 2 },
+  { first_name: "Jeff", last_name: "Smith", nickname: "jeffsmith", email: "jeff@example.com", password: "password", coins: 750, streak: 4 },
+  { first_name: "Juliette", last_name: "Smith", nickname: "juliettesmith", email: "juliette@example.com", password: "password", coins: 1000, streak: 20 }
 ])
 
 # Create Courses
