@@ -1,0 +1,10 @@
+<h1>Store</h1>
+<p>Welcome to the Fingo Store!</p>
+
+<% @items.each do |item| %>
+  <div class="store-item">
+    <h2><%= item.name %></h2>
+    <p><%= item.description %></p>
+    <p>Price: <%= item.price %> coins</p>
+  </div>
+<% end %>

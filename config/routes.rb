@@ -30,4 +30,6 @@ Rails.application.routes.draw do
       patch 'complete'
     end
   end
+
+  get 'store', to: 'items#index', as: 'store'
 end
