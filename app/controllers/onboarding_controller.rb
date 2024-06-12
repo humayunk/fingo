@@ -3,10 +3,10 @@ class OnboardingController < ApplicationController
 
   def step1
     @questions = [
-      { id: 1, content: 'Financial independence', icon: 'mdi:currency-usd' },
-      { id: 2, content: 'Building an emergency fund', icon: 'mdi:piggy-bank' },
-      { id: 3, content: 'Get started with investing', icon: 'mdi:chart-line' },
-      { id: 4, content: 'Overall financial literacy', icon: 'mdi:book-open-page-variant' }
+      { id: 1, content: '💰 Financial independence' },
+      { id: 2, content: '🏥 Building an emergency fund' },
+      { id: 3, content: '📈 Get started with investing' },
+      { id: 4, content: '📚 Overall financial literacy' }
     ]
   end
 
@@ -21,10 +21,10 @@ class OnboardingController < ApplicationController
 
   def step2
     @questions = [
-      { id: 1, content: 'Understanding stock market basics', icon: 'mdi:chart-bar' },
-      { id: 2, content: 'Developing investment strategies', icon: 'mdi:lightbulb-on-outline' },
-      { id: 3, content: 'Risk management', icon: 'mdi:shield-lock-outline' },
-      { id: 4, content: 'Analyzing stocks', icon: 'mdi:magnify' }
+      { id: 1, content: '📊 Understanding stock market basics' },
+      { id: 2, content: '💡 Developing investment strategies' },
+      { id: 3, content: '🛡️ Risk management' },
+      { id: 4, content: '🔍 Analyzing stocks' }
     ]
   end
 
@@ -39,10 +39,10 @@ class OnboardingController < ApplicationController
 
   def step3
     @questions = [
-      { id: 1, content: 'Math what?', icon: 'mdi:help-circle-outline' },
-      { id: 2, content: 'I know my way around a calculator', icon: 'mdi:calculator-variant-outline' },
-      { id: 3, content: 'Math is my bestie', icon: 'mdi:heart' },
-      { id: 4, content: 'I inhale equations for breakfast', icon: 'mdi:brain' }
+      { id: 1, content: '❓ Math what?' },
+      { id: 2, content: '🧮 I know my way around a calculator' },
+      { id: 3, content: '❤️ Math is my bestie' },
+      { id: 4, content: '🧠 I inhale equations for breakfast' }
     ]
   end
 

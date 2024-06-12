@@ -1,26 +1,20 @@
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-
-<h2 class="text-center">What is your comfort level with math?</h2>
-
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= simple_form_for :questionnaire, url: onboarding_step3_path, method: :post, html: { class: 'onboarding-form' } do |f| %>
-        <div class="list-group">
-          <% @questions.each do |question| %>
-            <label class="list-group-item list-group-item-action d-flex align-items-center">
-              <%= f.radio_button :comfort_level, question[:content], class: 'form-check-input' %>
-              <span class="iconify" data-icon="<%= question[:icon] %>" data-inline="false" style="font-size: 24px; margin-right: 10px;"></span>
-              <%= question[:content] %>
-            </label>
-          <% end %>
-        </div>
-        <div class="form-group text-center mt-4">
-          <%= f.submit "Continue", class: "btn btn-primary btn-lg" %>
-        </div>
-      <% end %>
+<div class="container position-relative">
+  <!-- Progress Bar -->
+  <div class="row align-items-center mt-3">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
+    <div class="col-1"></div>
+  </div>
+
+<!-- Title -->
+<div class="row mt-3 d-flex justify-content-center">
+  <div class="col-12 text-center">
+    <h2 class="card-title justify-content-center mt-5">What is your comfort level with math?</h2>
   </div>
 </div>
+
+<%= render partial: 'onboarding/questionnaire_form' %>
