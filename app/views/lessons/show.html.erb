@@ -48,7 +48,13 @@
     <div class="container-lesson col-6">
       <div class="text-align-left">
         <% if @step.question? %>
-          <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+          <% if @step.fill? %>
+            <h2 class="card-title justify-content-center space-between-force mt-5">
+              <%= raw build_fill_step(@step.content) %>
+            </h2>
+          <% else %>
+            <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+          <% end %>
         <% else %>
           <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
         <% end %>
@@ -68,10 +74,16 @@
       <div class="questions mb-3">
         <% if @step.question? %>
           <div class="card-answers list-group mt-5 d-flex justify-content-center">
-            <% @step.answers.each do |answer| %>
-              <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
-                <h4> 💁 <%= answer.content %></h4>
-              </div>
+            <% @step.answers.each_with_index do |answer, index| %>
+              <% if @step.fill? %>
+                <div class="answer-disabled">
+                  <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁 <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)"><%= answer.content %></span></h4>
+                </div>
+              <% else %>
+                <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
+                  <h4> 💁 <%= answer.content %></h4>
+                </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>
@@ -93,7 +105,7 @@
 
           <% else %>
             <%#= button_to data:{ action: "click->answer#checkAnswer" }, class: "btn-custom-lesson-disabled" do %>
-            <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" disabled>
+            <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" id="buttonCheck" disabled>
               Check
             </button>
 
@@ -158,6 +170,8 @@ function checkAllFilled() {
       filledCount++;
     }
   });
+
+  console.log(filledCount)
 
   if (filledCount === 2) {
     buttonCheck.disabled = false;
