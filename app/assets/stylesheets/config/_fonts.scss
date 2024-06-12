@@ -4,47 +4,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Quicksand", "Helvetica", "sans-serif";
-$headers-font: "Inconsolata", "Helvetica", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
 
+// Global styles
+body {
+  font-size: $font-size-base;
+  line-height: 1.5;
+}
+
+
+// Headings
 h1 {
-  font-weight: 700 !important;
-  font-size: 60px !important;
+  font-size: $font-size-h1;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
 h2 {
-  font-size: 48px !important;
+  font-size: $font-size-h2;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
 h3 {
-  font-size: 32px !important;
-}
-
-h2, h3 {
-  font-weight: 600 !important;
+  font-size: $font-size-h3;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
 h4 {
-  font-size: 28px !important;
-  font-weight: 600 !important;
+  font-size: $font-size-h4;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
-h5, h6 {
-  font-weight: 700 !important;
-
+h5 {
+  font-size: $font-size-h5;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
 }
 
+h6 {
+  font-size: $font-size-h6;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+// Paragraph text
 p {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: $font-size-large;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+// Small text
+small {
+  font-size: $font-size-small;
+}
+
+// Large text
+.large-text {
+  font-size: $font-size-large;
 }
