@@ -52,8 +52,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Basics of Personal Finance Management", content: "Personal finance management involves several key steps: tracking your income and expenses, setting financial goals, creating and maintaining a budget, saving for emergencies and future needs, managing debt, and making informed decisions about investments. It’s crucial to regularly review and adjust your financial plans to stay on track.", image_name: "basics.jpg", order: 3 },
       { category: :fill, content: "Personal finance helps in managing ______ and ______.", order: 4, answers: [
-        { content: "income", is_correct: true },
-        { content: "expenses", is_correct: true },
+        { content: "income", is_correct: true, order: 1 },
+        { content: "expenses", is_correct: true, order: 2 },
         { content: "stocks", is_correct: false },
         { content: "loans", is_correct: false }
       ]},
@@ -72,8 +72,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Key Components of a Budget", content: "A budget typically includes the following components: income, which is the money you receive; expenses, which are the costs you incur; savings, which is the money you set aside for future use; and investments, which are the money you allocate for wealth generation. Balancing these components effectively can help you manage your finances better.", image_name: "budget_components.jpg", order: 3 },
       { category: :fill, content: "Budgeting helps in managing ______ and achieving ______.", order: 4, answers: [
-        { content: "expenses", is_correct: true },
-        { content: "financial goals", is_correct: true },
+        { content: "expenses", is_correct: true, order: 1 },
+        { content: "financial goals", is_correct: true, order: 2 },
         { content: "debts", is_correct: false },
         { content: "investments", is_correct: false }
       ]},
@@ -92,8 +92,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Types of Saving Accounts", content: "There are different types of saving accounts that cater to various saving needs. Regular savings accounts are easy to access and manage. High-yield savings accounts offer higher interest rates but may have more restrictions. Certificates of deposit (CDs) lock your money for a set period in exchange for higher interest rates.", image_name: "saving_accounts.jpg", order: 3 },
       { category: :fill, content: "Effective saving involves setting ______ goals and ______ regularly.", order: 4, answers: [
-        { content: "SMART", is_correct: true },
-        { content: "saving", is_correct: true },
+        { content: "SMART", is_correct: true, order: 1 },
+        { content: "saving", is_correct: true, order: 2 },
         { content: "investment", is_correct: false },
         { content: "budgeting", is_correct: false }
       ]},
@@ -112,8 +112,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "How the Stock Market Works", content: "The stock market operates through exchanges where stocks are bought and sold. Prices are determined by supply and demand. Market participants include individual investors, institutional investors, and market makers who provide liquidity. Stock markets are regulated to ensure fair and transparent trading.", image_name: "stock_market_works.jpg", order: 3 },
       { category: :fill, content: "Stock trading involves ______ and ______ shares of companies.", order: 4, answers: [
-        { content: "buying", is_correct: true },
-        { content: "selling", is_correct: true },
+        { content: "buying", is_correct: true, order: 1 },
+        { content: "selling", is_correct: true, order: 2 },
         { content: "holding", is_correct: false },
         { content: "shorting", is_correct: false }
       ]},
@@ -132,8 +132,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Technical Analysis", content: "Technical analysis involves studying historical price movements and trading volumes to identify patterns and trends. Common tools include charts, moving averages, and indicators like the Relative Strength Index (RSI) and Moving Average Convergence Divergence (MACD). Technical analysis helps traders make informed decisions based on market data.", image_name: "technical_analysis.jpg", order: 3 },
       { category: :fill, content: "Technical analysis involves studying ______ and ______ to predict stock performance.", order: 4, answers: [
-        { content: "price", is_correct: true },
-        { content: "volume", is_correct: true },
+        { content: "price", is_correct: true, order: 1 },
+        { content: "volume", is_correct: true, order: 2 },
         { content: "earnings", is_correct: false },
         { content: "revenue", is_correct: false }
       ]},
@@ -152,8 +152,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Value Investing", content: "Value investing focuses on buying undervalued stocks with strong fundamentals. Investors look for stocks that are trading below their intrinsic value and have potential for long-term growth. This strategy requires thorough research and patience, as it may take time for the market to recognize the stock's true value.", image_name: "value_investing.jpg", order: 3 },
       { category: :fill, content: "Investment strategies can include ______ investing and ______ investing.", order: 4, answers: [
-        { content: "value", is_correct: true },
-        { content: "growth", is_correct: true },
+        { content: "value", is_correct: true, order: 1 },
+        { content: "growth", is_correct: true, order: 2 },
         { content: "technical", is_correct: false },
         { content: "fundamental", is_correct: false }
       ]},
@@ -172,8 +172,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Why Companies Issue Stocks", content: "Companies issue stocks to raise capital for growth and expansion. By selling shares to the public, companies can obtain the necessary funds without taking on debt. This capital can be used for various purposes, such as research and development, new product launches, and market expansion.", image_name: "stock_issue.jpg", order: 3 },
       { category: :fill, content: "Owning a stock entitles you to a portion of the company's ______ and ______.", order: 4, answers: [
-        { content: "profits", is_correct: true },
-        { content: "assets", is_correct: true },
+        { content: "profits", is_correct: true, order: 1 },
+        { content: "assets", is_correct: true, order: 2 },
         { content: "debts", is_correct: false },
         { content: "liabilities", is_correct: false }
       ]},
@@ -192,8 +192,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Differences between Common and Preferred Stocks", content: "Preferred stocks typically do not have voting rights but provide a fixed dividend. Common shareholders may receive dividends, but they are not guaranteed and can fluctuate. Preferred shareholders have a higher claim on assets and earnings than common shareholders, especially in the event of liquidation.", image_name: "common_preferred_differences.jpg", order: 3 },
       { category: :fill, content: "Common stocks provide ______ rights, while preferred stocks offer fixed ______.", order: 4, answers: [
-        { content: "voting", is_correct: true },
-        { content: "dividends", is_correct: true },
+        { content: "voting", is_correct: true, order: 1 },
+        { content: "dividends", is_correct: true, order: 2 },
         { content: "ownership", is_correct: false },
         { content: "returns", is_correct: false }
       ]},
@@ -212,8 +212,8 @@ steps_and_answers = [
       ]},
       { category: :tutorial, title: "Roles of Brokers and Investors", content: "Brokers act as intermediaries between buyers and sellers, facilitating trades and providing investment advice. Investors are individuals or institutions that buy and sell stocks to achieve financial goals. Understanding the roles of brokers and investors is essential for navigating the stock market.", image_name: "brokers_investors.jpg", order: 3 },
       { category: :fill, content: "Brokers facilitate trades, while investors buy and sell ______ to achieve financial ______.", order: 4, answers: [
-        { content: "stocks", is_correct: true },
-        { content: "goals", is_correct: true },
+        { content: "stocks", is_correct: true, order: 1 },
+        { content: "goals", is_correct: true, order: 2 },
         { content: "bonds", is_correct: false },
         { content: "assets", is_correct: false }
       ]},

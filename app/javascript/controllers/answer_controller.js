@@ -14,8 +14,6 @@ export default class extends Controller {
     console.log(this.answerCheck);
     const answer = this.answerCheckDiv
     const isCorrect = this.answerCheck
-
-
     this.answerTargets.forEach(element => {
       element.style.pointerEvents = 'none';
     });
@@ -27,9 +25,6 @@ export default class extends Controller {
         isCorrect = false;
       }
     });
-
-    //
-
     if (isCorrect) {
       answer.classList.add("answer-success")
       // feedbackContainer.classList.add("feedback-success")
