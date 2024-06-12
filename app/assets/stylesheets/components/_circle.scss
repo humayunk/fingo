@@ -1,0 +1,11 @@
+.circle {
+  width: 50px; /* Set the width of the circle */
+  height: 50px; /* Set the height of the circle */
+  background-color: $pink; /* Bootstrap primary color */
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Text color */
+  font-size: 2rem; /* Font size for the letter */
+}
