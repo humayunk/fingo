@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 
 export default class extends Controller {
-  static targets = ["answer", "blank", "correct", "incorrect", "buttonCheck", "buttonContinue"]
+  static targets = ["answer", "blank", "buttonCheck", "buttonContinue"]
 
   connect() {
     this.answerCheck = "";
@@ -29,13 +29,11 @@ export default class extends Controller {
       answer.classList.add("answer-success")
       // feedbackContainer.classList.add("feedback-success")
       // alert("Correct!")
-      this.correctTarget.classList.toggle("d-none")
     } else {
       answer.classList.add("answer-error")
       const correctAnswer = this.answerTargets.find(target => target.dataset.correct === "true")
       const correctAnswerContent = correctAnswer ? correctAnswer.innerText : "No correct answer found."
       // alert(`Wrong sorry! \nThe correct answer is: \n${correctAnswerContent}`)
-      this.incorrectTarget.classList.toggle("d-none")
     }
     this.buttonCheckTarget.classList.add("d-none")
     this.buttonContinueTarget.classList.remove("d-none")

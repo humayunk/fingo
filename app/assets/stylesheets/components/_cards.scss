@@ -6,7 +6,7 @@
   background: white;
   box-shadow: 4px 4px 0px black;
   border-radius: .5rem;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .card-course:hover {
@@ -88,4 +88,15 @@
   font-size: 24px;
   color: $black;
   font-weight: bold;
+}
+
+// sign up and log in page
+
+.card-form {
+  border: 5px solid #000;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 4px 4px 0px black;
+  border-radius: .5rem;
+  padding: 3rem;
 }
