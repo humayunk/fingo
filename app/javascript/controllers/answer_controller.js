@@ -18,13 +18,6 @@ export default class extends Controller {
       element.style.pointerEvents = 'none';
     });
 
-    this.blankTargets.forEach(blank => {
-      const correctContent = blank.dataset.correct;
-      const userContent = blank.innerText.trim();
-      if (correctContent !== userContent) {
-        isCorrect = false;
-      }
-    });
     if (isCorrect) {
       answer.classList.add("answer-success")
       // feedbackContainer.classList.add("feedback-success")
@@ -35,6 +28,25 @@ export default class extends Controller {
       const correctAnswerContent = correctAnswer ? correctAnswer.innerText : "No correct answer found."
       // alert(`Wrong sorry! \nThe correct answer is: \n${correctAnswerContent}`)
     }
+    this.buttonCheckTarget.classList.add("d-none")
+    this.buttonContinueTarget.classList.remove("d-none")
+  }
+
+  checkAnswerFill(event) {
+    const destinations = document.querySelectorAll("[data-fill-role='destination']")
+    let i = 1
+    let answerCorrect = null
+    destinations.forEach(destination => {
+      // console.log(typeof i)
+      // console.log(typeof destination.children[0].dataset.order)
+      if (destination.children[0].dataset.correct === "true" && parseInt(destination.children[0].dataset.order) === i ){
+        destination.classList.add("answer-success")
+      } else {
+        destination.classList.add("answer-error")
+      }
+      i += 1
+    })
+
     this.buttonCheckTarget.classList.add("d-none")
     this.buttonContinueTarget.classList.remove("d-none")
   }
