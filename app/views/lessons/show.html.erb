@@ -120,7 +120,7 @@
 
         <% else %>
           <%#= button_to data:{ action: "click->answer#checkAnswer" }, class: "btn-custom-lesson-disabled" do %>
-          <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" disabled>
+          <button id= "buttonCheck" data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" disabled>
             Check
           </button>
 
@@ -163,5 +163,28 @@ function drop(ev) {
   }
 
   ev.target.appendChild(document.getElementById(data));
+  checkAllFilled();
+}
+
+function checkAllFilled() {
+  const buttonCheck  = document.getElementById("buttonCheck");
+  const destinations = document.querySelectorAll("[data-fill-role='destination']");
+
+  let filledCount = 0;
+  destinations.forEach(destination => {
+    if (destination.innerHTML.includes("fill-answer")) {
+      filledCount++;
+    }
+  });
+
+  if (filledCount === 2) {
+    buttonCheck.disabled = false;
+    buttonCheck.classList.remove('btn-custom-lesson-disabled');
+    buttonCheck.classList.add('btn-custom-lesson-active');
+  } else {
+    buttonCheck.disabled = true;
+    buttonCheck.classList.remove('btn-custom-lesson-active');
+    buttonCheck.classList.add('btn-custom-lesson-disabled');
+  }
 }
 </script>

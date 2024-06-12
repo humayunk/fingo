@@ -28,6 +28,8 @@ export default class extends Controller {
       }
     });
 
+    //
+
     if (isCorrect) {
       answer.classList.add("answer-success")
       // feedbackContainer.classList.add("feedback-success")
