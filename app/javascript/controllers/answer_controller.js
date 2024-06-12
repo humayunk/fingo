@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 
 export default class extends Controller {
-  static targets = ["answer", "correct", "incorrect", "buttonCheck", "buttonContinue"]
+  static targets = ["answer", "blank", "buttonCheck", "buttonContinue"]
 
   connect() {
     this.answerCheck = "";
@@ -14,8 +14,6 @@ export default class extends Controller {
     console.log(this.answerCheck);
     const answer = this.answerCheckDiv
     const isCorrect = this.answerCheck
-
-
     this.answerTargets.forEach(element => {
       element.style.pointerEvents = 'none';
     });
@@ -24,14 +22,31 @@ export default class extends Controller {
       answer.classList.add("answer-success")
       // feedbackContainer.classList.add("feedback-success")
       // alert("Correct!")
-      this.correctTarget.classList.toggle("d-none")
     } else {
       answer.classList.add("answer-error")
       const correctAnswer = this.answerTargets.find(target => target.dataset.correct === "true")
       const correctAnswerContent = correctAnswer ? correctAnswer.innerText : "No correct answer found."
       // alert(`Wrong sorry! \nThe correct answer is: \n${correctAnswerContent}`)
-      this.incorrectTarget.classList.toggle("d-none")
     }
+    this.buttonCheckTarget.classList.add("d-none")
+    this.buttonContinueTarget.classList.remove("d-none")
+  }
+
+  checkAnswerFill(event) {
+    const destinations = document.querySelectorAll("[data-fill-role='destination']")
+    let i = 1
+    let answerCorrect = null
+    destinations.forEach(destination => {
+      // console.log(typeof i)
+      // console.log(typeof destination.children[0].dataset.order)
+      if (destination.children[0].dataset.correct === "true" && parseInt(destination.children[0].dataset.order) === i ){
+        destination.classList.add("answer-success")
+      } else {
+        destination.classList.add("answer-error")
+      }
+      i += 1
+    })
+
     this.buttonCheckTarget.classList.add("d-none")
     this.buttonContinueTarget.classList.remove("d-none")
   }
@@ -49,5 +64,19 @@ export default class extends Controller {
     this.buttonCheckTarget.disabled = false;
     this.buttonCheckTarget.classList.remove("btn-custom-lesson-disabled");
     this.buttonCheckTarget.classList.add("btn-custom-lesson-active");
+  }
+
+  drag(event) {
+    event.dataTransfer.setData("text", event.target.dataset.content);
+  }
+
+  allowDrop(event) {
+    event.preventDefault();
+  }
+
+  drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    event.target.innerText = data;
   }
 }
