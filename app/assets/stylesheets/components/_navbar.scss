@@ -73,3 +73,29 @@
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   /* Custom SVG for the hamburger icon to ensure it's black */
 }
+
+.dropdown a {
+  text-decoration: none;
+  color: black;
+}
+
+.card-nav {
+  border: 3px solid #F0F0F0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 0px #F0F0F0;
+}
+
+.card-nav:hover {
+  border: 3px solid $blue;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dropdown-custom {
+  border: 3px solid #F0F0F0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 2px 2px 0px #F0F0F0;
+  width: 200px;
+}

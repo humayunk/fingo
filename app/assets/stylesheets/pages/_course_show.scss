@@ -18,26 +18,13 @@
 
 .lesson-active {
   border: 5px solid $blue !important;
-  border-radius: .5rem;
+  border-radius: 1rem;
   background-color: $white;
   padding: 20px 40px;
   margin: 5px;
   color: black;
   box-shadow: 4px 4px 0px $blue;
   margin-bottom: 1rem;
-  animation: pulsate 2s infinite;
-}
-
-@keyframes pulsate {
-  0% {
-    border-width: 5px;
-  }
-  50% {
-    border-width: 8px;
-  }
-  100% {
-    border-width: 5px;
-  }
 }
 
 
@@ -48,7 +35,7 @@
 
 .lesson-disabled {
   border: 5px solid #F0F0F0 !important;
-  border-radius: .5rem;
+  border-radius: 1rem;
   padding: 20px 40px;
   margin: 5px;
   color: black;
