@@ -11,9 +11,11 @@ User.destroy_all
 
 # Create Users
 users = User.create!([
-  { first_name: "John", last_name: "Doe", nickname: "johndoe", email: "john@example.com", password: "password", coins: 100, streak: 0  },
-  { first_name: "Jane", last_name: "Smith", nickname: "janesmith", email: "jane@example.com", password: "password", coins: 150, streak: 0 },
-  { first_name: "Fred", last_name: "Smith", nickname: "fredsmith", email: "fred@example.com", password: "password", coins: 0, streak: 0 }
+  { first_name: "Ryan", last_name: "Smith", nickname: "ryansmith", email: "ryan@example.com", password: "password", coins: 0, streak: 0 },
+  { first_name: "Humayun", last_name: "Smith", nickname: "humayunsmith", email: "humayun@example.com", password: "password", coins: 500, streak: 5 },
+  { first_name: "Vaeda", last_name: "Smith", nickname: "vaedasmith", email: "vaeda@example.com", password: "password", coins: 350, streak: 2 },
+  { first_name: "Jeff", last_name: "Smith", nickname: "jeffsmith", email: "jeff@example.com", password: "password", coins: 750, streak: 4 },
+  { first_name: "Juliette", last_name: "Smith", nickname: "juliettesmith", email: "juliette@example.com", password: "password", coins: 1000, streak: 20 }
 ])
 
 # Create Courses
@@ -232,25 +234,3 @@ steps_and_answers.each do |lesson_data|
     end
   end
 end
-
-# Create Enrollments
-enrollments = Enrollment.create!([
-  { user: users[0], course: courses[0], completed: false, enrollment_date: DateTime.now },
-  { user: users[1], course: courses[1], completed: false, enrollment_date: DateTime.now },
-  { user: users[0], course: courses[2], completed: false, enrollment_date: DateTime.now },
-  { user: users[1], course: courses[0], completed: false, enrollment_date: DateTime.now },
-  { user: users[1], course: courses[2], completed: false, enrollment_date: DateTime.now }
-])
-
-# Create User Progresses
-user_progresses = UserProgress.create!([
-  { user: users[1], lesson: lessons[0], completed: true, score: 50, current_step: 1, completed_date: Date.today - 1 },
-  { user: users[1], lesson: lessons[1], completed: false, score: 75, current_step: 2 },
-  { user: users[0], lesson: lessons[2], completed: false, score: 50, current_step: 1 },
-  { user: users[1], lesson: lessons[3], completed: false, score: 75, current_step: 2 },
-  { user: users[0], lesson: lessons[4], completed: false, score: 50, current_step: 1 },
-  { user: users[1], lesson: lessons[5], completed: false, score: 75, current_step: 2 },
-  { user: users[0], lesson: lessons[6], completed: false, score: 50, current_step: 1 },
-  { user: users[1], lesson: lessons[7], completed: false, score: 75, current_step: 2 },
-  { user: users[0], lesson: lessons[8], completed: false, score: 50, current_step: 1 }
-])
