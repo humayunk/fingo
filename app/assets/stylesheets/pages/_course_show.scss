@@ -18,7 +18,7 @@
 
 .lesson-active {
   border: 5px solid $blue !important;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: $white;
   padding: 20px 40px;
   margin: 5px;
@@ -35,7 +35,7 @@
 
 .lesson-disabled {
   border: 5px solid #F0F0F0 !important;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 20px 40px;
   margin: 5px;
   color: black;
