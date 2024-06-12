@@ -1,10 +1,24 @@
 <h1>Store</h1>
 <p>Welcome to the Fingo Store!</p>
 
-<% @items.each do |item| %>
-  <div class="store-item">
-    <h2><%= item.name %></h2>
-    <p><%= item.description %></p>
-    <p>Price: <%= item.price %> coins</p>
+
+
+
+<div class="container">
+    <div class="row">
+      <% @items.each_slice(2) do |row| %>
+        <% row.each do |item| %>
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title"><%= item.name %></h5>
+                <p class="card-text"><%= item.description %></p>
+                <p class="card-text">Price: <%= item.price %> 🪙</p>
+                <button class="btn btn-primary">Purchase</button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-<% end %>

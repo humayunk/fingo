@@ -206,3 +206,12 @@ user_progresses = UserProgress.create!([
   { user: users[1], lesson: lessons[7], completed: false, score: 75, current_step: 2 },
   { user: users[0], lesson: lessons[8], completed: false, score: 50, current_step: 1 }
 ])
+
+Item.delete_all
+# Store Items
+items = Item.create!([
+  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 150 },
+  { name: "Double or Nothin' Coins", description: 'Time to make it rain even more coins! 🪙🪙🪙', price: 300 },
+  { name: 'Meme Swap!', description: 'Change the meme on your celebration page! 😻', price: 100 },
+  { name: 'Sticker Fun Time', description: 'Stickers are cool, SO ARE YOU!! 💖😽💅', price: 80 }
+])
