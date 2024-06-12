@@ -18,7 +18,7 @@
 
 .lesson-active {
   border: 5px solid $blue !important;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
   background-color: $white;
   padding: 20px 40px;
   margin: 5px;
@@ -41,4 +41,8 @@
   color: black;
   box-shadow: 4px 4px 0px #F0F0F0;
   margin-bottom: 1rem;
+}
+
+.list-group-item {
+  border-radius: 0.5rem !important;
 }
