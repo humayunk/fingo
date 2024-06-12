@@ -32,4 +32,8 @@ Rails.application.routes.draw do
   end
 
   get 'store', to: 'items#index', as: 'store'
+
+  resources :items, only: [] do
+    resources :user_items, only: [:create]
+  end
 end

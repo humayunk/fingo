@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_151734) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_203022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_151734) do
     t.index ["lesson_id"], name: "index_steps_on_lesson_id"
   end
 
+  create_table "user_items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id"], name: "index_user_items_on_user_id"
+  end
+
   create_table "user_progresses", force: :cascade do |t|
     t.boolean "completed"
     t.integer "score"
@@ -109,6 +119,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_151734) do
   add_foreign_key "enrollments", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "steps", "lessons"
+  add_foreign_key "user_items", "items"
+  add_foreign_key "user_items", "users"
   add_foreign_key "user_progresses", "lessons"
   add_foreign_key "user_progresses", "users"
 end
