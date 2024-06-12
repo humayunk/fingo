@@ -130,3 +130,19 @@ button {
   display: flex;
   justify-content: center;;
 }
+
+// for nav
+
+.btn-custom-small {
+  background-color: $white;
+  border: 2.5px solid #000;
+  border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 2px 2px 0px black;
+  text-align: center;
+}
