@@ -6,7 +6,7 @@
   background: white;
   box-shadow: 4px 4px 0px black;
   border-radius: .5rem;
-  padding: 16px;
+  padding: 1rem;
 }
 
 .card-course:hover {
@@ -22,16 +22,25 @@
   position: relative;
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* This will make the image cover the container */
-  position: absolute;
+.card-image-container-lg {
+  width: 100%; /* The container will take up the full width of its parent */
+  max-width: 600px; /* The container will not exceed 600px in width */
+  height: 200px; /* The container has a fixed height of 200px */
+  overflow: hidden; /* Any overflow content will be hidden */
+  margin-bottom: 0.5rem; /* Adds space below the container */
+  position: relative; /* Sets the container's position to relative for absolute positioning of the image */
 }
 
-.card-course p {
-  font-size: 20px;
+.card-image {
+  width: 100%; /* The image will take up the full width of the container */
+  height: 100%; /* The image will take up the full height of the container */
+  object-fit: cover; /* The image will cover the container, maintaining its aspect ratio */
+  position: absolute; /* The image is positioned absolutely within the container */
 }
+
+// .card-course p {
+//   font-size: 20px;
+// }
 
 // course show page
 
@@ -79,4 +88,15 @@
   font-size: 24px;
   color: $black;
   font-weight: bold;
+}
+
+// sign up and log in page
+
+.card-form {
+  border: 5px solid #000;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 4px 4px 0px black;
+  border-radius: .5rem;
+  padding: 3rem;
 }

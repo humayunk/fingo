@@ -1,4 +1,4 @@
-<div class="container text-center my-5" data-controller="celebration">
+<div class="container text-center my-5" data-controller="coin-falling" data-coin-falling-picture-url-value="<%= asset_path "coins.png"  %>">
 
     <img src="https://i.giphy.com/IwAZ6dvvvaTtdI8SD5.webp" alt="Celebration GIF" class="img-fluid mb-4">
     <h2 class="mb-4">Damn! Solid job.</h2>
@@ -11,7 +11,16 @@
           </div>
           <div class="card-celebration-body">
             <div class="celebration-icon"><h3>⚡️</h3></div>
-            <div class="celebration-value"><h3><%= current_user.streak %></h3></div>
+            <div class="celebration-value">
+              <% if params[:updated_streak] %>
+                <h3
+                  data-controller="streak"
+                  data-streak-start-value="<%= current_user.streak - 1  %>"><%= current_user.streak - 1 %>
+                </h3>
+              <% else %>
+                <h3><%= current_user.streak %></h3>
+              <% end %>
+            </div>
           </div>
         </div>
 
@@ -20,8 +29,11 @@
             <h5>Coins</h5>
           </div>
           <div class="card-celebration-body">
-            <div class="celebration-icon"><h3>💵</h3></div>
-            <div class="celebration-value"><h3><%= current_user.streak %></h3></div>
+            <div class="celebration-icon"><h3> 🪙 </h3></div>
+            <div class="celebration-value">
+                <h3 data-controller="coins"
+              data-coins-start-value="<%= params[:previous_coin_amt] %>"
+              data-coins-end-value="<%= current_user.coins %>"> <%= params[:previous_coin_amt] %></h3></div>
           </div>
         </div>
 

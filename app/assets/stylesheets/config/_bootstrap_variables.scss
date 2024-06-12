@@ -4,19 +4,60 @@
 // 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
 // 3. You can override them below!
 
+$body-font: "Quicksand", "Helvetica", "sans-serif";
+$headers-font: "Inconsolata", "Helvetica", "sans-serif";
+
+
+// Colors
+
+$light-blue: #DDF4FF;
+$blue: #84D8FF;
+
+$pink: #FFB5EE;
+$light-red: #FCDFE0;
+$red: #F55354;
+$dark-red: #EA2B2B;
+
+
+$yellow: #F3F176;
+$orange: #E67E22;
+
+$lightest-green: #D7FFB8;
+$light-green: #A5ED6E;
+$green: #58CC04;
+$dark-green: #61B600;
+
+$lightest-gray: #F0F0F0;
+$light-gray: #F4F4F4;
+$gray: #CCCCCC;
+$dark-gray: #0E0000;
+
+$black: #000;
+
+$white: #fff;
+
+
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $white;
+$body-bg:                #fff;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
+$body-color: $black;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
+
+
+// Define variables for your color scheme
+
+// For example:
+
+
+
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
@@ -25,11 +66,19 @@ $border-radius-lg:            .25rem;
 $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
-// Override other variables below!
-.nav-link {
-  padding: 0px;
-}
+// Fonts
 
-a {
-  text-decoration: none;
-}
+$font-size-h1: 2.5rem; // 40px
+$font-size-h2: 2rem; // 32px
+$font-size-h3: 1.75rem; // 28px
+$font-size-h4: 1.5rem; // 24px
+$font-size-h5: 1.25rem; // 20px
+$font-size-h6: 1rem; // 16px
+
+// Paragraphs
+
+$font-size-p: 1rem; // 16px
+$font-size-small: 0.875rem; // 14px
+$font-size-large: 1.125rem; // 18px
+
+// Override other variables below!

@@ -1,7 +1,7 @@
 // Graphical variables
+@import "config/bootstrap_variables";
 @import "config/fonts";
 @import "config/colors";
-@import "config/bootstrap_variables";
 
 
 // External libraries
@@ -12,3 +12,22 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// Global
+
+.nav-link {
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr.basic {
+  border: 1px solid #CCCCCC; /* Solid black line */
+}
+
+.custom-background {
+  background-color: #FCDFE0;
+}
