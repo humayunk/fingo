@@ -12,7 +12,7 @@
 
         <div class="col-md-6 mb-4">
            <h3 class="mb-4">💪 Get back into it</h3>
-            <div class="card-course h-100 ">
+            <div class="card-dashboard h-100 ">
               <%= link_to course_path(current_user.most_recently_accessed_course.title), class: "d-flex flex-column text-decoration-none text-dark" do %>
                 <div class="card-image-container-lg">
                   <%= image_tag current_user.most_recently_accessed_course.image_name, alt: '', class: "card-image" %>
@@ -29,7 +29,7 @@
 
           <div class="col-md-6 mb-4">
           <h3 class="mb-4">🐐 Who the goat?</h3>
-            <div class="card-course h-100 ">
+            <div class="card-dashboard h-100 ">
               <div>
                 <% @top_five.each_with_index do |user, index| %>
                   <%# below class_names is for conditional styling of the current user (if user is in top 5) %>

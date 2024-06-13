@@ -13,6 +13,21 @@
   box-shadow: 8px 8px 0px $black;
 }
 
+.card-dashboard {
+  border: 5px solid #000;
+  overflow: hidden;
+  background: white;
+  box-shadow: 4px 4px 0px black;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  max-height: 400px; /* Set the desired max height for the card containers */
+  overflow-y: auto; /* Make the leaderboard scrollable if content exceeds the max height */
+}
+
+.card-dashboard:hover {
+  box-shadow: 8px 8px 0px $black;
+}
+
 .card-image-container {
   width: 100%;
   max-width: 400px;
