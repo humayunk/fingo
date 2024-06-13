@@ -1,15 +1,20 @@
 
   <!-- Progress Bar -->
-  <div class="row fixed-top bg-white align-items-center mb-3 shadow-sm p-3 py-4 rounded">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <div class="progress progress-segment">
-        <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-    <div class="col-1"></div>
+<div class="row fixed-top bg-white align-items-center mb-3 shadow-sm p-3 py-4 rounded" data-controller="progress">
+  <div class="col-1">
+    <i class="fas fa-arrow-left"></i> <!-- Font Awesome icon for the left arrow -->
   </div>
-
+  <div class="col-10">
+    <div class="progress progress-segment">
+      <div data-progress-target="step1" class="progress-segment bg-primary flex-grow-1 mx-1" style="width: 33%;"></div>
+      <div data-progress-target="step2" class="progress-segment bg-primary flex-grow-1 mx-1" style="width: 33%;"></div>
+      <div data-progress-target="step3" class="progress-segment bg-primary flex-grow-1 mx-1" style="width: 34%;"></div>
+    </div>
+  </div>
+  <div class="col-1">
+    <i class="fas fa-arrow-right"></i> <!-- Font Awesome icon for the right arrow -->
+  </div>
+</div>
 <!-- Title and Description -->
 <div class="row mt-5 d-flex justify-content-center">
   <div class="col-12 text-center">

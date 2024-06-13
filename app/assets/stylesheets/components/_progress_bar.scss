@@ -20,3 +20,35 @@
 .invisible-text {
   color: transparent; /* Make text invisible */
 }
+
+.progress-segment {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  height: 10px;
+  position: relative;
+  display: flex;
+}
+
+.progress-bar-segment {
+  height: 100%;
+  flex: 1;
+  position: relative;
+}
+
+.progress-bar-segment:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 2px; /* Adjust the width to control the separation */
+  background-color: #f8f9fa;
+}
+
+.bg-primary {
+  background-color: #17a2b8;
+}
+
+.invisible-text {
+  color: transparent; /* Make text invisible */
+}
