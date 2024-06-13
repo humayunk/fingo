@@ -6,7 +6,7 @@ class Step < ApplicationRecord
   validates :content, presence: true, length: { minimum: 5 }
   validates :lesson_id, presence: true, numericality: { only_integer: true }
   validates :order, presence: true, numericality: { only_integer: true }
-  validates :image_name, presence: true, if: -> { tutorial? }
+  # validates :image_name, presence: true, if: -> { tutorial? }
 
   enum category: {
     unknown: 0,
