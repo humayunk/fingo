@@ -25,6 +25,8 @@
 
 .answer-disabled:hover {
   box-shadow: 8px 8px 0px #F0F0F0;
+  cursor: pointer;
+  background-color: #f8f9fa ;
 }
 
 .answer-active {
@@ -66,7 +68,7 @@
 }
  .container-image-step{
   width: 100%; /* The container will take up the full width of its parent */
-  height: 400px; /* The container has a fixed height of 200px */
+  height: 300px; /* The container has a fixed height of 200px */
   overflow: hidden; /* Any overflow content will be hidden */
   margin-bottom: 0.5rem; /* Adds space below the container */
   position: relative;

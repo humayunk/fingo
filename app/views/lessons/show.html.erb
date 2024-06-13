@@ -49,14 +49,14 @@
       <div class="text-align-left">
         <% if @step.question? %>
           <% if @step.fill? %>
-            <h2 class="card-title card-fill d-flex flex-wrap justify-content-left mt-5">
+            <h3 class="card-title card-fill d-flex flex-wrap justify-content-left mt-2">
               <%= raw build_fill_step(@step.content) %>
-            </h2>
+            </h3>
           <% else %>
-            <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+            <h3 class="card-title justify-content-center mt-3"><%= @step.content %></h3>
           <% end %>
         <% else %>
-          <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
+          <h3 class="card-title justify-content-center mt-3"><%= @step.title %></h3>
         <% end %>
       </div>
 
@@ -64,16 +64,16 @@
         <% if @step.tutorial? %>
           <div class="card-step text-justify mt-3">
           <p> <%= @step.content %> </p>
-            <!--<div class="text-center mt-4 container-image-step">-->
-              <%#= image_tag @step.image_name, class: "card-image-step"%>
-<!--            </div>-->
+            <div class="text-center mt-4 container-image-step">
+              <%= image_tag @step.image_name, class: "card-image-step"%>
+            </div>
           </div>
         <% end %>
       </div>
 
-      <div class="<%= @step.fill? ? 'card-fill' : '' %> questions mb-3">
+      <div class="<%= @step.fill? ? 'card-fill' : '' %> questions mb-2">
         <% if @step.question? %>
-          <div class="<%= @step.fill? ? 'container' : 'list-group' %> card-answers mt-5 d-flex justify-content-center">
+          <div class="<%= @step.fill? ? 'container' : 'list-group mt-3' %> card-answers d-flex justify-content-center">
             <% if @step.fill? %>
               <div class="row">
                 <% @step.answers.each_with_index do |answer, index| %>
@@ -106,7 +106,6 @@
 
           <% if @step.tutorial? %>
             <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number),
-            data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
             method: :patch,
             class: "btn-custom-lesson" do %>
               Continue
@@ -127,7 +126,6 @@
 
             <div data-answer-target="buttonContinue" class="d-none">
               <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number),
-              data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
               method: :patch,
               class: "btn-custom-lesson" do %>
                 Continue
@@ -139,7 +137,7 @@
         <% else %>
           <div class="button">
             <%= button_to complete_user_progress_path(@user_progress),
-            data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
+            data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'finish-sound.mp3'}"},
             method: :patch,
             class: "btn-custom-lesson" do %>
               Finish lesson
