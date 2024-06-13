@@ -84,6 +84,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .text-part {
@@ -91,6 +92,7 @@
   margin-left: 7px;
   margin-bottom: 5px;
   vertical-align: bottom;
+  line-height: 2;
 }
 
 .card-fill{
@@ -107,5 +109,5 @@
   box-shadow: 4px 4px 0px #F0F0F0;
   margin-bottom: 1rem;
   width: 100%;
-  text-align: justify;
+  text-align: left;
 }
