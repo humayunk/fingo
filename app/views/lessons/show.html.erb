@@ -73,19 +73,24 @@
 
       <div class="<%= @step.fill? ? 'card-fill' : '' %> questions mb-3">
         <% if @step.question? %>
-          <div class="card-answers list-group mt-5 d-flex justify-content-center">
-          <!--<div class="<%#= @step.fill? ? '' : 'list-group' %> card-answers mt-5 d-flex justify-content-center">-->
-            <% @step.answers.each_with_index do |answer, index| %>
-              <% if @step.fill? %>
-                <div class="answer-disabled answer-fill item<%= index + 1 %>">
-                  <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
-                    <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
-                      <%= answer.content %>
-                    </span>
-                  </h4>
-                </div>
-              <% else %>
-                <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
+          <div class="<%= @step.fill? ? 'container' : 'list-group' %> card-answers mt-5 d-flex justify-content-center">
+            <% if @step.fill? %>
+              <div class="row">
+                <% @step.answers.each_with_index do |answer, index| %>
+                  <div class="col-md-6 mb-4">
+                    <div class="answer-disabled answer-fill item<%= index + 1 %>">
+                      <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
+                        <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
+                          <%= answer.content %>
+                        </span>
+                      </h4>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <% @step.answers.each_with_index do |answer, index| %>
+                <div class="answer-disabled" data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
                   <h4> 💁 <%= answer.content %></h4>
                 </div>
               <% end %>
