@@ -48,7 +48,7 @@ steps_and_answers = [
         { content: "To impress your friends", is_correct: false }
       ]},
       { category: :tutorial, title: "Essential Financial Skills", content: "Key skills include tracking your income and expenses, setting financial goals (like paying off that massive student loan), creating a budget, saving for emergencies, and making smart investment choices. Regular reviews ensure you stay on track", image_name: "financial_skills.jpg", order: 3 },
-      { category: :fill, content: "Good personal finance helps in managing ______ and ______", order: 4, answers: [
+      { category: :fill, content: "Personal finance helps in managing ______ and ______", order: 4, answers: [
         { content: "income", is_correct: true, order: 1 },
         { content: "Netflix", is_correct: false },
         { content: "coffee budget", is_correct: false },
@@ -88,7 +88,7 @@ steps_and_answers = [
         { content: "A fund for investments", is_correct: false }
       ]},
       { category: :tutorial, title: "Types of Savings Accounts", content: "Different savings accounts serve different needs. High-yield accounts offer better interest rates, while regular accounts are more accessible. CDs lock your money for a set time but often provide higher returns", image_name: "savings_accounts.jpg", order: 3 },
-      { category: :fill, content: "Effective saving involves setting ______ goals and ______ regularly", order: 4, answers: [
+      { category: :fill, content: "Effective saving involves setting ______ goals and ______ regularly.", order: 4, answers: [
         { content: "saving", is_correct: true, order: 2 },
         { content: "realistic", is_correct: true, order: 1 },
         { content: "life", is_correct: false },
@@ -108,7 +108,7 @@ steps_and_answers = [
         { content: "Using all your savings", is_correct: false }
       ]},
       { category: :tutorial, title: "Prioritizing Debt Repayment", content: "Focus on paying off high-interest debt first. Use the debt avalanche or debt snowball methods to systematically reduce what you owe. Every bit helps in shrinking that debt monster", image_name: "debt_priorities.jpg", order: 3 },
-      { category: :fill, content: "Managing debt involves ______ high-interest debt and making ______ payments", order: 4, answers: [
+      { category: :fill, content: "Managing debt involves ______ high-interest debt and making ______ payments.", order: 4, answers: [
         { content: "extra", is_correct: true, order: 2 },
         { content: "minimum", is_correct: false },
         { content: "prioritizing", is_correct: true, order: 1 },
