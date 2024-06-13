@@ -122,3 +122,38 @@
 .card-lesson {
   border-radius: 0.5rem;
 }
+
+
+// Store
+
+.card-store {
+  border: 5px solid #000;
+  overflow: hidden;
+  background: white;
+  box-shadow: 4px 4px 0px black;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.card-store-content {
+  margin-left: 1rem;
+}
+
+.store-image-container {
+  width: 100%;
+  max-width: 200px;
+  height: 200px; /* Set the fixed height you want */
+  overflow: hidden;
+  margin-bottom: 0.5rem; /* Adjust this as needed */
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.store-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will make the image cover the container */
+  display: block;
+}
