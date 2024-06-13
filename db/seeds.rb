@@ -21,20 +21,19 @@ users = User.create!([
 ])
 
 # Create Courses
-# Create Courses
 courses = Course.create!([
-  { title: "Personal Finance 101", description: "Learn the basics of personal finance.", image_name: "personal_finance_101.jpg" },
-  { title: "Advanced Investing", description: "Take your investing skills to the next level.", image_name: "advanced_investing.jpg" },
-  { title: "Stock 101", description: "Begin with stocks", image_name: "stock_101.jpg" }
+  { title: "Invest Like a Boss", description: "Boost your investment game and make your money work for you.", image_name: "advanced_investing.jpg" },
+  { title: "Make It Rain: Finance for Today's World", description: "Get savvy with your cash and learn the essentials of personal finance.", image_name: "personal_finance_101.jpg" },
+  { title: "Stock Market Starter Pack", description: "Dive into stocks and grasp the market basics.", image_name: "stock_101.jpg" }
 ])
 
-# Create Lessons for the first course
+# Create Lessons for the course "Invest Like a Boss"
 lessons = Lesson.create!([
-  { title: "Mastering Financial Basics", content: "Master the art of managing your money effectively.", course: courses[0], order_rank: 1 },
-  { title: "Budgeting Like a Pro", content: "Learn advanced budgeting techniques.", course: courses[0], order_rank: 2 },
-  { title: "Smart Saving Strategies", content: "Discover effective ways to save more money.", course: courses[0], order_rank: 3 },
-  { title: "Effective Debt Management", content: "Strategies for managing and reducing debt.", course: courses[0], order_rank: 4 },
-  { title: "Investment Fundamentals", content: "The basics of investing your money wisely.", course: courses[0], order_rank: 5 }
+  { title: "Investment 101: Your Wealth Journey Begins", content: "Get the lowdown on investing and why it's your ticket to wealth.", course: courses[0], order_rank: 1 },
+  { title: "Cracking the Stock Market Code", content: "Unlock the basics of the stock market and start your investing journey.", course: courses[0], order_rank: 2 },
+  { title: "Build a Winning Portfolio", content: "Learn how to build a killer investment portfolio.", course: courses[0], order_rank: 3 },
+  { title: "Risk Management Like a Pro", content: "Master strategies to manage and minimize your investment risks.", course: courses[0], order_rank: 4 },
+  { title: "Long-Term Investment Success", content: "Explore proven strategies for long-term investment success.", course: courses[0], order_rank: 5 }
 ])
 
 # Create Steps and Answers for the first lesson
@@ -42,101 +41,105 @@ steps_and_answers = [
   {
     lesson: lessons[0],
     steps: [
-      { category: :tutorial, title: "Introduction to Personal Finance", content: "Welcome to the world of financial adulting! No more splurging all your paycheck on takeout. Understanding personal finance means you'll be able to manage your income, expenses, savings, and investments like a pro", image_name: "financial_intro.jpg", order: 1 },
-      { category: :choice, content: "What's a smart reason to manage your personal finances?", order: 2, answers: [
-        { content: "To avoid thinking about money", is_correct: false },
-        { content: "To buy more designer clothes", is_correct: false },
-        { content: "To achieve financial stability", is_correct: true },
-        { content: "To impress your friends", is_correct: false }
+      { category: :tutorial, title: "Welcome to Investing", content: "Say hello to smart money moves! Investing is all about making your money work for you. By putting your money into different assets, like stocks or bonds, you can grow your wealth over time. It's like planting a tree today and watching it bear fruit in the future.", image_name: "investment_intro.jpg", order: 1 },
+      { category: :choice, content: "Why should you invest?", order: 2, answers: [
+        { content: "To avoid taxes", is_correct: false },
+        { content: "To grow wealth", is_correct: true },
+        { content: "To spend more", is_correct: false },
+        { content: "To stay broke", is_correct: false }
       ]},
-      { category: :tutorial, title: "Essential Financial Skills", content: "Key skills include tracking your income and expenses, setting financial goals (like paying off that massive student loan), creating a budget, saving for emergencies, and making smart investment choices. Regular reviews ensure you stay on track", image_name: "financial_skills.jpg", order: 3 },
-      { category: :fill, content: "Personal finance helps in managing ______ and ______", order: 4, answers: [
-        { content: "income", is_correct: true, order: 1 },
-        { content: "Netflix", is_correct: false },
-        { content: "coffee budget", is_correct: false },
-        { content: "expenses", is_correct: true, order: 2 }
+      { category: :tutorial, title: "Types of Investments", content: "From stocks to real estate, learn about different investment options. Stocks can offer high returns but come with high risks. Bonds are steadier and provide regular income. Real estate can give you rental income and long-term value appreciation. Diversification is key to balancing risks and rewards.", image_name: "investment_types.jpg", order: 3 },
+      { category: :fill, content: "Investing helps in building ______ and achieving ______", order: 4, answers: [
+        { content: "wealth", is_correct: true, order: 1 },
+        { content: "goals", is_correct: true, order: 2 },
+        { content: "debts", is_correct: false },
+        { content: "expenses", is_correct: false }
       ]},
-      { category: :tutorial, title: "Summary and Next Steps", content: "In summary, mastering personal finance is your ticket to living stress-free and achieving your dreams. With a solid grip on budgeting, saving, and investing, you'll be on your way to financial independence. Time to boss up your finances", image_name: "summary.jpg", order: 5 }
+      { category: :tutorial, title: "Summary and Next Steps", content: "Investing is your ticket to financial freedom. Start small, keep learning, and stay focused on the long game. Remember, the goal is to grow your wealth over time by making smart investment choices.", image_name: "investment_summary.jpg", order: 5 }
     ]
   },
   {
     lesson: lessons[1],
     steps: [
-      { category: :tutorial, title: "Advanced Budgeting Techniques", content: "Budgeting is essential. It's not just about limiting your avocado toast intake but planning where every dollar goes. Master this, and you'll never wonder why you're broke before payday", image_name: "budgeting.jpg", order: 1 },
-      { category: :choice, content: "What is crucial for effective budgeting?", order: 2, answers: [
-        { content: "Ignoring small expenses", is_correct: false },
-        { content: "Only planning for big purchases", is_correct: false },
-        { content: "Tracking all income and expenses", is_correct: true },
-        { content: "Avoiding financial goals", is_correct: false }
+      { category: :tutorial, title: "Stock Market Basics", content: "The stock market is a platform where shares of public companies are bought and sold. It's a great way to grow your money if you understand the basics. Learn about stock exchanges, market indices, and how to evaluate stocks. The stock market can be volatile, but with knowledge, you can navigate it successfully.", image_name: "stock_market.jpg", order: 1 },
+      { category: :choice, content: "What's a key benefit of investing in stocks?", order: 2, answers: [
+        { content: "Guaranteed returns", is_correct: false },
+        { content: "High growth potential", is_correct: true },
+        { content: "Zero risk", is_correct: false },
+        { content: "Instant wealth", is_correct: false }
       ]},
-      { category: :tutorial, title: "Key Budgeting Strategies", content: "Effective budgeting strategies include categorizing expenses, setting realistic goals, using budgeting tools, and regularly reviewing your budget. This helps avoid those 'how am I broke again?' moments", image_name: "budgeting_strategies.jpg", order: 3 },
-      { category: :fill, content: "A good budget helps in tracking ______ and achieving ______", order: 4, answers: [
-        { content: "expenses", is_correct: true, order: 1 },
-        { content: "Insta fame", is_correct: false },
-        { content: "goals", is_correct: true, order: 2 },
-        { content: "pizza fund", is_correct: false }
+      { category: :tutorial, title: "Buying Your First Stock", content: "Buying stocks might seem intimidating, but it's quite straightforward. Open a brokerage account, research the stocks you’re interested in, and start buying. Consider starting with companies you know and believe in. Keep an eye on the stock's performance and be patient.", image_name: "buying_stock.jpg", order: 3 },
+      { category: :fill, content: "The stock market is a place where you can buy and sell ______ and ______", order: 4, answers: [
+        { content: "stocks", is_correct: true, order: 1 },
+        { content: "bonds", is_correct: true, order: 2 },
+        { content: "groceries", is_correct: false },
+        { content: "cars", is_correct: false }
       ]},
-      { category: :tutorial, title: "Maintaining Your Budget", content: "Keeping your budget in check requires discipline. Review it monthly and adjust for any changes. Use apps to make this easier and keep you from falling off the financial wagon", image_name: "maintaining_budget.jpg", order: 5 }
+      { category: :tutorial, title: "Stock Market Tips", content: "Get practical tips for investing in the stock market: diversify your investments, stay informed about market trends, and avoid emotional trading. Consistency and patience are key. Don’t put all your money into one stock and avoid chasing after trends blindly.", image_name: "stock_tips.jpg", order: 5 },
+      { category: :tutorial, title: "Summary and Next Steps", content: "You’ve got the basics down: understand the market, buy smartly, and manage risks. Keep learning, stay patient, and don’t chase trends. You’re on your way to becoming a stock market pro!", image_name: "stock_summary.jpg", order: 6 }
     ]
   },
   {
     lesson: lessons[2],
     steps: [
-      { category: :tutorial, title: "Effective Saving Strategies", content: "Saving money isn't about hoarding cash under your mattress. It's about setting aside funds for future needs, emergencies, and investments. The goal? Financial security without living like a hermit", image_name: "saving_strategies.jpg", order: 1 },
-      { category: :choice, content: "What defines an emergency fund?", order: 2, answers: [
-        { content: "A fund for vacations", is_correct: false },
-        { content: "A fund for unexpected expenses", is_correct: true },
-        { content: "A fund for luxury items", is_correct: false },
-        { content: "A fund for investments", is_correct: false }
+      { category: :tutorial, title: "Building a Portfolio", content: "Discover how to create a balanced and diversified investment portfolio. Diversification is like having a mix of different fruits in your basket; if one goes bad, you still have plenty left. Learn about the importance of balancing different types of investments to minimize risk.", image_name: "portfolio_building.jpg", order: 1 },
+      { category: :choice, content: "Why is diversification important?", order: 2, answers: [
+        { content: "Reduces risk", is_correct: true },
+        { content: "Increases risk", is_correct: false },
+        { content: "Guarantees profits", is_correct: false },
+        { content: "Limits growth", is_correct: false }
       ]},
-      { category: :tutorial, title: "Types of Savings Accounts", content: "Different savings accounts serve different needs. High-yield accounts offer better interest rates, while regular accounts are more accessible. CDs lock your money for a set time but often provide higher returns", image_name: "savings_accounts.jpg", order: 3 },
-      { category: :fill, content: "Effective saving involves setting ______ goals and ______ regularly.", order: 4, answers: [
-        { content: "saving", is_correct: true, order: 2 },
-        { content: "realistic", is_correct: true, order: 1 },
-        { content: "life", is_correct: false },
-        { content: "shopping", is_correct: false }
+      { category: :tutorial, title: "Types of Assets", content: "Learn about different asset classes like stocks, bonds, and real estate. Each has its own risk and return profile, and understanding these can help you make better investment decisions.", image_name: "asset_types.jpg", order: 3 },
+      { category: :fill, content: "A diversified portfolio includes ______ and ______", order: 4, answers: [
+        { content: "stocks", is_correct: true, order: 1 },
+        { content: "bonds", is_correct: true, order: 2 },
+        { content: "groceries", is_correct: false },
+        { content: "cars", is_correct: false }
       ]},
-      { category: :tutorial, title: "Maximizing Savings", content: "Maximize your savings by automating deposits, using employer-sponsored retirement plans, and hunting for high-interest savings accounts. Regularly review and adjust your saving strategies to stay on track", image_name: "max_savings.jpg", order: 5 }
+      { category: :tutorial, title: "Rebalancing Your Portfolio", content: "Understand the importance of rebalancing your portfolio to maintain your desired risk level. Regular rebalancing helps you stay on track with your investment goals and ensures you don't take on too much risk.", image_name: "portfolio_rebalancing.jpg", order: 5 },
+      { category: :tutorial, title: "Summary and Next Steps", content: "Building and maintaining a balanced portfolio is key to long-term investment success. Keep diversifying, monitor your investments, and rebalance as needed to stay aligned with your goals.", image_name: "portfolio_summary.jpg", order: 6 }
     ]
   },
   {
     lesson: lessons[3],
     steps: [
-      { category: :tutorial, title: "Introduction to Debt Management", content: "Debt management is about handling debt so it doesn't handle you. Prioritize high-interest debt and develop a plan to reduce and eliminate it. It's like tackling a big project—one step at a time", image_name: "debt_management.jpg", order: 1 },
-      { category: :choice, content: "What's a smart way to manage debt?", order: 2, answers: [
-        { content: "Ignoring it", is_correct: false },
-        { content: "Paying more than the minimum payment", is_correct: true },
-        { content: "Taking out more loans", is_correct: false },
-        { content: "Using all your savings", is_correct: false }
+      { category: :tutorial, title: "Managing Investment Risk", content: "Learn strategies to manage and minimize the risks associated with investing. Risk management is crucial to protect your investments and ensure steady growth.", image_name: "risk_management.jpg", order: 1 },
+      { category: :choice, content: "What's a good way to manage risk?", order: 2, answers: [
+        { content: "Ignore it", is_correct: false },
+        { content: "Diversify investments", is_correct: true },
+        { content: "Invest all in one stock", is_correct: false },
+        { content: "Avoid investing", is_correct: false }
       ]},
-      { category: :tutorial, title: "Prioritizing Debt Repayment", content: "Focus on paying off high-interest debt first. Use the debt avalanche or debt snowball methods to systematically reduce what you owe. Every bit helps in shrinking that debt monster", image_name: "debt_priorities.jpg", order: 3 },
-      { category: :fill, content: "Managing debt involves ______ high-interest debt and making ______ payments.", order: 4, answers: [
-        { content: "extra", is_correct: true, order: 2 },
-        { content: "minimum", is_correct: false },
-        { content: "prioritizing", is_correct: true, order: 1 },
-        { content: "avoiding", is_correct: false }
+      { category: :tutorial, title: "Risk Assessment", content: "Assess your risk tolerance and choose investments that match your comfort level. Knowing your risk tolerance helps you make informed decisions and avoid panic during market volatility.", image_name: "risk_assessment.jpg", order: 3 },
+      { category: :fill, content: "Managing risk involves ______ and ______ your investments.", order: 4, answers: [
+        { content: "diversifying", is_correct: true, order: 1 },
+        { content: "monitoring", is_correct: true, order: 2 },
+        { content: "concentrating", is_correct: false },
+        { content: "ignoring", is_correct: false }
       ]},
-      { category: :tutorial, title: "Avoiding Future Debt", content: "To avoid future debt, live within your means, avoid impulse buys, and build an emergency fund. Financial discipline and smart choices keep you debt-free and stress-free", image_name: "avoid_debt.jpg", order: 5 }
+      { category: :tutorial, title: "Staying Informed", content: "Stay updated on market trends and news to make informed investment decisions. Being well-informed helps you anticipate market movements and adjust your strategy accordingly.", image_name: "market_news.jpg", order: 5 },
+      { category: :tutorial, title: "Summary and Next Steps", content: "Effective risk management involves diversifying, monitoring, and staying informed. By managing risks, you can protect your investments and achieve steady growth over time.", image_name: "risk_summary.jpg", order: 6 }
     ]
   },
   {
     lesson: lessons[4],
     steps: [
-      { category: :tutorial, title: "Introduction to Investing", content: "Investing is about making your money work for you. It involves buying assets like stocks, bonds, and real estate with the expectation of earning a return. The goal? Grow your wealth over time and achieve financial freedom", image_name: "investing_intro.jpg", order: 1 },
-      { category: :choice, content: "What's a key benefit of investing?", order: 2, answers: [
-        { content: "Avoiding taxes", is_correct: false },
-        { content: "Eliminating all risk", is_correct: false },
-        { content: "Growing your wealth over time", is_correct: true },
-        { content: "Getting rich quick", is_correct: false }
+      { category: :tutorial, title: "Winning Long-Term Strategies", content: "Explore strategies that can help you achieve long-term investment success. Long-term strategies focus on steady growth and compounding returns over time.", image_name: "long_term.jpg", order: 1 },
+      { category: :choice, content: "What's a key to long-term investment success?", order: 2, answers: [
+        { content: "Market timing", is_correct: false },
+        { content: "Patience and discipline", is_correct: true },
+        { content: "Chasing trends", is_correct: false },
+        { content: "Frequent trading", is_correct: false }
       ]},
-      { category: :tutorial, title: "Types of Investments", content: "Investments come in various forms: stocks offer high returns but high risk, bonds provide steady income with lower risk, and real estate can yield rental income and appreciation. Diversify to balance risk and reward", image_name: "investment_types.jpg", order: 3 },
-      { category: :fill, content: "Investing involves buying ______ with the expectation of earning a ______", order: 4, answers: [
-        { content: "NFTs", is_correct: false },
-        { content: "assets", is_correct: true, order: 1 },
-        { content: "fortune", is_correct: false },
-        { content: "return", is_correct: true, order: 2 }
+      { category: :tutorial, title: "Compounding Returns", content: "Learn how compounding can significantly grow your investments over time. Compounding returns are like a snowball effect, where your earnings generate even more earnings.", image_name: "compounding.jpg", order: 3 },
+      { category: :fill, content: "Long-term success requires ______ and ______", order: 4, answers: [
+        { content: "patience", is_correct: true, order: 1 },
+        { content: "discipline", is_correct: true, order: 2 },
+        { content: "luck", is_correct: false },
+        { content: "timing", is_correct: false }
       ]},
-      { category: :tutorial, title: "Summary of Investing", content: "Investing is essential for building wealth and achieving financial goals. By investing in a mix of assets, you can grow your wealth over time and protect against inflation. Do your research, stay patient, and think long-term", image_name: "investing_summary.jpg", order: 5 }
+      { category: :tutorial, title: "Staying the Course", content: "Stick to your long-term strategy and avoid getting swayed by short-term market fluctuations. Long-term investing requires staying the course, even during market downturns.", image_name: "staying_course.jpg", order: 5 },
+      { category: :tutorial, title: "Summary and Next Steps", content: "Long-term investment success is built on patience, discipline, and the power of compounding. Stay committed to your strategy and keep learning to maximize your investment returns.", image_name: "long_term_summary.jpg", order: 6 }
     ]
   }
 ]
@@ -151,10 +154,11 @@ steps_and_answers.each do |lesson_data|
     end
   end
 end
+
 # Store Items
 items = Item.create!([
   { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 150 },
   { name: "Double or Nothin' Coins", description: 'Time to make it rain even more coins! 🪙🪙🪙', price: 300 },
-  { name: 'Meme Swap!', description: 'Change the meme on your celebration page! 😻', price: 100 },
+  { name: 'Avatar Swap!', description: 'Change your avatar, change your life! 😻', price: 50 },
   { name: 'Sticker Fun Time', description: 'Stickers are cool, SO ARE YOU!! 💖😽💅', price: 80 }
 ])
