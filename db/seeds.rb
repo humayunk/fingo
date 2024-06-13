@@ -1,6 +1,7 @@
 # db/seeds.rb
 
 # Clear existing data in the correct order to avoid foreign key violations
+UserItem.destroy_all
 UserProgress.destroy_all
 Answer.destroy_all
 Step.destroy_all
@@ -8,6 +9,7 @@ Lesson.destroy_all
 Enrollment.destroy_all
 Course.destroy_all
 User.destroy_all
+Item.destroy_all
 
 # Create Users
 users = User.create!([
@@ -149,3 +151,10 @@ steps_and_answers.each do |lesson_data|
     end
   end
 end
+# Store Items
+items = Item.create!([
+  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 150 },
+  { name: "Double or Nothin' Coins", description: 'Time to make it rain even more coins! 🪙🪙🪙', price: 300 },
+  { name: 'Meme Swap!', description: 'Change the meme on your celebration page! 😻', price: 100 },
+  { name: 'Sticker Fun Time', description: 'Stickers are cool, SO ARE YOU!! 💖😽💅', price: 80 }
+])

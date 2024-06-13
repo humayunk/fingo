@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'store', to: 'items#index', as: 'store'
+
+  resources :items, only: [] do
+    resources :user_items, only: [:create]
+  end
+
   # Onboarding Routes
   get 'onboarding/step1', to: 'onboarding#step1'
   post 'onboarding/step1', to: 'onboarding#save_step1'

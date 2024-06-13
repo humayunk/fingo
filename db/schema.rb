@@ -44,12 +44,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id", null: false
+    t.string "image_name"
     t.integer "order_rank"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
@@ -64,6 +73,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
     t.string "image_name"
     t.integer "category", default: 0, null: false
     t.index ["lesson_id"], name: "index_steps_on_lesson_id"
+  end
+
+  create_table "user_items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id"], name: "index_user_items_on_user_id"
   end
 
   create_table "user_progresses", force: :cascade do |t|
@@ -102,6 +121,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
   add_foreign_key "enrollments", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "steps", "lessons"
+  add_foreign_key "user_items", "items"
+  add_foreign_key "user_items", "users"
   add_foreign_key "user_progresses", "lessons"
   add_foreign_key "user_progresses", "users"
 end

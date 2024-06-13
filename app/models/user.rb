@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # validates :coins, default: 0
   # validates :streak, default: 0
 
+
   has_many :user_progresses
 
   has_many :enrollments
@@ -19,6 +20,8 @@ class User < ApplicationRecord
   has_many :courses, through: :enrollments
   has_many :in_progress_courses, through: :in_progress_enrollments, class_name: "Course", source: :course
   has_many :completed_courses, through: :completed_enrollments, class_name: "Course", source: :course
+  has_many :user_items
+  has_many :items, through: :user_items
 
   def most_recently_accessed_course
     user_progresses.order(updated_at: :desc).first.course
