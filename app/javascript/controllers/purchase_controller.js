@@ -14,11 +14,11 @@ export default class extends Controller {
   purchase(event) {
     event.preventDefault()
     Swal.fire({
-      title: `Are you sure you want to purchase this item?\n${this.nameTarget.innerText} for ${this.priceTarget.innerText} `,
+      title: `Are you sure you want to purchase ${this.nameTarget.innerText} for ${this.priceTarget.innerText.split(':')[1].trim()} coins?`,
       icon: 'question',
-      confirmButtonText: 'DO IT!!!!',
-      showCancelButton: true,
-      cancelButtonText: "Nopeeee",
+      confirmButtonText: 'Hell yeah!!',
+      // showCancelButton: true,
+      // cancelButtonText: "Nopeeee",
       showLoaderOnConfirm: true,
       preConfirm: async () => {
         const options={
