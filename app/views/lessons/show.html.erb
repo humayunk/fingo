@@ -65,7 +65,9 @@
           <div class="card-step text-justify mt-3">
           <p> <%= @step.content %> </p>
             <div class="text-center mt-4 container-image-step">
-              <%= image_tag @step.image_name, class: "card-image-step"%>
+              <% if @step.image_name? %>
+                <%= image_tag @step.image_name, class: "card-image-step"%>
+              <% end %>
             </div>
           </div>
         <% end %>
