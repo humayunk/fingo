@@ -2,25 +2,47 @@
   class="<%= class_names("col-md-6", "shop-item-card", { "shop-item-card-purchased" => is_purchased } ) %>"
   data-controller="purchase"
 >
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title" data-purchase-target="name"><%= item.name %></h5>
-      <p class="card-text"><%= item.description %></p>
-      <p class="card-text" data-purchase-target="price">Price: <%= item.price %> 🪙</p>
-      <%= button_to (is_purchased ? "Purchased" : "Purchase"), item_user_items_path(item), {
-        method: :post,
-        form: {
+  <div class="card-store mb-4">
+    <div class="d-flex">
+      <div class="store-image-container">
+        <%= image_tag "david-glasses.jpg", alt: '', class: "store-image" %>
+      </div>
+
+      <div class="d-flex flex-column card-store-content ">
+        <div>
+          <h4 data-purchase-target="name"><%= item.name %></h4>
+        </div>
+        <div>
+          <p style="font-size: 1em;"><%= item.description %></p>
+        </div>
+        <div class="mb-3">
+        <h5 data-purchase-target="price">Price: <%= item.price %> </h5>
+        </div>
+
+        <div>
+           <%= button_to (is_purchased ? "Purchased" : "Purchase"), item_user_items_path(item), {
+          method: :post,
+          form: {
+            data: {
+              purchase_target: "form"
+            }
+          },
           data: {
-            purchase_target: "form"
-          }
-        },
-        data: {
-          action: "click->purchase#purchase",
-          purchase_target: "button"
-        },
-        class: "btn btn-primary",
-        disabled: is_purchased
-      } %>
+            action: "click->purchase#purchase",
+            purchase_target: "button"
+          },
+          class: "btn-custom-small",
+          disabled: is_purchased
+        } %>
+        </div>
     </div>
+
+
+
+    </div>
+
+
+
+
   </div>
 </div>
