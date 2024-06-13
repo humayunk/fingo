@@ -23,7 +23,7 @@ module CoursesHelper
         end
       else
         link_to root_path, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled lesson-disabled" do
-          content_tag(:span, "#{sprintf('%02d', index + 1)}  #{lesson.title}", class: "title-lesson") +
+          content_tag(:span, "#{sprintf('%02d', index + 1)}  #{lesson.title}", class: "title-lesson-disabled") +
           content_tag(:span, "🔒", class: "emoji-lesson")
         end
       end
@@ -35,7 +35,7 @@ module CoursesHelper
       end
     else
       link_to root_path, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled lesson-disabled" do
-        content_tag(:span, "#{sprintf('%02d', index + 1)}  #{lesson.title}", class: "title-lesson") +
+        content_tag(:span, "#{sprintf('%02d', index + 1)}  #{lesson.title}", class: "title-lesson-disabled") +
         content_tag(:span, "🔒", class: "emoji-lesson")
       end
     end
