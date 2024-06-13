@@ -5,7 +5,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 4px 4px 0px black;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   padding: 1rem;
 }
 
@@ -35,7 +35,8 @@
   width: 100%; /* The image will take up the full width of the container */
   height: 100%; /* The image will take up the full height of the container */
   object-fit: cover; /* The image will cover the container, maintaining its aspect ratio */
-  position: absolute; /* The image is positioned absolutely within the container */
+  position: absolute;
+  border-radius: 0.5rem; /* The image is positioned absolutely within the container */
 }
 
 // .card-course p {
@@ -99,4 +100,10 @@
   box-shadow: 4px 4px 0px black;
   border-radius: .5rem;
   padding: 3rem;
+}
+
+// course show
+
+.card-lesson {
+  border-radius: 0.5rem;
 }

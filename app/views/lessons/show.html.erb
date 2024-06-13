@@ -48,7 +48,13 @@
     <div class="container-lesson col-6">
       <div class="text-align-left">
         <% if @step.question? %>
-          <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+          <% if @step.fill? %>
+            <h2 class="card-title justify-content-center space-between-force mt-5">
+              <%= raw build_fill_step(@step.content) %>
+            </h2>
+          <% else %>
+            <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+          <% end %>
         <% else %>
           <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
         <% end %>
@@ -68,10 +74,20 @@
       <div class="questions mb-3">
         <% if @step.question? %>
           <div class="card-answers list-group mt-5 d-flex justify-content-center">
-            <% @step.answers.each do |answer| %>
-              <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
-                <h4> 💁 <%= answer.content %></h4>
-              </div>
+            <% @step.answers.each_with_index do |answer, index| %>
+              <% if @step.fill? %>
+                <div class="answer-disabled">
+                  <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
+                    <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
+                      <%= answer.content %>
+                    </span>
+                  </h4>
+                </div>
+              <% else %>
+                <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
+                  <h4> 💁 <%= answer.content %></h4>
+                </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>
@@ -93,9 +109,15 @@
 
           <% else %>
             <%#= button_to data:{ action: "click->answer#checkAnswer" }, class: "btn-custom-lesson-disabled" do %>
-            <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" disabled>
-              Check
-            </button>
+            <% if @step.fill? %>
+              <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswerFill" class="btn-custom-lesson-disabled" id="buttonCheck" disabled>
+                Check
+              </button>
+            <% else %>
+              <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" id="buttonCheck" disabled>
+                Check
+              </button>
+            <% end %>
 
             <div data-answer-target="buttonContinue" data-action ="clicksound#click" class="d-none">
               <%= button_to user_progress_path(@lesson.user_progresses.for(current_user),
@@ -123,5 +145,50 @@
 
     </div>
   </div>
-
 </div>
+
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  if (ev.toElement.dataset.fillRole === "origin") {
+    document.getElementById(data).parentNode.insertAdjacentHTML("afterbegin", "______")
+  } else if (ev.toElement.dataset.fillRole === "destination") {
+    ev.target.textContent = "";
+  }
+
+  ev.target.appendChild(document.getElementById(data));
+  checkAllFilled();
+}
+
+function checkAllFilled() {
+  const buttonCheck  = document.getElementById("buttonCheck");
+  const destinations = document.querySelectorAll("[data-fill-role='destination']");
+
+  let filledCount = 0;
+  destinations.forEach(destination => {
+    if (destination.innerHTML.includes("fill-answer")) {
+      filledCount++;
+    }
+  });
+
+  if (filledCount === 2) {
+    buttonCheck.disabled = false;
+    buttonCheck.classList.remove('btn-custom-lesson-disabled');
+    buttonCheck.classList.add('btn-custom-lesson-active');
+  } else {
+    buttonCheck.disabled = true;
+    buttonCheck.classList.remove('btn-custom-lesson-active');
+    buttonCheck.classList.add('btn-custom-lesson-disabled');
+  }
+}
+</script>
