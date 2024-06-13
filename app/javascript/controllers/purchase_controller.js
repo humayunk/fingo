@@ -5,7 +5,7 @@ import Swal from "sweetalert2"
 // Connects to data-controller="purchase"
 export default class extends Controller {
   static targets = [ "name", "price", "form", "button"]
-  static outlets = [ "user-coins" ]
+  static outlets = [ "user-coins", "user-avatar" ]
 
   connect() {
     // console.log("connected!");
@@ -50,8 +50,9 @@ export default class extends Controller {
               text: `You have purchased ${this.nameTarget.innerText}`,
               icon: "success"
             })
+            this.element.outerHTML = data.card;
             if (data.new_coins_balance) { this.userCoinsOutlet.updateCoinBalance(data.new_coins_balance); }
-            if (data.new_coins_balance) { this.userCoinsOutlet.updateCoinBalance(data.new_coins_balance); }
+            if (data.new_avatar) { this.userAvatarOutlet.updateAvatar(data.new_avatar); }
           } else if (result.value.status === 'failure') {
             Swal.fire({
               title: "Oops!",

@@ -2,12 +2,12 @@
   class="<%= class_names("col-md-6", "shop-item-card", { "shop-item-card-purchased" => is_purchased } ) %>"
   data-controller="purchase"
   data-purchase-user-coins-outlet="#user-coins"
+  data-purchase-user-avatar-outlet=".user-avatar"
 >
-  <button data-action="click->purchase#callOutlet">Come on, do it!!!</button>
   <div class="card-store mb-4">
     <div class="d-flex">
       <div class="store-image-container">
-        <%= image_tag "david-glasses.jpg", alt: '', class: "store-image" %>
+        <%= image_tag (item.picture_name ? item.picture_name : "david-glasses.jpg"), alt: '', class: "store-image" %>
       </div>
 
       <div class="d-flex flex-column card-store-content ">
@@ -33,18 +33,10 @@
             action: "click->purchase#purchase",
             purchase_target: "button"
           },
-          class: "btn-custom-small",
-          disabled: is_purchased
+          class: class_names("btn-custom-small", { disabled: is_purchased })
         } %>
         </div>
     </div>
-
-
-
-    </div>
-
-
-
-
+  </div>
   </div>
 </div>
