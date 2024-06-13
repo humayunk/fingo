@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller="active-state">
   <div class="container-fluid">
     <%= link_to courses_path, class: "navbar-brand" do %>
       <h2>Fingo</h2>
@@ -12,10 +12,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", style: "margin-left: 3rem;"%>
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", data: { "active-state-target": "link" }, style: "margin-left: 3rem;"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Courses", courses_path, class: "nav-link-custom" %>
+            <%= link_to "Courses", courses_path, class: "nav-link-custom", data: { "active-state-target": "link" } %>
           </li>
         <% end %>
       </ul>
