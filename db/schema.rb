@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_203022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "step_id", null: false
+    t.integer "order", default: 0
     t.index ["step_id"], name: "index_answers_on_step_id"
   end
 
@@ -57,7 +58,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_203022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id", null: false
-    t.string "image_name"
     t.integer "order_rank"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
@@ -108,8 +108,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_203022) do
     t.string "first_name"
     t.string "last_name"
     t.string "nickname"
-    t.integer "coins"
-    t.integer "streak"
+    t.integer "coins", default: 0
+    t.integer "streak", default: 0
+    t.jsonb "onboarding_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

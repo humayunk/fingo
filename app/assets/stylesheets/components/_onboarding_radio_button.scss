@@ -1,0 +1,41 @@
+/* Hide the default radio button */
+.form-check-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom radio button style */
+.goal-option {
+  position: relative;
+  padding-left: 35px; /* Adjust to give space for custom radio */
+  cursor: pointer;
+  user-select: none;
+}
+
+.goal-option .custom-radio {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Adjust to position inside padding */
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+/* When the radio button is checked, add a dot */
+.goal-option .form-check-input:checked ~ .custom-radio::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 12px;
+  width: 12px;
+  background-color: $blue; /* Adjust to your preferred color */
+  border-radius: 50%;
+}

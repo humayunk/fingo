@@ -1,9 +1,9 @@
 <div class="container position-relative" data-controller="answer">
   <!-- Navigation and Exit Button Row -->
-  <div class="row align-items-center mt-3">
-    <div class="col-1 d-flex justify-content-start">
+  <div class="row fixed-top bg-white align-items-center py-4 mb-3 shadow-sm p-3 mb-5 rounded">
+    <div class="col-1 d-flex justify-content-start ms-3">
       <%= link_to course_path(@lesson.course.title), class: "btn btn-link p-0" do %>
-        <i class="fas fa-times fa-2x"></i>
+        <i class="fas fa-times fa-1x"></i>
       <% end %>
     </div>
 
@@ -11,9 +11,9 @@
     <% next_step_number = @step.order + 1 %>
 
     <% if prev_step_number > 0 %>
-      <div class="col-1 d-flex justify-content-end">
+      <div class="col-1 d-flex justify-content-center">
         <%= button_to user_progress_path(@user_progress, step: prev_step_number), method: :patch, class: "btn btn-link p-0" do %>
-          <i class="fas fa-arrow-left fa-2x"></i>
+          <i class="fas fa-arrow-left fa-1x" style="color: #d3d3d3"></i>
         <% end %>
       </div>
     <% else %>
@@ -21,16 +21,21 @@
     <% end %>
 
     <% progress = (@step.order.to_f / @lesson.steps.count * 100).round %>
-    <div class="col-8">
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+    <% total_steps = @lesson.steps.count %>
+    <% current_step = @step.order %>
+
+    <div class="col-8 d-flex align-items-center">
+      <% total_steps.times do |i| %>
+        <div class="progress-segment <%= 'bg-primary' if i < current_step %> flex-grow-1 mx-1">
+          <small class="invisible-text"><%= i + 1 %></small>
+        </div>
+      <% end %>
     </div>
 
     <% if next_step_number <= @lesson.steps.count %>
-      <div class="col-1 d-flex justify-content-end">
+      <div class="col-1 d-flex justify-content-center">
         <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn btn-link p-0" do %>
-          <i class="fas fa-arrow-right fa-2x"></i>
+          <i class="fas fa-arrow-right fa-1x" style="color: #d3d3d3"></i>
         <% end %>
       </div>
     <% else %>
@@ -38,96 +43,152 @@
     <% end %>
   </div>
 
-  <!-- Lesson Title and Content Row -->
-  <div class="row mt-3 d-flex justify-content-center">
-  <div class="col-12 text-center">
-    <% if @step.question? %>
-      <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
-    <% else %>
-      <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
-    <% end %>
-  </div>
-
-  <div class="col-8 d-flex justify-content-center">
-    <% if @step.tutorial? %>
-      <div class="card-step text-justify mt-5">
-      <h4> <%= @step.content %> </h4>
-        <div class="text-center mt-5">
-          <%= image_tag @step.image_name %>
-        </div>
+  <!-- Lesson Title Content and Button Row -->
+  <div class="row mt-5 pt-4 d-flex justify-content-center">
+    <div class="container-lesson col-6">
+      <div class="text-align-left">
+        <% if @step.question? %>
+          <% if @step.fill? %>
+            <h2 class="card-title justify-content-center space-between-force mt-5">
+              <%= raw build_fill_step(@step.content) %>
+            </h2>
+          <% else %>
+            <h2 class="card-title justify-content-center mt-5"><%= @step.content %></h2>
+          <% end %>
+        <% else %>
+          <h2 class="card-title justify-content-center mt-5"><%= @step.title %></h2>
+        <% end %>
       </div>
-    <% end %>
-  </div>
 
-  <div class="col-12">
-    <% if @step.question? %>
-      <div class="card-answers list-group mt-5 d-flex justify-content-center">
-        <% @step.answers.each do |answer| %>
-          <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
-             <h4> 💁 <%= answer.content %></h4>
+      <div class="mb-4 d-flex justify-content-center">
+        <% if @step.tutorial? %>
+          <div class="card-step text-justify mt-3">
+          <p> <%= @step.content %> </p>
+            <!--<div class="text-center mt-4 container-image-step">-->
+              <%#= image_tag @step.image_name, class: "card-image-step"%>
+<!--            </div>-->
           </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
 
-
-<!-- Bottom Row with Feedback Message and Continue Button -->
-  <div class="row fixed-bottom w-100 py-5 bg-white feedback-border" >
-    <div class="col-8 d-flex align-items-center">
-      <!-- Feedback message -->
-      <% if @step.question? %>
-        <div  data-answer-target="feedback">
-          <%# content will be added here using answer_controller %>
-          <div class="d-none d-flex align-items-center mx-5" data-answer-target="correct">
-            <%=image_tag "answer_correct.png", alt:"Success", style:"height: 40px; margin-right: 10px;"%>
-            <h3>That's what I'm talking about. <br/> You've got this!</h3>
+      <div class="questions mb-3">
+        <% if @step.question? %>
+          <div class="card-answers list-group mt-5 d-flex justify-content-center">
+            <% @step.answers.each_with_index do |answer, index| %>
+              <% if @step.fill? %>
+                <div class="answer-disabled">
+                  <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
+                    <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
+                      <%= answer.content %>
+                    </span>
+                  </h4>
+                </div>
+              <% else %>
+                <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
+                  <h4> 💁 <%= answer.content %></h4>
+                </div>
+              <% end %>
+            <% end %>
           </div>
+        <% end %>
+      </div>
 
-          <div class="d-none d-flex align-items-center mx-5" data-answer-target="incorrect">
-            <div class="mx-2">
-               <%=image_tag "answer-incorrect.png", alt:"Facepalm", class: "image-feedback" %>
-            </div>
-            <div>
-               <h3>C'mon fam.<br/> The right answer is "<span data-answer-target="correctAnswer"><%= @step.answers.where(is_correct: true).first.content %></span>".</h3>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      <!--Buttons are now here-->
 
-    <div class="col-4 d-flex justify-content-end">
-      <% if next_step_number <= @lesson.steps.count %>
+      <div class="d-flex justify-content-end">
+        <% if next_step_number <= @lesson.steps.count %>
 
-        <% if @step.tutorial? %>
-         <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
-           Continue
-         <% end %>
-
-
-        <% else %>
-          <%#= button_to data:{ action: "click->answer#checkAnswer" }, class: "btn-custom-lesson-disabled" do %>
-          <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" disabled>
-            Check
-          </button>
-
-          <div  data-answer-target="buttonContinue" class="d-none">
-            <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number), method: :patch, class: "btn-custom-lesson" do %>
+          <% if @step.tutorial? %>
+            <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number),
+            data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
+            method: :patch,
+            class: "btn-custom-lesson" do %>
               Continue
             <% end %>
-           </div>
-          <%# end %>
-        <% end %>
 
-      <% else %>
-        <div class="button">
-          <%= button_to complete_user_progress_path(@user_progress), method: :patch, class: "btn-custom-lesson" do %>
-            Finish lesson
+
+          <% else %>
+            <%#= button_to data:{ action: "click->answer#checkAnswer" }, class: "btn-custom-lesson-disabled" do %>
+            <% if @step.fill? %>
+              <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswerFill" class="btn-custom-lesson-disabled" id="buttonCheck" disabled>
+                Check
+              </button>
+            <% else %>
+              <button data-answer-target="buttonCheck" data-action="click->answer#checkAnswer" class="btn-custom-lesson-disabled" id="buttonCheck" disabled>
+                Check
+              </button>
+            <% end %>
+
+            <div data-answer-target="buttonContinue" data-action ="clicksound#click" class="d-none">
+              <%= button_to user_progress_path(@lesson.user_progresses.for(current_user),
+              data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
+              step: next_step_number),
+              method: :patch,
+              class: "btn-custom-lesson" do %>
+                Continue
+              <% end %>
+            </div>
+            <%# end %>
           <% end %>
-        </div>
-      <% end %>
+
+        <% else %>
+          <div class="button">
+            <%= button_to complete_user_progress_path(@user_progress),
+            data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
+            method: :patch,
+            class: "btn-custom-lesson" do %>
+              Finish lesson
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
-
 </div>
+
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  if (ev.toElement.dataset.fillRole === "origin") {
+    document.getElementById(data).parentNode.insertAdjacentHTML("afterbegin", "______")
+  } else if (ev.toElement.dataset.fillRole === "destination") {
+    ev.target.textContent = "";
+  }
+
+  ev.target.appendChild(document.getElementById(data));
+  checkAllFilled();
+}
+
+function checkAllFilled() {
+  const buttonCheck  = document.getElementById("buttonCheck");
+  const destinations = document.querySelectorAll("[data-fill-role='destination']");
+
+  let filledCount = 0;
+  destinations.forEach(destination => {
+    if (destination.innerHTML.includes("fill-answer")) {
+      filledCount++;
+    }
+  });
+
+  if (filledCount === 2) {
+    buttonCheck.disabled = false;
+    buttonCheck.classList.remove('btn-custom-lesson-disabled');
+    buttonCheck.classList.add('btn-custom-lesson-active');
+  } else {
+    buttonCheck.disabled = true;
+    buttonCheck.classList.remove('btn-custom-lesson-active');
+    buttonCheck.classList.add('btn-custom-lesson-disabled');
+  }
+}
+</script>

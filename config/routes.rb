@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'leaderboard/index'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -36,4 +35,12 @@ Rails.application.routes.draw do
   resources :items, only: [] do
     resources :user_items, only: [:create]
   end
+
+  # Onboarding Routes
+  get 'onboarding/step1', to: 'onboarding#step1'
+  post 'onboarding/step1', to: 'onboarding#save_step1'
+  get 'onboarding/step2', to: 'onboarding#step2'
+  post 'onboarding/step2', to: 'onboarding#save_step2'
+  get 'onboarding/step3', to: 'onboarding#step3'
+  post 'onboarding/step3', to: 'onboarding#save_step3'
 end

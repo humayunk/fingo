@@ -25,7 +25,7 @@ button {
   border: 5px solid #000;
   border-radius: .5rem;
   padding: 5px 40px;
-  margin: 5px;
+  margin: 0.5rem;
   color: black;
   font-size: 24px;
   font-weight: bold;
@@ -35,6 +35,7 @@ button {
 
 .btn-custom-secondary:hover {
   box-shadow: 8px 8px 0px black;
+  border: 5px solid #000;
 }
 
 // Button for lessons
@@ -43,7 +44,7 @@ button {
   background-color: $yellow;
   border: 5px solid #000;
   border-radius: .5rem;
-  padding: 20px 40px;
+  padding: 10px 40px;
   margin: 5px;
   color: black;
   font-size: 24px;
@@ -121,4 +122,27 @@ button {
 
 .btn-custom-lesson-success:hover {
   box-shadow: 8px 8px 0px black;
+}
+
+.btn-custom-link {
+  color: black;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;;
+}
+
+// for nav
+
+.btn-custom-small {
+  background-color: $white;
+  border: 2.5px solid #000;
+  border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "inconsolata";
+  box-shadow: 2px 2px 0px black;
+  text-align: center;
 }

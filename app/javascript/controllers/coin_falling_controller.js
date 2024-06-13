@@ -35,10 +35,18 @@ export default class extends Controller {
     }
 
     const coins = []
+    const duration = 3000; // duration in milliseconds (e.g., 5000ms = 5 seconds)
+    const startTime = Date.now();
 
     const drawloop = () => {
-      if (focused) {
+      const elapsedTime = Date.now() - startTime;
+
+      if (elapsedTime < duration) {
         requestAnimationFrame(drawloop);
+      } else {
+        focused = false;
+        element.removeChild(canvas);
+        return;
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)

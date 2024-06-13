@@ -22,17 +22,41 @@
 
       <% if user_signed_in? %>
         <div class="nav-icons ms-auto">
-          <div class="d-flex align-items-baseline">
-            <div class="mx-2"><h3><%= current_user.streak %></h3></div>
-            <div class="me-3"><i class="fas fa-bolt"></i></div>
-          </div>
-          <div class="dropdown">
-            <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bars"></i>
+
+          <div class="dropdown card-nav">
+            <a href="#" id="coinsDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="d-flex justify-content-between align-item-baseline">
+              <div class="me-1"><h5>🤑</h5></div>
+              <div><h5><%= current_user.coins %></h5> </div>
+            </div>
             </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+
+            <div class="dropdown-menu dropdown-menu-end  dropdown-custom mt-2" aria-labelledby="coinsDropdown">
+              <h5>Coins</h5>
+              <p style="font-size: 14px;">You have <%= current_user.coins %> coins</p>
+              <hr>
+              <div class="btn-custom-small">
+                 <%= link_to "Fingo Store", courses_path %>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-baseline card-nav">
+            <div class="me-1"><h5>⚡️</h5></div>
+            <div><h5><%= current_user.streak %></h5></div>
+          </div>
+
+
+          <div class="dropdown">
+          <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="nav-circle p-2">
+                <h4><%#= user.first_name[0] %>F</h4>
+            </div>
+          </a>
+             <!-- <i class="fas fa-bars"></i>-->
+            <div class="dropdown-menu dropdown-menu-end dropdown-custom" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", "#", class: "dropdown-item" %>
+              <%= link_to "Settings", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </div>
