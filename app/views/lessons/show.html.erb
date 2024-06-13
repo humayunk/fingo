@@ -49,7 +49,7 @@
       <div class="text-align-left">
         <% if @step.question? %>
           <% if @step.fill? %>
-            <h2 class="card-title justify-content-center space-between-force mt-5">
+            <h2 class="card-title card-fill d-flex flex-wrap justify-content-left mt-5">
               <%= raw build_fill_step(@step.content) %>
             </h2>
           <% else %>
@@ -71,12 +71,13 @@
         <% end %>
       </div>
 
-      <div class="questions mb-3">
+      <div class="<%= @step.fill? ? 'card-fill' : '' %> questions mb-3">
         <% if @step.question? %>
           <div class="card-answers list-group mt-5 d-flex justify-content-center">
+          <!--<div class="<%#= @step.fill? ? '' : 'list-group' %> card-answers mt-5 d-flex justify-content-center">-->
             <% @step.answers.each_with_index do |answer, index| %>
               <% if @step.fill? %>
-                <div class="answer-disabled">
+                <div class="answer-disabled answer-fill item<%= index + 1 %>">
                   <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
                     <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
                       <%= answer.content %>

@@ -73,3 +73,34 @@
   object-fit: cover; /* The image will cover the container, maintaining its aspect ratio */
   position: relative;
  }
+
+ .text-align-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.text-part {
+  margin-right: 7px;
+  margin-left: 7px;
+  margin-bottom: 5px;
+  vertical-align: bottom;
+}
+
+.card-fill{
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.answer-fill {
+  border: 5px solid #F0F0F0 !important;
+  border-radius: 0.5rem;
+  padding: 20px 40px;
+  margin: 5px;
+  color: black;
+  box-shadow: 4px 4px 0px #F0F0F0;
+  margin-bottom: 1rem;
+  width: 40%;
+  text-align: justify;
+}
