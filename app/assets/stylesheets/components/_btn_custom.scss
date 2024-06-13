@@ -150,3 +150,17 @@ button {
 .btn-custom-small:hover {
   box-shadow: 4px 4px 0px black;
 }
+
+
+.swal2-actions .swal2-styled{
+  background-color: $yellow!important;
+  border: 5px solid #000!important;
+  border-radius: .5rem!important;
+  padding: 10px 40px!important;
+  margin: 5px!important;
+  color: black!important;
+  font-size: 24px!important;
+  font-weight: bold!important;
+  font-family: "inconsolata"!important;
+  box-shadow: 4px 4px 0px black!important;
+}
