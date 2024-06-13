@@ -49,7 +49,7 @@
       <div class="text-align-left">
         <% if @step.question? %>
           <% if @step.fill? %>
-            <h2 class="card-title justify-content-center space-between-force mt-5">
+            <h2 class="card-title card-fill d-flex flex-wrap justify-content-left mt-5">
               <%= raw build_fill_step(@step.content) %>
             </h2>
           <% else %>
@@ -71,20 +71,26 @@
         <% end %>
       </div>
 
-      <div class="questions mb-3">
+      <div class="<%= @step.fill? ? 'card-fill' : '' %> questions mb-3">
         <% if @step.question? %>
-          <div class="card-answers list-group mt-5 d-flex justify-content-center">
-            <% @step.answers.each_with_index do |answer, index| %>
-              <% if @step.fill? %>
-                <div class="answer-disabled">
-                  <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
-                    <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
-                      <%= answer.content %>
-                    </span>
-                  </h4>
-                </div>
-              <% else %>
-                <div class="answer-disabled"  data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
+          <div class="<%= @step.fill? ? 'container' : 'list-group' %> card-answers mt-5 d-flex justify-content-center">
+            <% if @step.fill? %>
+              <div class="row">
+                <% @step.answers.each_with_index do |answer, index| %>
+                  <div class="col-md-6 mb-4">
+                    <div class="answer-disabled answer-fill item<%= index + 1 %>">
+                      <h4 data-fill-role="origin" ondragover="allowDrop(event)" ondrop="drop(event)"> 💁
+                        <span id="fill-answer-<%= index + 1 %>" draggable="true" ondragstart="drag(event)" data-answer-target="answer" data-correct="<%= answer.is_correct %>" data-order="<%= answer.order %>">
+                          <%= answer.content %>
+                        </span>
+                      </h4>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <% @step.answers.each_with_index do |answer, index| %>
+                <div class="answer-disabled" data-answer-target="answer" data-action="click->answer#enableBtn" data-correct="<%= answer.is_correct %>">
                   <h4> 💁 <%= answer.content %></h4>
                 </div>
               <% end %>
@@ -119,10 +125,9 @@
               </button>
             <% end %>
 
-            <div data-answer-target="buttonContinue" data-action ="clicksound#click" class="d-none">
-              <%= button_to user_progress_path(@lesson.user_progresses.for(current_user),
+            <div data-answer-target="buttonContinue" class="d-none">
+              <%= button_to user_progress_path(@lesson.user_progresses.for(current_user), step: next_step_number),
               data:{controller: "click-sound", action: "click-sound#click", click_sound_url_value: "#{asset_url 'sound.mp3'}"},
-              step: next_step_number),
               method: :patch,
               class: "btn-custom-lesson" do %>
                 Continue

@@ -19,11 +19,13 @@ export default class extends Controller {
     });
 
     if (isCorrect) {
-      answer.classList.add("answer-success")
+      answer.classList.add("answer-success", "animate__animated", "animate__shakeY")
+      // answer.classList.add("animate__shakeY")
       // feedbackContainer.classList.add("feedback-success")
       // alert("Correct!")
     } else {
-      answer.classList.add("answer-error")
+      answer.classList.add("answer-error", "animate__animated", "animate__shakeX")
+      // animate__shakeX
       const correctAnswer = this.answerTargets.find(target => target.dataset.correct === "true")
       const correctAnswerContent = correctAnswer ? correctAnswer.innerText : "No correct answer found."
       // alert(`Wrong sorry! \nThe correct answer is: \n${correctAnswerContent}`)
@@ -40,9 +42,9 @@ export default class extends Controller {
       // console.log(typeof i)
       // console.log(typeof destination.children[0].dataset.order)
       if (destination.children[0].dataset.correct === "true" && parseInt(destination.children[0].dataset.order) === i ){
-        destination.classList.add("answer-success")
+        destination.classList.add("answer-success", "animate__animated", "animate__shakeY")
       } else {
-        destination.classList.add("answer-error")
+        destination.classList.add("answer-error", "animate__animated", "animate__shakeX")
       }
       i += 1
     })

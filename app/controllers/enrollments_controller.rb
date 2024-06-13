@@ -14,9 +14,9 @@ class EnrollmentsController < ApplicationController
         completed: false
       )
       add_coins(10)
-      redirect_to first_lesson, notice: 'Successfully enrolled in the course and redirected to the first lesson.'
+      redirect_to first_lesson
     else
-      redirect_to @course, alert: 'Enrollment failed.'
+      redirect_to @course
     end
   end
 

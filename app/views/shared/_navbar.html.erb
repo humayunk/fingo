@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller="active-state">
   <div class="container-fluid">
     <%= link_to courses_path, class: "navbar-brand" do %>
       <h2>Fingo</h2>
@@ -12,10 +12,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", style: "margin-left: 3rem;"%>
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", data: { "active-state-target": "link" }, style: "margin-left: 3rem;"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Courses", courses_path, class: "nav-link-custom" %>
+            <%= link_to "Courses", courses_path, class: "nav-link-custom", data: { "active-state-target": "link" } %>
           </li>
         <% end %>
       </ul>
@@ -36,7 +36,7 @@
               <p style="font-size: 14px;">You have <%= current_user.coins %> coins</p>
               <hr>
               <div class="btn-custom-small">
-                 <%= link_to "Fingo Store", courses_path %>
+                 <%= link_to "Fingo Store", store_path %>
               </div>
             </div>
           </div>
@@ -50,7 +50,9 @@
           <div class="dropdown">
           <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="nav-circle p-2">
+
               <%= image_tag (current_user.avatar ? current_user.avatar : "cheems.png"), class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
             </div>
           </a>
              <!-- <i class="fas fa-bars"></i>-->
