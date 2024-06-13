@@ -15,7 +15,7 @@ Item.destroy_all
 users = User.create!([
   { first_name: "Ryan", last_name: "Smith", nickname: "ryansmith", email: "ryan@example.com", password: "password", coins: 0, streak: 0 },
   { first_name: "Humayun", last_name: "Smith", nickname: "humayunsmith", email: "humayun@example.com", password: "password", coins: 500, streak: 5 },
-  { first_name: "Vaeda", last_name: "Smith", nickname: "vaedasmith", email: "vaeda@example.com", password: "password", coins: 350, streak: 2 },
+  { first_name: "Vaeda", last_name: "Smith", nickname: "vaedasmith", email: "vaeda@example.com", password: "password", coins: 350, streak: 2, avatar: "buff-doge.png" },
   { first_name: "Jeff", last_name: "Smith", nickname: "jeffsmith", email: "jeff@example.com", password: "password", coins: 750, streak: 4 },
   { first_name: "Juliette", last_name: "Smith", nickname: "juliettesmith", email: "juliette@example.com", password: "password", coins: 1000, streak: 20 }
 ])
@@ -157,8 +157,10 @@ end
 
 # Store Items
 items = Item.create!([
-  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 150 },
-  { name: "Double or Nothin' Coins", description: 'Time to make it rain even more coins! 🪙🪙🪙', price: 300 },
-  { name: 'Avatar Swap!', description: 'Change your avatar, change your life! 😻', price: 50 },
-  { name: 'Sticker Fun Time', description: 'Stickers are cool, SO ARE YOU!! 💖😽💅', price: 80 }
+
+  { name: 'Avatar', description: 'Level up your doge game 🐶', price: 150, category: "avatar", picture_name: "buff-doge.png" },
+  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 300, category: :streak_freeze, picture_name: "buff-doge.png" },
+  { name: 'Meme Swap!', description: 'Change the meme on your celebration page! 😻', price: 100, category: :meme, picture_name: "buff-doge.png" },
+  { name: 'Cash Money', description: 'Make it rain dollar-dollar bills after you finish a lesson 🫰💵', price: 80, category: :background, picture_name: "buff-doge.png" }
+
 ])
