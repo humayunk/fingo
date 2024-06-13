@@ -1,0 +1,26 @@
+<div
+  class="<%= class_names("col-md-6", "shop-item-card", { "shop-item-card-purchased" => is_purchased } ) %>"
+  data-controller="purchase"
+>
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title" data-purchase-target="name"><%= item.name %></h5>
+      <p class="card-text"><%= item.description %></p>
+      <p class="card-text" data-purchase-target="price">Price: <%= item.price %> 🪙</p>
+      <%= button_to (is_purchased ? "Purchased" : "Purchase"), item_user_items_path(item), {
+        method: :post,
+        form: {
+          data: {
+            purchase_target: "form"
+          }
+        },
+        data: {
+          action: "click->purchase#purchase",
+          purchase_target: "button"
+        },
+        class: "btn btn-primary",
+        disabled: is_purchased
+      } %>
+    </div>
+  </div>
+</div>

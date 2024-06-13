@@ -4,7 +4,7 @@ import Swal from "sweetalert2"
 
 // Connects to data-controller="purchase"
 export default class extends Controller {
-  static targets = [ "name", "price", "form"]
+  static targets = [ "name", "price", "form", "button"]
 
   connect() {
     // console.log("connected!");
@@ -44,6 +44,7 @@ export default class extends Controller {
               text: `You have purchased ${this.nameTarget.innerText}`,
               icon: "success"
             })
+            this.element.outerHTML=result.value.card
           } else if (result.value.status === 'failure') {
             Swal.fire({
               title: "Oops!",

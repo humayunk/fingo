@@ -8,16 +8,8 @@
     <div class="row">
       <% @items.each_slice(2) do |row| %>
         <% row.each do |item| %>
-          <div class="col-md-6" data-controller="purchase">
-            <div class="card mb-4">
-              <div class="card-body">
-                <h5 class="card-title" data-purchase-target="name"><%= item.name %></h5>
-                <p class="card-text"><%= item.description %></p>
-                <p class="card-text" data-purchase-target="price">Price: <%= item.price %> 🪙</p>
-                <%= button_to "Purchase", item_user_items_path(item), method: :post, form: {data: { purchase_target: "form" }}, data: { action: "click->purchase#purchase" }, class: "btn btn-primary"  %>
-              </div>
-            </div>
-          </div>
+          <% is_purchased = @user_purchased_items.include?(item) %>
+          <%= render "card", item: item, is_purchased: is_purchased %>
         <% end %>
       <% end %>
     </div>

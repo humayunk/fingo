@@ -5,9 +5,23 @@ class UserItemsController < ApplicationController
       new_balance = current_user.coins - @item.price
       current_user.update(coins: new_balance)
       UserItem.create(user: current_user, item: @item, price: @item.price)
-      render json: { status: "success" }
+      @success = true
+
+      respond_to do |format|
+        format.html { redirect_to :store_path }
+        format.json
+      end
+      # render json: {
+      #   status: "success",
+      #   card: render(partial: "items/card", formats: :html, locals: { item: @item, is_purchased: true })
+      # }
     else
-      render json: { status: "failure", message: "not enough coins" }
+      @success = false
+
+      respond_to do |format|
+        format.html { render "items/index", status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 end
