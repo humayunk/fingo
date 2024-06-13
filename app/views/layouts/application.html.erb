@@ -11,13 +11,12 @@
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   </head>
 
-  <body <body class="<%= 'custom-background' if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>">
+   <body class="<%= 'custom-background' if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>">
 
-  <% unless controller_name == 'lessons' && (action_name == 'show' || action_name == 'celebration') %>
-    <%= render "shared/navbar" %>
-  <% end %>
-
-
+<% unless (controller_name == 'lessons' && (action_name == 'show' || action_name == 'celebration')) ||
+          (controller_name == 'onboarding' && action_name.start_with?('step')) %>
+  <%= render "shared/navbar" %>
+<% end %>
   <%= render "shared/flashes" %>
 
     <%= yield %>
