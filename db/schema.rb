@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_193158) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture_name"
+    t.integer "category"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -111,6 +113,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_012738) do
     t.integer "coins", default: 0
     t.integer "streak", default: 0
     t.jsonb "onboarding_data"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
