@@ -5,9 +5,14 @@ import Swal from "sweetalert2"
 // Connects to data-controller="purchase"
 export default class extends Controller {
   static targets = [ "name", "price", "form", "button"]
+  static outlets = [ "user-coins" ]
 
   connect() {
     // console.log("connected!");
+  }
+
+  callOutlet() {
+    this.userCoinsOutlet.test("I am calling the outlet from purchase controller");
   }
 
   // pass sweet alert here to customize
@@ -37,14 +42,16 @@ export default class extends Controller {
       }})
       .then((result) => {
         if (result.isConfirmed) {
-          if (result.value.status === 'success') {
+          const data = result.value;
+          if (data.status === 'success') {
           // do the Ajax request to confirm the transaction. I.e. do you have enough coins
             Swal.fire({
               title: "Congrats Fam!",
               text: `You have purchased ${this.nameTarget.innerText}`,
               icon: "success"
             })
-            this.element.outerHTML=result.value.card
+            if (data.new_coins_balance) { this.userCoinsOutlet.updateCoinBalance(data.new_coins_balance); }
+            if (data.new_coins_balance) { this.userCoinsOutlet.updateCoinBalance(data.new_coins_balance); }
           } else if (result.value.status === 'failure') {
             Swal.fire({
               title: "Oops!",

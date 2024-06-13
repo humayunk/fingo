@@ -1,6 +1,8 @@
 if @success
   json.status "success"
   json.card render(partial: "items/card", formats: :html, locals: { item: @item, is_purchased: true })
+  json.new_coins_balance current_user.coins
+
 else
   json.status "failure"
   json.message "not enough coins"
