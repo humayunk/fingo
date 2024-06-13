@@ -1,18 +1,18 @@
 <!-- Form -->
 <div class="container mt-5">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" >
     <div class="col-md-8" data-controller="onboarding">
       <%= simple_form_for :questionnaire, url: url_for(action: action_name), method: :post, html: { class: 'onboarding-form' } do |f| %>
-        <div class="list-group">
+        <div class="card-answers list-group d-flex justify-content-center" >
           <% @questions.each do |question| %>
-            <label data-onboarding-target="label" class="list-group-item list-group-item-action d-flex align-items-center goal-option answer-disabled">
+            <label data-onboarding-target="label" class="answer-disabled ">
               <%= f.radio_button :goal, question[:content], class: 'form-check-input', "data-action" => "change->onboarding#activate" %>
-              <span><%= question[:content] %></span>
+              <h4><%= question[:content] %></h4>
             </label>
           <% end %>
         </div>
-        <div class="button mt-3 text-center">
-          <%= f.submit "Continue", class: "btn-custom-lesson d-none", "data-onboarding-target" => "submit" %>
+        <div class="d-flex justify-content-end mt-3">
+          <%= f.submit "Continue", class: "btn-custom-lesson btn-custom-lesson-disabled", "data-onboarding-target" => "submit", disabled: true %>
         </div>
       <% end %>
     </div>
