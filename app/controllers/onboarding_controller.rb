@@ -5,7 +5,7 @@ class OnboardingController < ApplicationController
     @questions = [
       { id: 1, content: '💰 Get that bag' },
       { id: 2, content: '☔️ Be rainy day ready' },
-      { id: 3, content: '📈 Dominate /wallstreetbets subreddit' },
+      { id: 3, content: '📈 Dominate r/wallstreetbets subreddit' },
       { id: 4, content: '📚 Drop fancy acronyms like ETFs' }
     ]
   end
