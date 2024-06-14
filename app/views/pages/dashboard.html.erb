@@ -51,7 +51,7 @@
               </div>
 
               <div class="d-flex justify-content-end align-items-center">
-                <h4 style="color: #899098;"><%= user.coins %> coins</h4>
+                <h4 style="color: #899098;"><%= user.coins %> xp </h4>
               </div>
             </div>
             <hr>
@@ -61,7 +61,7 @@
                   <%# for demo purposes, if want to have ~6000 users for rank, make conditional e.g.  %>
                   <%# if current_user.first_name == "Ryan" && current_user.last_name == "Ryan's last name" ie. the demo user  %>
                   <%# display e.g. 6003 for rank! So Ryan can be super competitive  %>
-                  <p> <%= current_user.current_rank %>. <%= current_user.first_name %> <%= current_user.coins %> coins 🪙</p>
+                  <p> <%= current_user.current_rank %>. <%= current_user.first_name %> <%= current_user.coins %> xp </p>
                 <% end %>
               </div>
             </div>
