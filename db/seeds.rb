@@ -36,7 +36,25 @@ lessons = Lesson.create!([
   { title: "Long-Term Investment Success", content: "Explore proven strategies for long-term investment success.", course: courses[0], order_rank: 5 }
 ])
 
-# Create Steps and Answers for the first lesson
+# Create Lessons for the course "Make It Rain: Finance for Today's World"
+lessons = Lesson.create!([
+  { title: "Budgeting Like a Boss", content: "Learn how to create and stick to a budget like a financial guru.", course: courses[1], order_rank: 1 },
+  { title: "Smart Saving Hacks", content: "Discover clever ways to save money and boost your savings.", course: courses[1], order_rank: 2 },
+  { title: "Credit Scores Unplugged", content: "Understand credit scores and loans without the confusion.", course: courses[1], order_rank: 3 },
+  { title: "Debt Busters", content: "Master techniques to manage and eliminate your debts effectively.", course: courses[1], order_rank: 4 },
+  { title: "Future-Proof Your Finances", content: "Plan your financial future with confidence and savvy.", course: courses[1], order_rank: 5 }
+])
+
+# Create Lessons for the course "Stock Market Starter Pack"
+lessons = Lesson.create!([
+  { title: "Stock Market 101: The Basics", content: "Get the gist of how the stock market operates without the jargon.", course: courses[2], order_rank: 1 },
+  { title: "Stock Types Demystified", content: "Learn about different types of stocks and what sets them apart.", course: courses[2], order_rank: 2 },
+  { title: "Analyzing Stocks for Dummies", content: "Pick up the basics of stock analysis and market trends, simplified.", course: courses[2], order_rank: 3 },
+  { title: "Trading vs. Investing: The Showdown", content: "Get a grip on the differences between trading and long-term investing.", course: courses[2], order_rank: 4 },
+  { title: "Assembling Your Stock Portfolio", content: "Learn how to build and manage a well-rounded stock portfolio.", course: courses[2], order_rank: 5 }
+])
+
+# Create Steps and Answers for the first lesson of course "Invest Like a Boss"
 steps_and_answers = [
   {
     lesson: lessons[0],
