@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-
 import Swal from "sweetalert2"
 
 // Connects to data-controller="purchase"
@@ -9,10 +8,6 @@ export default class extends Controller {
 
   connect() {
     // console.log("connected!");
-  }
-
-  callOutlet() {
-    this.userCoinsOutlet.test("I am calling the outlet from purchase controller");
   }
 
   // pass sweet alert here to customize
@@ -25,21 +20,8 @@ export default class extends Controller {
       // showCancelButton: true,
       // cancelButtonText: "Nopeeee",
       showLoaderOnConfirm: true,
-      preConfirm: async () => {
-        const options={
-          method: "post",
-          headers: {
-            "Accept": 'application/json'
-          },
-          body: new FormData(this.formTarget)
-        };
-
-        return fetch(this.formTarget.action, options)
-          .then(response => response.json())
-          .then((data) => {
-            return data
-          })
-      }})
+      preConfirm: this.#callStore.bind(this)
+    })
       .then((result) => {
         if (result.isConfirmed) {
           const data = result.value;
@@ -63,23 +45,33 @@ export default class extends Controller {
         }
       })
   }
+
+  async #callStore() {
+    const [data1, _] = await Promise.all([this.#sendRequest(), this.#addDelayForDramaticPurpose(1000)])
+    return data1;
+  }
+
+  async #sendRequest() {
+    const options={
+      method: "post",
+      headers: {
+        "Accept": 'application/json'
+      },
+      body: new FormData(this.formTarget)
+    };
+
+    return fetch(this.formTarget.action, options)
+      .then(response => response.json())
+  }
+
+  async #addDelayForDramaticPurpose(milliseconds) {
+    return new Promise((resolve, _) => {
+      setTimeout(() => {
+        resolve(`Waited ${milliseconds} milliseconds`);
+      }, milliseconds);
+    });
+  }
 }
-
-
-
-
-    // const myPromise = new Promise ((resolve, _) => {
-    //   setTimeout(() => {
-    //     resolve("success");
-    //   }, 1000);
-    // });
-    // return myPromise
-    //   .then((data) => {
-    //     if (data === "success") {
-    //       return "success";
-    //     }
-    //   })
-
 
      // You can pass HTML to the sweetalert to further customize like below
 //       html: `<div class="modal-content">
