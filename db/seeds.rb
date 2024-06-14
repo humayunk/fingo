@@ -180,8 +180,8 @@ end
 
 # Store Items
 Item.create!([
-  { name: 'Buff Doge Avatar', description: 'Level up your doge game 🐶', price: 150, category: "avatar", picture_name: "buff_doge2.png" },
-  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 300, category: "streak_freeze", picture_name: "streak_freeze.png" },
-  { name: 'Meme Swap', description: 'Change the meme on your celebration page! 😻', price: 100, category: "meme", picture_name: "meme_swap.png" },
-  { name: 'Cash Money', description: 'Make it rain dollar-dollar bills when you finish a lesson 🫰💵', price: 80, category: "background", picture_name: "cash_money.png" }
+  { name: 'Buff Doge Avatar', description: 'Level up your doge game 🐶', price: 150, category: "avatar", picture_name: "buff_doge3.png" },
+  { name: 'Streak Freeze', description: 'Freeze your streak! Skip a day if you want baller 😉', price: 300, category: "streak_freeze", picture_name: "streak_freeze2.png" },
+  { name: 'Meme Swap', description: 'Change the meme on your celebration page! 😻', price: 100, category: "meme", picture_name: "meme_swap2.png" },
+  { name: 'Cash Money', description: 'Make it rain dollar-dollar bills when you finish a lesson 🫰💵', price: 80, category: "background", picture_name: "cash_money2.png" }
 ])
