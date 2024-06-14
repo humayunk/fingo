@@ -21,6 +21,9 @@
                   <h4><%= current_user.most_recently_accessed_course.title %></h4>
                   <p><%= current_user.most_recently_accessed_course.description %></p>
                 </div>
+                <div class="progress mt-1 rounded">
+                  <div class="progress-bar" role="progressbar" style="width: <%= @progress_course %>%;"></div>
+                </div>
               <% end %>
             </div>
 
