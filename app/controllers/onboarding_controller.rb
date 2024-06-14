@@ -3,10 +3,10 @@ class OnboardingController < ApplicationController
 
   def step1
     @questions = [
-      { id: 1, content: '💰 Financial independence' },
-      { id: 2, content: '🏥 Building an emergency fund' },
-      { id: 3, content: '📈 Get started with investing' },
-      { id: 4, content: '📚 Overall financial literacy' }
+      { id: 1, content: '💰 Get that bag' },
+      { id: 2, content: '☔️ Be rainy day ready' },
+      { id: 3, content: '📈 Dominate /wallstreetbets subreddit' },
+      { id: 4, content: '📚 Drop fancy acronyms like ETFs' }
     ]
   end
 
@@ -21,10 +21,10 @@ class OnboardingController < ApplicationController
 
   def step2
     @questions = [
-      { id: 1, content: '📊 Understanding stock market basics' },
-      { id: 2, content: '💡 Developing investment strategies' },
-      { id: 3, content: '🛡️ Risk management' },
-      { id: 4, content: '🔍 Analyzing stocks' }
+      { id: 1, content: '📊 Mastering the stonk market' },
+      { id: 2, content: '🪺 Diversifying my non-existent nest egg' },
+      { id: 3, content: '🥑 Eat less avocado toast' },
+      { id: 4, content: '📸 Look rich on a budget on Insta' }
     ]
   end
 
