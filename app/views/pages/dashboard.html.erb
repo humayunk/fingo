@@ -4,8 +4,7 @@
     <h2>Fam, I mean <%= current_user.first_name %>, you're on a <%= current_user.streak %>-day streak!</h2>
   </div>
 
-  <% if current_user.in_progress_courses.any? %>
-
+  <% if current_user && current_user.in_progress_courses.any? %>
 
 
       <div class="row d-flex justify-content-between">

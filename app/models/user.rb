@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :items, through: :user_items
 
   def most_recently_accessed_course
-    user_progresses.order(updated_at: :desc).first.course
+    user_progresses.order(updated_at: :desc).first&.course
   end
 
 
