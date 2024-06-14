@@ -27,8 +27,11 @@ courses = Course.create!([
   { title: "Stock Market Starter Pack", description: "Dive into stocks and grasp the market basics.", image_name: "stock_101.jpg" }
 ])
 
+# Create empty array for lessons
+lessons = []
+
 # Create Lessons for the course "Invest Like a Boss"
-lessons = Lesson.create!([
+lessons << Lesson.create!([
   { title: "Investment 101: Your Wealth Journey Begins", content: "Get the lowdown on investing and why it's your ticket to wealth.", course: courses[0], order_rank: 1 },
   { title: "Cracking the Stock Market Code", content: "Unlock the basics of the stock market and start your investing journey.", course: courses[0], order_rank: 2 },
   { title: "Build a Winning Portfolio", content: "Learn how to build a killer investment portfolio.", course: courses[0], order_rank: 3 },
@@ -37,7 +40,7 @@ lessons = Lesson.create!([
 ])
 
 # Create Lessons for the course "Make It Rain: Finance for Today's World"
-lessons = Lesson.create!([
+lessons << Lesson.create!([
   { title: "Budgeting Like a Boss", content: "Learn how to create and stick to a budget like a financial guru.", course: courses[1], order_rank: 1 },
   { title: "Smart Saving Hacks", content: "Discover clever ways to save money and boost your savings.", course: courses[1], order_rank: 2 },
   { title: "Credit Scores Unplugged", content: "Understand credit scores and loans without the confusion.", course: courses[1], order_rank: 3 },
@@ -46,13 +49,15 @@ lessons = Lesson.create!([
 ])
 
 # Create Lessons for the course "Stock Market Starter Pack"
-lessons = Lesson.create!([
+lessons << Lesson.create!([
   { title: "Stock Market 101: The Basics", content: "Get the gist of how the stock market operates without the jargon.", course: courses[2], order_rank: 1 },
   { title: "Stock Types Demystified", content: "Learn about different types of stocks and what sets them apart.", course: courses[2], order_rank: 2 },
   { title: "Analyzing Stocks for Dummies", content: "Pick up the basics of stock analysis and market trends, simplified.", course: courses[2], order_rank: 3 },
   { title: "Trading vs. Investing: The Showdown", content: "Get a grip on the differences between trading and long-term investing.", course: courses[2], order_rank: 4 },
   { title: "Assembling Your Stock Portfolio", content: "Learn how to build and manage a well-rounded stock portfolio.", course: courses[2], order_rank: 5 }
 ])
+
+lessons.flatten!
 
 # Create Steps and Answers for the first lesson of course "Invest Like a Boss"
 steps_and_answers = [
