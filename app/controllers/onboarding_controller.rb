@@ -49,7 +49,7 @@ class OnboardingController < ApplicationController
   def save_step3
     if params[:questionnaire].present?
       current_user.update(onboarding_data: { step1: session[:step1], step2: session[:step2], step3: params[:questionnaire][:comfort_level] })
-      redirect_to courses_path, notice: "Thank you for completing the questionnaire!"
+      redirect_to courses_path
     else
       redirect_to onboarding_step3_path, alert: "Please select a comfort level."
     end
