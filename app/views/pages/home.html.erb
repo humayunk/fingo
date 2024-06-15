@@ -1,30 +1,28 @@
 
 <div class="container my-5">
   <div class="row d-flex align-items-center">
-   <div class="col-12 col-lg-6 mb-3 mb-lg-0 text-lg-left">
-     <div class="mb-2">
+    <div class="col-12 col-md-6 col-lg-6 mb-3 mb-lg-0 text-lg-left">
+      <div class="mb-2">
         <h1 style="font-weight: 700;">
-        Learn to invest. </br>
-        Build wealth. </br>
-        Live your life.
+          Learn to invest.<br>
+          Build wealth.<br>
+          Live your life.
         </h1>
-     </div>
-
-    <div class="mb-4">
-      <h4>We help you learn the key concepts
-    to put your money to work for you.</h4>
+      </div>
+      <div class="mb-4">
+        <h4>We help you learn the key concepts to put your money to work for you.</h4>
+      </div>
+      <%= link_to "Get Started", onboarding_step1_path, class: "btn btn-custom-primary" %>
     </div>
+    <div class="col-12 col-md-6 col-lg-6">
+      <%= image_tag 'home-page.png', class: "img-fluid", alt: '' %>
+    </div>
+  </div>
+</div>
 
 
-    <button class="btn-custom-primary">
-         <%= link_to "Get Started", onboarding_step1_path, class: "btn-link" %>
-    </button>
 
-   </div>
 
-   <div class="col-12 col-lg-6 home-image-container">
-     <%= image_tag 'home-page.png', class: "home-image img-fluid", alt: '' %>
-   </div>
 
   </div>
 </div>
