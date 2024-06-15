@@ -1,37 +1,42 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller="active-state">
+<div class="navbar navbar-expand-md navbar-light navbar-lewagon" data-controller="active-state">
   <div class="container-fluid">
     <%= link_to courses_path, class: "navbar-brand" do %>
       <h2>Fingo</h2>
     <% end %>
 
-    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0 mb-lg-0 mx-lg-4">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", data: { "active-state-target": "link" }, style: "margin-left: 3rem;"%>
+          <li class="nav-item mb-md-1">
+            <%= link_to "Dashboard", dashboard_path, class: "nav-link-custom", data: { "active-state-target": "link" } %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mb-md-1">
             <%= link_to "Courses", courses_path, class: "nav-link-custom", data: { "active-state-target": "link" } %>
+          </li>
+          <li class="nav-item d-md-none mb-md-1">
+            <%= link_to "Store", store_path, class: "nav-link-custom", data: { "active-state-target": "link" } %>
+          </li>
+          <li class="nav-item d-md-none mb-md-1">
+            <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link-custom", data: { "active-state-target": "link" } %>
           </li>
         <% end %>
       </ul>
 
       <% if user_signed_in? %>
-        <div class="nav-icons ms-auto">
-
-          <div class="dropdown card-nav">
+        <div class="d-flex align-items-center ms-auto d-none d-lg-flex">
+          <div class="dropdown card-nav me-2">
             <a href="#" id="coinsDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="d-flex justify-content-between align-item-baseline">
-              <div class="me-1"><h5>💰</h5></div>
-              <div><h5 data-controller="user-coins" id="user-coins"><%= current_user.coins %></h5></div>
-            </div>
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div class="me-1"><h5>💰</h5></div>
+                <div><h5 data-controller="user-coins" id="user-coins"><%= current_user.coins %></h5></div>
+              </div>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-end  dropdown-custom mt-2" aria-labelledby="coinsDropdown">
+            <div class="dropdown-menu dropdown-menu-end dropdown-custom mt-2" aria-labelledby="coinsDropdown">
               <h5>Coins</h5>
               <p style="font-size: 14px;">You have <%= current_user.coins %> coins</p>
               <hr>
@@ -41,30 +46,26 @@
             </div>
           </div>
 
-          <div class="d-flex align-items-baseline card-nav">
+          <div class="d-flex align-items-baseline card-nav me-2">
             <div class="me-1"><h5>⚡️</h5></div>
             <div><h5><%= current_user.streak %></h5></div>
           </div>
 
-
           <div class="dropdown">
-          <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="nav-circle p-2">
-
-              <%= image_tag ("cheems.png"),
-                class: "avatar dropdown-toggle user-avatar",
-                id: "navbarDropdown",
-                data: {
-                  bs_toggle: "dropdown",
-                  controller: "user-avatar"
-                },
-                'aria-haspopup': true,
-                'aria-expanded': false
-              %>
-
-            </div>
-          </a>
-             <!-- <i class="fas fa-bars"></i>-->
+            <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="nav-circle p-2">
+                <%= image_tag ("cheems.png"),
+                  class: "avatar dropdown-toggle user-avatar",
+                  id: "navbarDropdown",
+                  data: {
+                    bs_toggle: "dropdown",
+                    controller: "user-avatar"
+                  },
+                  'aria-haspopup': true,
+                  'aria-expanded': false
+                %>
+              </div>
+            </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-custom" aria-labelledby="navbarDropdown">
               <%= link_to "Profile", "#", class: "dropdown-item" %>
               <%= link_to "Settings", "#", class: "dropdown-item" %>
@@ -73,11 +74,15 @@
           </div>
         </div>
       <% else %>
-        <div class="ms-auto">
-          <button class="btn-custom-secondary">
-            <%= link_to "Login", new_user_session_path, class: "btn-link" %>
-          </button>
+        <div class="ms-auto d-none d-md-block">
+          <%= link_to "Login", new_user_session_path, class: "btn-custom-secondary btn-link" %>
         </div>
+
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 mb-lg-0 mx-lg-4">
+         <li class="nav-item d-md-none ">
+           <%= link_to "Login",  new_user_session_path, class: "nav-link-custom btn-link" %>
+         </li>
+        </ul>
       <% end %>
     </div>
   </div>
