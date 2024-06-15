@@ -1,0 +1,68 @@
+// Home Image
+
+.home-image-container {
+  width: 100%;
+  max-width: 600px;
+  height: 600px; /* Set the fixed height you want */
+  overflow: hidden;
+  margin-bottom: 0.5rem; /* Adjust this as needed */
+  position: relative;
+}
+
+.home-image {
+  width: 100%; /* The image will take up the full width of the container */
+  height: 100%; /* The image will take up the full height of the container */
+  object-fit: cover; /* The image will cover the container, maintaining its aspect ratio */
+  position: absolute;
+  border-radius: 0.5rem; /* The image is positioned absolutely within the container */
+}
+
+
+// Card Images
+
+.card-image-container {
+  width: 100%;
+  max-width: 400px;
+  height: 200px; /* Set the fixed height you want */
+  overflow: hidden;
+  margin-bottom: 0.5rem; /* Adjust this as needed */
+  position: relative;
+}
+
+.card-image-container-lg {
+  width: 100%; /* The container will take up the full width of its parent */
+  max-width: 600px; /* The container will not exceed 600px in width */
+  height: 250px; /* The container has a fixed height of 200px */
+  overflow: hidden; /* Any overflow content will be hidden */
+  margin-bottom: 0.5rem; /* Adds space below the container */
+  position: relative; /* Sets the container's position to relative for absolute positioning of the image */
+}
+
+.card-image {
+  width: 100%; /* The image will take up the full width of the container */
+  height: 100%; /* The image will take up the full height of the container */
+  object-fit: cover; /* The image will cover the container, maintaining its aspect ratio */
+  position: absolute;
+  border-radius: 0.5rem; /* The image is positioned absolutely within the container */
+}
+
+// Store Images
+
+.store-image-container {
+  width: 100%;
+  max-width: 200px;
+  height: 200px; /* Set the fixed height you want */
+  overflow: hidden;
+  margin-bottom: 0.5rem; /* Adjust this as needed */
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.store-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will make the image cover the container */
+  display: block;
+}

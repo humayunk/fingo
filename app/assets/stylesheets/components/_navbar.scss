@@ -1,76 +1,60 @@
 /* Styling for the navigation bar */
 .navbar-lewagon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: white;
-  padding: 1rem;
+  padding: 1.25rem;
   position: sticky;
   top: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light drop shadow */
-  z-index: 1000; /* Ensures it stays above other content */
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 .navbar-lewagon .navbar-brand h2 {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
 }
 
 .nav-link-custom {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px to rem */
   font-weight: 600;
   font-family: "Inconsolata";
   color: black;
-  margin: 0 10px;
-  position: relative; /* Required for the ::after pseudo-element positioning */
+  margin: 0 0.5rem; /* 10px to rem */
+  position: relative;
 
   &.active::after {
     content: '';
     display: block;
     width: 100%;
-    height: 8px; /* Adjust the height of the underline */
+    height: 0.5rem; /* 8px to rem */
     background-color: $yellow;
     position: absolute;
-    bottom: -32px; /* Adjust this value to move the underline closer to the bottom border */
+    bottom: -2.25rem; /* 32px to rem */
     left: 0;
   }
 }
 
 .nav-link-custom.active {
- /* Add bottom border to indicate active state */
+  /* Add bottom border to indicate active state */
 }
+
 /* Styling for the navigation icons */
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.9375rem; /* 15px to rem */
 }
 
 .nav-icons i {
-  font-size: 1.5em;
-  color: black; /* Ensures icons are black */
+  font-size: 1.5rem;
+  color: black;
 }
-
-// .avatar {
-//   margin-left: 15px;
-//   display: flex;
-//   align-items: center;
-// }
 
 .dropdown-menu {
   right: 0;
@@ -78,12 +62,11 @@
 }
 
 .navbar-toggler {
-  border: none; /* Removes border from the button */
+  border: none;
 }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-  /* Custom SVG for the hamburger icon to ensure it's black */
 }
 
 .dropdown a {
@@ -92,22 +75,22 @@
 }
 
 .card-nav {
-  border: 3px solid #F0F0F0;
+  border: 0.1875rem solid #F0F0F0; /* 3px to rem */
   border-radius: 0.5rem;
   padding: 0.5rem;
-  box-shadow: 2px 2px 0px #F0F0F0;
+  box-shadow: 0.125rem 0.125rem 0px #F0F0F0; /* 2px to rem */
 }
 
 .card-nav:hover {
-  border: 3px solid $blue;
+  border: 0.1875rem solid $blue; /* 3px to rem */
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
 .dropdown-custom {
-  border: 3px solid #F0F0F0;
+  border: 0.1875rem solid #F0F0F0; /* 3px to rem */
   border-radius: 0.5rem;
   padding: 0.75rem;
-  box-shadow: 2px 2px 0px #F0F0F0;
-  width: 200px;
+  box-shadow: 0.125rem 0.125rem 0px #F0F0F0; /* 2px to rem */
+  width: 12.5rem; /* 200px to rem */
 }
