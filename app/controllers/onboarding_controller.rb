@@ -1,5 +1,5 @@
 class OnboardingController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def step1
     @questions = [
@@ -12,7 +12,6 @@ class OnboardingController < ApplicationController
 
   def save_step1
     if params[:questionnaire].present?
-      session[:step1] = params[:questionnaire][:goal]
       redirect_to onboarding_step2_path
     else
       redirect_to onboarding_step1_path, alert: "Please select a goal."
@@ -30,7 +29,6 @@ class OnboardingController < ApplicationController
 
   def save_step2
     if params[:questionnaire].present?
-      session[:step2] = params[:questionnaire][:focus]
       redirect_to onboarding_step3_path
     else
       redirect_to onboarding_step2_path, alert: "Please select a focus."
@@ -48,8 +46,7 @@ class OnboardingController < ApplicationController
 
   def save_step3
     if params[:questionnaire].present?
-      current_user.update(onboarding_data: { step1: session[:step1], step2: session[:step2], step3: params[:questionnaire][:comfort_level] })
-      redirect_to courses_path
+      redirect_to new_user_registration_path # Redirect to sign-up page
     else
       redirect_to onboarding_step3_path, alert: "Please select a comfort level."
     end
