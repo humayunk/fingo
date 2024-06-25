@@ -5,10 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :nickname, presence: true, uniqueness: true, length: { minimum: 3 }
-  # validates :coins, default: 0
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :nickname, presence: true, uniqueness: true, length: { minimum: 3 }
+  # # validates :coins, default: 0
   # validates :streak, default: 0
 
 
